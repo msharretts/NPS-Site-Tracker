@@ -1,4 +1,4 @@
 package org.example;
 
-public class NationalParkServiceSite {
+public abstract class NationalParkServiceSite {
 }
