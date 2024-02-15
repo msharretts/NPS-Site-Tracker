@@ -1,4 +1,5 @@
 package org.example;
 
-public class NationalBattlefield {
+public class NationalBattlefield extends NationalParkServiceSite{
+
 }
