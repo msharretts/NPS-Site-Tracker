@@ -24,8 +24,8 @@ CREATE TABLE site (
 													 'Historical Park', 'Historic Site', 
 													 'Lakeshore', 'Memorial', 'Military Park', 
 													 'Parkway', 'Preserve', 'Recreation Area', 
-													 'Reserve', 'River', 'Scenic Trail', 
-													 'Seashore', 'Wild & Scenic River'))
+													 'Reserve', 'River', 'Scenic River','Scenic Trail', 
+													 'Seashore', 'Wild & Scenic River', 'Wild River'))
 );
 
 CREATE TABLE park (
@@ -113,7 +113,7 @@ INSERT INTO state (state_abbreviation, state_name) VALUES ('WV', 'West Virginia'
 INSERT INTO state (state_abbreviation, state_name) VALUES ('WI', 'Wisconsin');
 INSERT INTO state (state_abbreviation, state_name) VALUES ('WY', 'Wyoming');
 
-
+-- Parks
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Acadia', 'Park', '1919-02-26');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('American Samoa', 'Park', '1988-10-31');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Arches', 'Park', '1971-11-12');
@@ -173,11 +173,13 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Virgin Island
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Voyageurs', 'Park', '1975-04-08');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('White Sands', 'Park', '2019-12-20');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Wind Cave', 'Park', '1903-01-09');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Wrangell–St. Elias', 'Park', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Wrangell-St. Elias', 'Park', '1980-12-02');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Yellowstone', 'Park', '1872-03-01');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Yosemite', 'Park', '1890-10-01');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Zion', 'Park', '1919-11-19');
 
+
+-- Monuments
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Admiralty Island', 'Monument', '1978-12-01');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('African Burial Ground', 'Monument', '2006-02-27');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Agate Fossil Beds', 'Monument', '1997-06-14');
@@ -312,10 +314,99 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Walnut Canyon
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Wupatki', 'Monument', '1924-12-09');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Yucca House', 'Monument', '1919-12-19');
 
-  
+-- Seashores
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Assateague Island', 'Seashore', '1965-09-21');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Canaveral', 'Seashore', '1975-01-03');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Cape Cod', 'Seashore', '1966-06-01');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Cape Hatteras', 'Seashore', '1953-01-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Cape Lookout', 'Seashore', '1966-03-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Cumberland Island', 'Seashore', '1972-10-23');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Fire Island', 'Seashore', '1964-09-11');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Gulf Islands', 'Seashore', '1971-01-08');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Padre Island', 'Seashore', '1968-04-06');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Point Reyes', 'Seashore', '1972-10-20');
 
+
+-- Lakeshores
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Apostle Islands', 'Lakeshore', '1970-09-26');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Pictured Rocks', 'Lakeshore', '1966-10-15');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Sleeping Bear Dunes', 'Lakeshore', '1970-10-21');
+
+-- Recreation Areas
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Amistad', 'Recreation Area', '1990-11-28');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Bighorn Canyon', 'Recreation Area', '1966-10-15');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Boston Harbor Islands', 'Recreation Area', '1996-11-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Chattahoochee River', 'Recreation Area', '1978-08-15');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Chickasaw', 'Recreation Area', '1976-03-17');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Curecanti', 'Recreation Area', '1965-02-11');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Delaware Water Gap', 'Recreation Area', '1965-09-01');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Gateway', 'Recreation Area', '1972-10-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Gauley River', 'Recreation Area', '1988-10-26');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Glen Canyon', 'Recreation Area', '1972-10-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Golden Gate', 'Recreation Area', '1972-10-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Lake Chelan', 'Recreation Area', '1968-10-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Lake Mead', 'Recreation Area', '1964-10-08');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Lake Meredith', 'Recreation Area', '1990-11-28');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Lake Roosevelt', 'Recreation Area', '1997-01-01');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Ross Lake', 'Recreation Area', '1968-10-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Santa Monica Mountains', 'Recreation Area', '1978-11-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Whiskeytown–Shasta–Trinity', 'Recreation Area', '1972-10-21');
 
  
+-- National Battlefield/Military Sites
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Antietam', 'Battlefield', '1890-08-30');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Big Hole', 'Battlefield', '1910-06-23');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Brices Cross Roads', 'Battlefield Site', '1929-02-21');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Chickamauga and Chattanooga', 'Military Park', '1890-08-19');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Cowpens', 'Battlefield', '1929-03-04');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Donelson', 'Battlefield', '1933-08-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Necessity', 'Battlefield', '1931-03-04');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Fredericksburg and Spotsylvania', 'Military Park', '1927-02-14');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Gettysburg', 'Military Park', '1895-02-11');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Guilford Courthouse', 'Military Park', '1917-03-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Horseshoe Bend', 'Military Park', '1956-07-25');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Kennesaw Mountain', 'Battlefield Park', '1917-02-18');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Kings Mountain', 'Military Park', '1933-08-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Manassas', 'Battlefield Park', '1936-11-14');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Monocacy', 'Battlefield', '1934-06-21');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Moores Creek', 'Battlefield', '1926-06-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Pea Ridge', 'Military Park', '1956-07-20');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Petersburg', 'Battlefield', '1926-07-03');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Richmond', 'Battlefield Park', '1936-03-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('River Raisin', 'Battlefield Park', '2010-10-22');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Shiloh', 'Military Park', '1894-12-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Stones River', 'Battlefield', '1927-03-03');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Tupelo', 'Battlefield', '1933-08-11');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Vicksburg', 'Military Park', '1899-02-21');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Wilson''s Creek', 'Battlefield', '1960-04-22');
+
+
+-- National Parkways
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Blue Ridge Parkway', 'Parkway', '1936-06-30');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('George Washington Memorial Parkway', 'Parkway', '1930-05-29');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('John D. Rockefeller Jr. Memorial Parkway', 'Parkway', '1972-08-25');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Natchez Trace Parkway', 'Parkway', '1938-05-08');
+
+
+-- Scenic Trails
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Appalachian', 'Scenic Trail', '1968-10-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Ice Age', 'Scenic Trail', '1980-10-03');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Natchez Trace', 'Scenic Trail', '1983-03-28');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('New England', 'Scenic Trail', '2009-03-30');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('North Country', 'Scenic Trail', '1980-03-05');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Potomac Heritage', 'Scenic Trail', '1983-03-28');
+
+-- National Rivers
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Alagnak Wild River', 'Wild & Scenic River', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Bluestone National Scenic River', 'Wild & Scenic River', '1988-10-26');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Buffalo National River', 'River', '1992-04-22');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Great Egg Harbor Scenic and Recreational River', 'Wild & Scenic River', '1992-10-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Missouri National Recreational River', 'Wild & Scenic River', '1978-11-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Niobrara National Scenic River', 'Wild & Scenic River', '1991-05-24');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Obed Wild and Scenic River', 'Wild & Scenic River', '1976-10-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Rio Grande Wild & Scenic River', 'Wild & Scenic River', '1978-11-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Saint Croix National Scenic Riverway', 'Wild & Scenic River', '1968-10-02');
+
 -- data collected February 10, 2021
 -- park name, area (sq km, 2019 data) - https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States
 -- has_camping - https://www.nps.gov/subjects/camping/campground.htm
@@ -378,7 +469,7 @@ INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUE
 INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Voyageurs'), 'Voyageurs', '4/8/1975', 883.1, false);
 INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'White Sands'), 'White Sands', '12/20/2019', 592.2, true);
 INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Wind Cave'), 'Wind Cave', '1/9/1903', 137.5, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Wrangell-St. Elias'), 'Wrangell-St. Elias', '12/2/1980', 33682.6, true);
+-- INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Wrangell-St. Elias'), 'Wrangell-St. Elias', '12/2/1980', 33682.6, true);
 INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Yellowstone'), 'Yellowstone', '3/1/1872', 8983.2, true);
 INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Yosemite'), 'Yosemite', '10/1/1890', 3082.7, true);
 INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Zion'), 'Zion', '11/19/1919', 595.9, true); 
