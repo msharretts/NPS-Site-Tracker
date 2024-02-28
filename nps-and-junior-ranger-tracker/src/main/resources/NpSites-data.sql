@@ -22,10 +22,10 @@ CREATE TABLE site (
 													'Monument', 'Battlefield', 
 													 'Battlefield Park', 'Battlefield Site', 
 													 'Historical Park', 'Historic Site', 
-													 'Lakeshore', 'Memorial', 'Military Park', 
+													 'Lakeshore', 'Memorial', 'Military Park', 'Other',
 													 'Parkway', 'Preserve', 'Recreation Area', 
 													 'Reserve', 'River', 'Scenic River','Scenic Trail', 
-													 'Seashore', 'Wild & Scenic River', 'Wild River'))
+													 'Seashore', 'Wild and Scenic River', 'Wild River'))
 );
 
 CREATE TABLE park (
@@ -38,10 +38,12 @@ CREATE TABLE park (
 	CONSTRAINT UQ_park_name UNIQUE(park_name)
 );
 
--- CREATE TABLE monument (
--- 	monument_id int NOT NULL,
--- 	monument_name varchar(50) NOT NULL,
--- );
+CREATE TABLE monument (
+	monument_id int NOT NULL REFERENCES site(site_id),
+	monument_name varchar(50) NOT NULL,
+	CONSTRAINT PK_monument PRIMARY KEY(monument_id),
+	CONSTRAINT UQ_monument_name UNIQUE(monument_name)
+);
 
 CREATE TABLE site_state (
 	site_id int NOT NULL,
@@ -160,14 +162,12 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Boston Africa
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Carl Sandburg Home National Historic Site', 'Historic Site', '1968-10-17');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Carter G. Woodson Home National Historic Site', 'Historic Site', '2006-02-27');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Charles Pinckney National Historic Site', 'Historic Site', '1988-09-08');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Chimney Rock National Historic Site', 'Historic Site', '2012-09-21');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Christiansted National Historic Site', 'Historic Site', '1961-01-16'); 
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Clara Barton National Historic Site', 'Historic Site', '1974-10-26'); 
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Edgar Allan Poe National Historic Site', 'Historic Site', '1978-11-10'); 
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Eisenhower National Historic Site', 'Historic Site', '1967-11-27'); 
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Eleanor Roosevelt National Historic Site', 'Historic Site', '1977-05-26'); 
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Eugene O''Neill National Historic Site', 'Historic Site', '1976-10-12'); 
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Fallen Timbers Battlefield and Fort Miamis National Historic Site', 'Historic Site', '1999-12-09');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('First Ladies National Historic Site', 'Historic Site', '2000-10-11');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Ford''s Theatre National Historic Site', 'Historic Site', '1970-06-23');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Bowie National Historic Site', 'Historic Site', '1964-08-30');
@@ -183,9 +183,7 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Vancouve
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Frederick Douglass National Historic Site', 'Historic Site', '1988-02-12');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Frederick Law Olmsted National Historic Site', 'Historic Site', '1979-05-01');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Friendship Hill National Historic Site', 'Historic Site', '1978-11-10');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Gloria Dei (Old Swedes'') Church National Historic Site', 'Historic Site', '1942-11-17');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Grant–Kohrs Ranch National Historic Site', 'Historic Site', '1972-08-25');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Grey Towers National Historic Site', 'Historic Site', '2004-12-08');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Hampton National Historic Site', 'Historic Site', '1948-06-22');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Harry S. Truman National Historic Site', 'Historic Site', '1983-05-23');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Herbert Hoover National Historic Site', 'Historic Site', '1965-08-12');
@@ -194,14 +192,12 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Honouliuli Na
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Hopewell Furnace National Historic Site', 'Historic Site', '1985-09-18');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Hubbell Trading Post National Historic Site', 'Historic Site', '1965-08-28');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('James A. Garfield National Historic Site', 'Historic Site', '1980-12-28');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Jamestown National Historic Site', 'Historic Site', '1940-12-18');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('John Fitzgerald Kennedy National Historic Site', 'Historic Site', '1967-05-26');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('John Muir National Historic Site', 'Historic Site', '1964-08-31');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Knife River Indian Villages National Historic Site', 'Historic Site', '1974-10-26');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Lincoln Home National Historic Site', 'Historic Site', '1971-08-18');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Little Rock Central High School National Historic Site', 'Historic Site', '1999-11-06');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Longfellow House — Washington''s Headquarters National Historic Site', 'Historic Site', '2010-12-22');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Lower East Side Tenement National Historic Site', 'Historic Site', '1998-11-12');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Maggie L. Walker National Historic Site', 'Historic Site', '1978-11-10');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Manzanar National Historic Site', 'Historic Site', '1992-03-03');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Martin Van Buren National Historic Site', 'Historic Site', '1974-10-26');
@@ -215,6 +211,7 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Pennsylvania 
 INSERT INTO site (site_name, site_type, date_established) VALUES ('President William Jefferson Clinton Birthplace Home National Historic Site', 'Historic Site', '2010-12-14');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Puʻukoholā Heiau National Historic Site', 'Historic Site', '1972-08-17');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Sagamore Hill National Historic Site', 'Historic Site', '1963-07-08');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Saint Croix Island International Historic Site', 'Historic Site', '1984-09-25');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Saint Paul''s Church National Historic Site', 'Historic Site', '1978-11-10');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Salem Maritime National Historic Site', 'Historic Site', '1938-03-17');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('San Juan National Historic Site', 'Historic Site', '1949-02-14');
@@ -224,9 +221,7 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Springfield A
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Steamtown National Historic Site', 'Historic Site', '1986-10-30');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Theodore Roosevelt Birthplace National Historic Site', 'Historic Site', '1970-06-18');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Theodore Roosevelt Inaugural National Historic Site', 'Historic Site', '1966-11-02');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Thomas Cole National Historic Site', 'Historic Site', '1999-12-09');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Thomas Stone National Historic Site', 'Historic Site', '1978-11-10');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Touro Synagogue National Historic Site', 'Historic Site', '1946-03-05');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Tuskegee Airmen National Historic Site', 'Historic Site', '1998-11-06');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Tuskegee Institute National Historic Site', 'Historic Site', '1974-10-26');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Ulysses S. Grant National Historic Site', 'Historic Site', '1989-10-02');
@@ -234,6 +229,75 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Vanderbilt Ma
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Washita Battlefield National Historic Site', 'Historic Site', '1996-11-12');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Whitman Mission National Historic Site', 'Historic Site', '1963-01-01');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('William Howard Taft National Historic Site', 'Historic Site', '1969-12-02');
+
+
+-- Historical Parks
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Abraham Lincoln Birthplace National Historical Park', 'Historical Park', '2009-03-30');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Adams National Historical Park', 'Historical Park', '1998-11-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Appomattox Court House National Historical Park', 'Historical Park', '1954-04-15');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Blackstone River Valley National Historical Park', 'Historical Park', '2014-12-19');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Boston National Historical Park', 'Historical Park', '1974-10-01');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Brown v. Board of Education National Historical Park', 'Historical Park', '2022-05-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Cane River Creole National Historical Park', 'Historical Park', '1994-11-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Cedar Creek and Belle Grove National Historical Park', 'Historical Park', '2002-12-19');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Chaco Culture National Historical Park', 'Historical Park', '1980-12-19');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Chesapeake and Ohio Canal National Historical Park', 'Historical Park', '1971-01-08');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Colonial National Historical Park', 'Historical Park', '1936-06-05');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Cumberland Gap National Historical Park', 'Historical Park', '1940-06-11');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Dayton Aviation Heritage National Historical Park', 'Historical Park', '1992-10-16');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('First State National Historical Park', 'Historical Park', '2014-12-19');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Sumter and Fort Moultrie National Historical Park', 'Historical Park', '2019-03-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('George Rogers Clark National Historical Park', 'Historical Park', '1966-07-23');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Golden Spike National Historical Park', 'Historical Park', '2019-03-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Harpers Ferry National Historical Park', 'Historical Park', '1963-05-29');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Harriet Tubman National Historical Park', 'Historical Park', '2017-01-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Harriet Tubman Underground Railroad National Historical Park', 'Historical Park', '2014-12-19');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Homestead National Historical Park', 'Historical Park', '2021-01-13');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Hopewell Culture National Historical Park', 'Historical Park', '1992-05-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Independence National Historical Park', 'Historical Park', '1948-06-28');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Jean Lafitte National Historical Park and Preserve', 'Historical Park', '1978-11-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Jimmy Carter National Historical Park', 'Historical Park', '2021-01-13');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Kalaupapa National Historical Park', 'Historical Park', '1980-12-22');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Kaloko-Honokōhau National Historical Park', 'Historical Park', '1978-11-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Keweenaw National Historical Park', 'Historical Park', '1992-10-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Klondike Gold Rush National Historical Park', 'Historical Park', '1976-06-30');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Lewis and Clark National Historical Park', 'Historical Park', '2004-10-30');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Lowell National Historical Park', 'Historical Park', '1978-06-05');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Lyndon B. Johnson National Historical Park', 'Historical Park', '1980-12-28');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Manhattan Project National Historical Park', 'Historical Park', '2015-11-11');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Marsh-Billings-Rockefeller National Historical Park', 'Historical Park', '1998-10-21');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Martin Luther King Jr. National Historical Park', 'Historical Park', '2018-01-08');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Minute Man National Historical Park', 'Historical Park', '1959-09-21');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Morristown National Historical Park', 'Historical Park', '1933-07-04');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Natchez National Historical Park', 'Historical Park', '1988-10-07');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('New Bedford Whaling National Historical Park', 'Historical Park', '1996-11-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('New Orleans Jazz National Historical Park', 'Historical Park', '1994-10-31');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Nez Perce National Historical Park', 'Historical Park', '1965-05-15');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Ocmulgee Mounds National Historical Park', 'Historical Park', '2019-03-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Palo Alto Battlefield National Historical Park', 'Historical Park', '2009-03-30');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Paterson Great Falls National Historical Park', 'Historical Park', '2011-11-07');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Pecos National Historical Park', 'Historical Park', '1990-06-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Pullman National Historical Park', 'Historical Park', '2022-12-29');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Puʻuhonua o Hōnaunau National Historical Park', 'Historical Park', '1978-11-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Reconstruction Era National Historical Park', 'Historical Park', '2019-03-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Rosie the Riveter/World War II Home Front National Historical Park', 'Historical Park', '2000-10-24');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Saint-Gaudens National Historical Park', 'Historical Park', '2019-03-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Ste. Genevieve National Historical Park', 'Historical Park', '2020-10-30');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Salt River Bay National Historical Park and Ecological Preserve', 'Historical Park', '1992-02-24');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('San Antonio Missions National Historical Park', 'Historical Park', '1978-11-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('San Francisco Maritime National Historical Park', 'Historical Park', '1988-06-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('San Juan Island National Historical Park', 'Historical Park', '1966-09-09');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Saratoga National Historical Park', 'Historical Park', '1938-06-01');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Sitka National Historical Park', 'Historical Park', '1972-10-18');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Thomas Edison National Historical Park', 'Historical Park', '2009-03-30');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Tumacácori National Historical Park', 'Historical Park', '1990-08-06');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Valley Forge National Historical Park', 'Historical Park', '1976-07-04');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('War in the Pacific National Historical Park', 'Historical Park', '1978-08-18');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Weir Farm National Historical Park', 'Historical Park', '2021-01-05');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Women''s Rights National Historical Park', 'Historical Park', '1980-12-28');
+
+
+
 
 
 -- Memorials
@@ -271,44 +335,28 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Wright Brothe
 
 
 -- Monuments
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Admiralty Island National Monument', 'Monument', '1978-12-01');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('African Burial Ground National Monument', 'Monument', '2006-02-27');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Agate Fossil Beds National Monument', 'Monument', '1997-06-14');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Agua Fria National Monument', 'Monument', '2000-01-11');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Aleutian Islands World War II National Monument', 'Monument', '2008-12-05');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Alibates Flint Quarries National Monument', 'Monument', '1965-08-21');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Aniakchak National Monument', 'Monument', '1978-12-01');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Avi Kwa Ame National Monument', 'Monument', '2023-03-21');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Aztec Ruins National Monument', 'Monument', '1923-01-24');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Baaj Nwaavjo I''tah Kukveni – Ancestral Footprints of the Grand Canyon National Monument', 'Monument', '2023-08-08');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Bandelier National Monument', 'Monument', '1916-02-11');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Basin and Range National Monument', 'Monument', '2015-07-10');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Bears Ears National Monument', 'Monument', '2016-12-28');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Belmont-Paul Women''s Equality National Monument', 'Monument', '2016-04-12');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Berryessa Snow Mountain National Monument', 'Monument', '2015-07-10');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Birmingham Civil Rights National Monument', 'Monument', '2017-01-12');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Booker T. Washington National Monument', 'Monument', '1956-04-02');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Browns Canyon National Monument', 'Monument', '2015-02-19');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Buck Island Reef National Monument', 'Monument', '1961-12-28');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Cabrillo National Monument', 'Monument', '1913-10-14');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('California Coastal National Monument', 'Monument', '2000-01-11');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Camp Hale — Continental Divide National Monument', 'Monument', '2022-10-12');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Camp Nelson National Monument', 'Monument', '2018-10-26');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Canyon de Chelly National Monument', 'Monument', '1931-04-01');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Canyons of the Ancients National Monument', 'Monument', '2000-06-09');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Cape Krusenstern National Monument', 'Monument', '1978-12-01');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Capulin Volcano National Monument', 'Monument', '1916-08-09');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Carrizo Plain National Monument', 'Monument', '2001-01-12');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Casa Grande Ruins National Monument', 'Monument', '1918-08-03');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Cascade–Siskiyou National Monument', 'Monument', '2000-06-09');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Castillo de San Marcos National Monument', 'Monument', '1924-10-15');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Castle Clinton National Monument', 'Monument', '1946-08-12');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Castle Mountains National Monument', 'Monument', '2016-02-12');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Castner Range National Monument', 'Monument', '2023-03-21');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Cedar Breaks National Monument', 'Monument', '1933-08-22');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('César E. Chávez National Monument', 'Monument', '2012-10-08');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Charles Young Buffalo Soldiers National Monument', 'Monument', '2013-03-25');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Chimney Rock National Monument', 'Monument', '2012-09-21');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Chiricahua National Monument', 'Monument', '1924-04-18');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Colorado National Monument', 'Monument', '1911-05-24');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Craters of the Moon National Monument', 'Monument', '1924-05-02');
@@ -324,7 +372,6 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Frederic
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Matanzas National Monument', 'Monument', '1924-10-15');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort McHenry National Monument and Historic Shrine', 'Monument', '1925-03-03');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Monroe National Monument', 'Monument', '2011-11-01');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Ord National Monument', 'Monument', '2012-04-20');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Pulaski National Monument', 'Monument', '1924-10-15');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Stanwix National Monument', 'Monument', '1935-08-21');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Union National Monument', 'Monument', '1956-04-05');
@@ -332,63 +379,33 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Fossil Butte 
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Freedom Riders National Monument', 'Monument', '2017-01-12');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('George Washington Birthplace National Monument', 'Monument', '1930-01-23');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('George Washington Carver National Monument', 'Monument', '1943-07-14');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Giant Sequoia National Monument', 'Monument', '2000-04-15');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Gila Cliff Dwellings National Monument', 'Monument', '1907-11-16');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Gold Butte National Monument', 'Monument', '2016-12-28');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Governors Island National Monument', 'Monument', '2001-01-19');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Grand Canyon–Parashant National Monument', 'Monument', '2000-01-11');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Grand Portage National Monument', 'Monument', '1960-01-27');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Grand Staircase–Escalante National Monument', 'Monument', '1996-09-18');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Hagerman Fossil Beds National Monument', 'Monument', '1988-11-18');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Hanford Reach National Monument', 'Monument', '2000-06-08');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Harriet Tubman Underground Railroad National Monument', 'Monument', '2013-03-25');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Hohokam Pima National Monument', 'Monument', '1972-10-21');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Hovenweep National Monument', 'Monument', '1923-03-02');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Ironwood Forest National Monument', 'Monument', '2000-06-09');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Jewel Cave National Monument', 'Monument', '1908-02-07');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('John Day Fossil Beds National Monument', 'Monument', '1974-10-26');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Jurassic National Monument', 'Monument', '2019-03-12');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Kasha-Katuwe Tent Rocks National Monument', 'Monument', '2001-01-17');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Katahdin Woods and Waters National Monument', 'Monument', '2016-08-24');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Lava Beds National Monument', 'Monument', '1925-11-21');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Little Bighorn Battlefield National Monument', 'Monument', '1940-07-01');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Marianas Trench Marine National Monument', 'Monument', '2009-01-06');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Medgar and Myrlie Evers Home National Monument', 'Monument', '2020-12-10');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Military Working Dog Teams National Monument', 'Monument', '2013-10-28');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Mill Springs Battlefield National Monument', 'Monument', '2020-09-22');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Misty Fjords National Monument', 'Monument', '1978-12-01');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Mojave Trails National Monument', 'Monument', '2016-02-12');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Montezuma Castle National Monument', 'Monument', '1906-12-08');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Mount St. Helens Volcanic National Monument', 'Monument', '1982-08-27');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Muir Woods National Monument', 'Monument', '1908-01-09');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Natural Bridges National Monument', 'Monument', '1908-04-16');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Navajo National Monument', 'Monument', '1909-03-20');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Newberry Volcanic National Monument', 'Monument', '1990-11-05');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Northeast Canyons and Seamounts Marine National Monument', 'Monument', '2016-09-15');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Oregon Caves National Monument and Preserve', 'Monument', '1909-07-12');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Organ Mountains–Desert Peaks National Monument', 'Monument', '2014-05-21');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Organ Pipe Cactus National Monument', 'Monument', '1937-04-13');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Pacific Remote Islands Marine National Monument', 'Monument', '2009-01-06');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Papahānaumokuākea Marine National Monument', 'Monument', '2006-06-15');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Petroglyph National Monument', 'Monument', '1990-06-27');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Pipe Spring National Monument', 'Monument', '1923-05-31');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Pipestone National Monument', 'Monument', '1937-08-25');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Pompeys Pillar National Monument', 'Monument', '2001-01-17');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Poverty Point National Monument', 'Monument', '1988-10-31');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Prehistoric Trackways National Monument', 'Monument', '2009-03-30');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('President Lincoln and Soldiers’ Home National Monument', 'Monument', '2000-07-07');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Rainbow Bridge National Monument', 'Monument', '1910-05-30');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Río Grande del Norte National Monument', 'Monument', '2013-03-25');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Rose Atoll Marine National Monument', 'Monument', '2009-01-06');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Russell Cave National Monument', 'Monument', '1961-05-11');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Saint Francis Dam Disaster National Monument', 'Monument', '2019-03-12');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Salinas Pueblo Missions National Monument', 'Monument', '1909-11-01');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('San Gabriel Mountains National Monument', 'Monument', '2014-10-10');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('San Juan Islands National Monument', 'Monument', '2013-03-25');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Sand to Snow', 'Monument', '2016-02-12');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Santa Rosa and San Jacinto Mountains National Monument', 'Monument', '2000-10-24');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Scotts Bluff National Monument', 'Monument', '1919-12-12');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Sonoran Desert National Monument', 'Monument', '2001-01-17');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Statue of Liberty National Monument', 'Monument', '1924-10-15');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Stonewall National Monument', 'Monument', '2016-06-24');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Sunset Crater Volcano National Monument', 'Monument', '1930-05-30');
@@ -397,8 +414,6 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Tonto Nationa
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Tule Lake National Monument', 'Monument', '2008-12-05');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Tule Springs Fossil Beds National Monument', 'Monument', '2014-12-19');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Tuzigoot National Monument', 'Monument', '1939-07-25');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Upper Missouri River Breaks National Monument', 'Monument', '2001-01-17');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Vermilion Cliffs National Monument', 'Monument', '2000-11-09');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Virgin Islands Coral Reef National Monument', 'Monument', '2001-01-17');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Waco Mammoth National Monument', 'Monument', '2015-07-10');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Walnut Canyon National Monument', 'Monument', '1915-11-30');
@@ -479,6 +494,32 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('John D. Rocke
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Natchez Trace Parkway', 'Parkway', '1938-05-08');
 
 
+-- Preserves
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Aniakchak National Preserve', 'Preserve', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Bering Land Bridge National Preserve', 'Preserve', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Big Cypress National Preserve', 'Preserve', '1974-10-11');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Big Thicket National Preserve', 'Preserve', '1974-10-11');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Craters of the Moon National Preserve', 'Preserve', '2002-08-21');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Denali National Preserve', 'Preserve', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Gates of the Arctic National Preserve', 'Preserve', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Glacier Bay National Preserve', 'Preserve', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Great Sand Dunes National Preserve', 'Preserve', '2004-09-24');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Katmai National Preserve', 'Preserve', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Lake Clark National Preserve', 'Preserve', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Little River Canyon National Preserve', 'Preserve', '1992-10-21');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Mojave National Preserve', 'Preserve', '1994-10-31');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Noatak National Preserve', 'Preserve', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Tallgrass Prairie National Preserve', 'Preserve', '1996-11-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Timucuan Ecological and Historic Preserve', 'Preserve', '1988-02-16');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Valles Caldera National Preserve', 'Preserve', '2014-02-19');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Wrangell-St. Elias National Preserve', 'Preserve', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Yukon-Charley Rivers National Preserve', 'Preserve', '1980-12-02');
+
+
+-- Reserves
+INSERT INTO site (site_name, site_type, date_established) VALUES ('City of Rocks National Rese rve', 'Reserve', '1988-11-18');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Ebey''s Landing National Historical Reserve', 'Reserve', '1978-11-10');
+
 -- Recreation Areas
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Amistad National Recreation Area', 'Recreation Area', '1990-11-28');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Bighorn Canyon National Recreation Area', 'Recreation Area', '1966-10-15');
@@ -501,15 +542,22 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Whiskeytown�
 
 
 -- National Rivers
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Alagnak Wild River', 'Wild & Scenic River', '1980-12-02');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Bluestone National Scenic River', 'Wild & Scenic River', '1988-10-26');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Big South Fork National River and Recreation Area', 'River', '1974-03-07');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Buffalo National River', 'River', '1992-04-22');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Great Egg Harbor Scenic and Recreational River', 'Wild & Scenic River', '1992-10-27');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Missouri National Recreational River', 'Wild & Scenic River', '1978-11-10');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Niobrara National Scenic River', 'Wild & Scenic River', '1991-05-24');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Obed Wild and Scenic River', 'Wild & Scenic River', '1976-10-12');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Rio Grande Wild & Scenic River', 'Wild & Scenic River', '1978-11-10');
-INSERT INTO site (site_name, site_type, date_established) VALUES ('Saint Croix National Scenic Riverway', 'Wild & Scenic River', '1968-10-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Mississippi National River and Recreation Areas', 'River', '1988-11-18');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Ozark National Scenic Riverways', 'River', '1964-08-27');
+
+
+-- Wild and Scenic Rivers
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Alagnak Wild River', 'Wild and Scenic River', '1980-12-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Bluestone National Scenic River', 'Wild and Scenic River', '1988-10-26');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Great Egg Harbor Scenic and Recreational River', 'Wild and Scenic River', '1992-10-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Missouri National Recreational River', 'Wild and Scenic River', '1978-11-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Niobrara National Scenic River', 'Wild and Scenic River', '1991-05-24');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Obed Wild and Scenic River', 'Wild and Scenic River', '1976-10-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Rio Grande Wild and Scenic River', 'Wild and Scenic River', '1978-11-10');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Saint Croix National Scenic Riverway', 'Wild and Scenic River', '1968-10-02');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Upper Delaware Scenic and Recreational River', 'Wild and Scenic River', '1978-11-10');
 
 
 -- Lakeshores
@@ -538,6 +586,23 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Natchez Trace
 INSERT INTO site (site_name, site_type, date_established) VALUES ('New England National Scenic Trail', 'Scenic Trail', '2009-03-30');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('North Country National Scenic Trail', 'Scenic Trail', '1980-03-05');
 INSERT INTO site (site_name, site_type, date_established) VALUES ('Potomac Heritage National Scenic Trail', 'Scenic Trail', '1983-03-28');
+
+
+--Other designations
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Catoctin Mountain Park', 'Other', '1954-07-12');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Constitution Gardens', 'Other', '1986-09-17');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Washington Park', 'Other', '1930-05-29');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Greenbelt Park', 'Other', '1950-08-03');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('National Capital Parks - East', 'Other', '1970-07-16');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('National Mall and Memorial Parks', 'Other', '1965-01-01');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Piscataway Park', 'Other', '1961-10-04');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Prince William Forest Park', 'Other', '1948-06-22');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Rock Creek Park', 'Other', '1980-09-27');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('The White House and President''s Park', 'Other', '1961-09-22');
+INSERT INTO site (site_name, site_type, date_established) VALUES ('Wolf Trap National Park for the Performing Arts', 'Other', '2002-08-21');
+
+
+
 
 
 
@@ -685,3 +750,67 @@ ALTER TABLE site_state ADD CONSTRAINT FK_site_state_site FOREIGN KEY(site_id) RE
 ALTER TABLE site_state ADD CONSTRAINT FK_site_state_state FOREIGN KEY(state_abbreviation) REFERENCES state(state_abbreviation);
 
 COMMIT;
+
+
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Chimney Rock National Historic Site', 'Historic Site', '2012-09-21');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Fallen Timbers Battlefield and Fort Miamis National Historic Site', 'Historic Site', '1999-12-09');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Gloria Dei (Old Swedes'') Church National Historic Site', 'Historic Site', '1942-11-17');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Grey Towers National Historic Site', 'Historic Site', '2004-12-08');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Jamestown National Historic Site', 'Historic Site', '1940-12-18');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Lower East Side Tenement National Historic Site', 'Historic Site', '1998-11-12');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Thomas Cole National Historic Site', 'Historic Site', '1999-12-09');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Touro Synagogue National Historic Site', 'Historic Site', '1946-03-05');
+
+
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Admiralty Island National Monument', 'Monument', '1978-12-01');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Agua Fria National Monument', 'Monument', '2000-01-11');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Aleutian Islands World War II National Monument', 'Monument', '2008-12-05');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Avi Kwa Ame National Monument', 'Monument', '2023-03-21');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Baaj Nwaavjo I''tah Kukveni – Ancestral Footprints of the Grand Canyon National Monument', 'Monument', '2023-08-08');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Basin and Range National Monument', 'Monument', '2015-07-10');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Bears Ears National Monument', 'Monument', '2016-12-28');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Berryessa Snow Mountain National Monument', 'Monument', '2015-07-10');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Browns Canyon National Monument', 'Monument', '2015-02-19');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('California Coastal National Monument', 'Monument', '2000-01-11');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Camp Hale — Continental Divide National Monument', 'Monument', '2022-10-12');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Canyons of the Ancients National Monument', 'Monument', '2000-06-09');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Carrizo Plain National Monument', 'Monument', '2001-01-12');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Cascade–Siskiyou National Monument', 'Monument', '2000-06-09');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Castner Range National Monument', 'Monument', '2023-03-21');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Chimney Rock National Monument', 'Monument', '2012-09-21');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Fort Ord National Monument', 'Monument', '2012-04-20');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Giant Sequoia National Monument', 'Monument', '2000-04-15');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Gold Butte National Monument', 'Monument', '2016-12-28');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Grand Canyon–Parashant National Monument', 'Monument', '2000-01-11');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Grand Staircase–Escalante National Monument', 'Monument', '1996-09-18');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Hanford Reach National Monument', 'Monument', '2000-06-08');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Harriet Tubman Underground Railroad National Monument', 'Monument', '2013-03-25');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Ironwood Forest National Monument', 'Monument', '2000-06-09');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Jurassic National Monument', 'Monument', '2019-03-12');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Kasha-Katuwe Tent Rocks National Monument', 'Monument', '2001-01-17');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Marianas Trench Marine National Monument', 'Monument', '2009-01-06');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Military Working Dog Teams National Monument', 'Monument', '2013-10-28');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Misty Fjords National Monument', 'Monument', '1978-12-01');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Mojave Trails National Monument', 'Monument', '2016-02-12');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Mount St. Helens Volcanic National Monument', 'Monument', '1982-08-27');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Newberry Volcanic National Monument', 'Monument', '1990-11-05');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Northeast Canyons and Seamounts Marine National Monument', 'Monument', '2016-09-15');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Organ Mountains–Desert Peaks National Monument', 'Monument', '2014-05-21');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Pacific Remote Islands Marine National Monument', 'Monument', '2009-01-06');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Papahānaumokuākea Marine National Monument', 'Monument', '2006-06-15');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Pompeys Pillar National Monument', 'Monument', '2001-01-17');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Prehistoric Trackways National Monument', 'Monument', '2009-03-30');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('President Lincoln and Soldiers’ Home National Monument', 'Monument', '2000-07-07');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Río Grande del Norte National Monument', 'Monument', '2013-03-25');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Rose Atoll Marine National Monument', 'Monument', '2009-01-06');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Saint Francis Dam Disaster National Monument', 'Monument', '2019-03-12');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('San Gabriel Mountains National Monument', 'Monument', '2014-10-10');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('San Juan Islands National Monument', 'Monument', '2013-03-25');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Sand to Snow', 'Monument', '2016-02-12');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Santa Rosa and San Jacinto Mountains National Monument', 'Monument', '2000-10-24');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Sonoran Desert National Monument', 'Monument', '2001-01-17');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Upper Missouri River Breaks National Monument', 'Monument', '2001-01-17');
+-- INSERT INTO site (site_name, site_type, date_established) VALUES ('Vermilion Cliffs National Monument', 'Monument', '2000-11-09');
+
+
+
