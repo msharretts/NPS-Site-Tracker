@@ -1,12 +1,17 @@
 START TRANSACTION;
 
-DROP TABLE IF EXISTS site_state, site, park, monument, state CASCADE;
+DROP TABLE IF EXISTS site_state, site, designation, designation_site, designation_state, memorial, park, monument, state CASCADE;
 
 CREATE TABLE state (
 	state_abbreviation char(2) NOT NULL,
 	state_name varchar(50) NOT NULL,
 	CONSTRAINT PK_state PRIMARY KEY(state_abbreviation),
 	CONSTRAINT UQ_state_name UNIQUE(state_name)
+);
+
+CREATE TABLE designation (
+	designation_id serial,
+	designation_name varchar(50) NOT NULL
 );
 
 
@@ -31,7 +36,6 @@ CREATE TABLE site (
 CREATE TABLE park (
 	park_id int NOT NULL REFERENCES site(site_id),
 	park_name varchar(50) NOT NULL,
-	date_established date NOT NULL,
 	area numeric(6,1) NOT NULL,
 	has_camping boolean NOT NULL,
 	CONSTRAINT PK_park PRIMARY KEY(park_id),
@@ -45,10 +49,29 @@ CREATE TABLE monument (
 	CONSTRAINT UQ_monument_name UNIQUE(monument_name)
 );
 
+CREATE TABLE memorial (
+	memorial_id int NOT NULL REFERENCES site(site_id),
+	memorial_name varchar(50) NOT NULL,
+	CONSTRAINT PK_memorial PRIMARY KEY(memorial_id),
+	CONSTRAINT UQ_memorial_name UNIQUE(memorial_name)
+);
+
+CREATE TABLE designation_state (
+	designation_id int NOT NULL,
+	state_abbreviation char(2) NOT NULL,
+	CONSTRAINT PK_designation_state PRIMARY KEY(designation_id, state_abbreviation)
+);
+
 CREATE TABLE site_state (
 	site_id int NOT NULL,
 	state_abbreviation char(2) NOT NULL,
 	CONSTRAINT PK_site_state PRIMARY KEY(site_id, state_abbreviation)
+);
+
+CREATE TABLE designation_site (
+	site_id int NOT NULL REFERENCES site(site_id),
+	designation_id int NOT NULL,
+	CONSTRAINT PK_designation_site PRIMARY KEY(site_id, designation_id)
 );
 
 -- insert data
@@ -114,6 +137,30 @@ INSERT INTO state (state_abbreviation, state_name) VALUES ('WA', 'Washington');
 INSERT INTO state (state_abbreviation, state_name) VALUES ('WV', 'West Virginia');
 INSERT INTO state (state_abbreviation, state_name) VALUES ('WI', 'Wisconsin');
 INSERT INTO state (state_abbreviation, state_name) VALUES ('WY', 'Wyoming');
+
+
+INSERT INTO designation (designation_name) VALUES ('Battlefield');
+INSERT INTO designation (designation_name) VALUES ('Battlefield Park');
+INSERT INTO designation (designation_name) VALUES ('Battlefield Site');
+INSERT INTO designation (designation_name) VALUES ('Historical Park');
+INSERT INTO designation (designation_name) VALUES ('Historic Site');
+INSERT INTO designation (designation_name) VALUES ('Lakeshore');
+INSERT INTO designation (designation_name) VALUES ('Memorial');
+INSERT INTO designation (designation_name) VALUES ('Military Park');
+INSERT INTO designation (designation_name) VALUES ('Monument');
+INSERT INTO designation (designation_name) VALUES ('Other');
+INSERT INTO designation (designation_name) VALUES ('Park');
+INSERT INTO designation (designation_name) VALUES ('Parkway');
+INSERT INTO designation (designation_name) VALUES ('Preserve');
+INSERT INTO designation (designation_name) VALUES ('Recreation Area');
+INSERT INTO designation (designation_name) VALUES ('Reserve');
+INSERT INTO designation (designation_name) VALUES ('River');												   
+INSERT INTO designation (designation_name) VALUES ('Scenic Trail');
+INSERT INTO designation (designation_name) VALUES ('Seashore');
+INSERT INTO designation (designation_name) VALUES ('Wild and Scenic River');
+
+
+
 
 
 -- National Battlefield
@@ -609,69 +656,75 @@ INSERT INTO site (site_name, site_type, date_established) VALUES ('Wolf Trap Nat
 -- data collected February 10, 2021
 -- park name, area (sq km, 2019 data) - https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States
 -- has_camping - https://www.nps.gov/subjects/camping/campground.htm
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Acadia National Park'), 'Acadia National Park', '2/26/1919', 198.6, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'National Park of American Samoa'), 'National Park of American Samoa', '10/31/1988', 33.4, false);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Arches National Park'), 'Arches National Park', '11/12/1971', 310.3, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Badlands National Park'), 'Badlands National Park', '11/10/1978', 982.4, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Big Bend National Park'), 'Big Bend National Park', '6/12/1944', 3242.2, false);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Biscayne National Park'), 'Biscayne National Park', '6/28/1980', 700, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Black Canyon of the Gunnison National Park'), 'Black Canyon of the Gunnison National Park', '10/21/1999', 124.6, false);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Bryce Canyon National Park'), 'Bryce Canyon National Park', '2/25/1928', 145, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Canyonlands National Park'), 'Canyonlands National Park', '9/12/1964', 1366.2, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Capitol Reef National Park'), 'Capitol Reef National Park', '12/18/1971', 979, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Carlsbad Caverns National Park'), 'Carlsbad Caverns National Park', '5/14/1930', 189.3, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Channel Islands National Park'), 'Channel Islands National Park', '3/5/1980', 1009.9, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Congaree National Park'), 'Congaree National Park', '11/10/2003', 107.1, false);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Crater Lake National Park'), 'Crater Lake National Park', '5/22/1902', 741.5, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Cuyahoga Valley National Park'), 'Cuyahoga Valley National Park', '10/11/2000', 131.8, false);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Death Valley National Park'), 'Death Valley National Park', '10/31/1994', 13793.3, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Denali National Park'), 'Denali National Park', '2/26/1917', 19185.8, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Dry Tortugas National Park'), 'Dry Tortugas National Park', '10/26/1992', 261.8, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Everglades National Park'), 'Everglades National Park', '5/30/1934', 6106.5, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Gates of the Arctic National Park'), 'Gates of the Arctic National Park', '12/2/1980', 30448.1, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Gateway Arch National Park'), 'Gateway Arch National Park', '2/22/2018', 0.8, false);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Glacier National Park'), 'Glacier National Park', '5/11/1910', 4100, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Glacier Bay National Park'), 'Glacier Bay National Park', '12/2/1980', 13044.6, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Grand Canyon National Park'), 'Grand Canyon National Park', '2/26/1919', 4862.9, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Grand Teton National Park'), 'Grand Teton National Park', '2/26/1929', 1254.7, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Great Basin National Park'), 'Great Basin National Park', '10/27/1986', 312.3, false);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Great Sand Dunes National Park'), 'Great Sand Dunes National Park', '9/13/2004', 434.4, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Great Smoky Mountains National Park'), 'Great Smoky Mountains National Park', '6/15/1934', 2114.2, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Guadalupe Mountains National Park'), 'Guadalupe Mountains National Park', '10/15/1966', 349.5, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Haleakalā National Park'), 'Haleakalā National Park', '7/1/1961', 134.6, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Hawaiʻi Volcanoes National Park'), 'Hawaiʻi Volcanoes National Park', '8/1/1916', 1317.7, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Hot Springs National Park'), 'Hot Springs National Park', '3/4/1921', 22.5, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Indiana Dunes National Park'), 'Indiana Dunes National Park', '2/15/2019', 62.1, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Isle Royale National Park'), 'Isle Royale National Park', '4/3/1940', 2314, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Joshua Tree National Park'), 'Joshua Tree National Park', '10/31/1994', 3217.9, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Katmai National Park'), 'Katmai National Park', '12/2/1980', 14870.3, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Kenai Fjords National Park'), 'Kenai Fjords National Park', '12/2/1980', 2710, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Kings Canyon National Park'), 'Kings Canyon National Park', '3/4/1940', 1869.2, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Kobuk Valley National Park'), 'Kobuk Valley National Park', '12/2/1980', 7084.9, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Lake Clark National Park'), 'Lake Clark National Park', '12/2/1980', 10602, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Lassen Volcanic National Park'), 'Lassen Volcanic National Park', '8/9/1916', 431.4, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Mammoth Cave National Park'), 'Mammoth Cave National Park', '7/1/1941', 218.6, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Mesa Verde National Park'), 'Mesa Verde National Park', '6/29/1906', 212.4, false);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Mount Rainier National Park'), 'Mount Rainier National Park', '3/2/1899', 956.6, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'New River Gorge National Park and Preserve'), 'New River Gorge National Park and Preserve', '12/27/2020', 28.4, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'North Cascades National Park'), 'North Cascades National Park', '10/2/1968', 2042.8, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Olympic National Park'), 'Olympic National Park', '6/29/1938', 3733.8, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Petrified Forest National Park'), 'Petrified Forest National Park', '12/9/1962', 895.9, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Pinnacles National Park'), 'Pinnacles National Park', '1/10/2013', 108, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Redwood National Park'), 'Redwood National Park', '10/2/1968', 562.5, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Rocky Mountain National Park'), 'Rocky Mountain National Park', '1/26/1915', 1075.7, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Saguaro National Park'), 'Saguaro National Park', '10/14/1994', 375.8, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Sequoia National Park'), 'Sequoia National Park', '9/25/1890', 1635.2, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Shenandoah National Park'), 'Shenandoah National Park', '12/26/1935', 806.2, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Theodore Roosevelt National Park'), 'Theodore Roosevelt National Park', '11/10/1978', 285.1, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Virgin Islands National Park'), 'Virgin Islands National Park', '8/2/1956', 60.9, false);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Voyageurs National Park'), 'Voyageurs National Park', '4/8/1975', 883.1, false);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'White Sands National Park'), 'White Sands National Park', '12/20/2019', 592.2, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Wind Cave National Park'), 'Wind Cave National Park', '1/9/1903', 137.5, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Wrangell-St. Elias National Park'), 'Wrangell-St. Elias National Park', '12/2/1980', 33682.6, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Yellowstone National Park'), 'Yellowstone National Park', '3/1/1872', 8983.2, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Yosemite National Park'), 'Yosemite National Park', '10/1/1890', 3082.7, true);
-INSERT INTO park (park_id, park_name, date_established, area, has_camping) VALUES ((select site_id from site where site_name = 'Zion National Park'), 'Zion National Park', '11/19/1919', 595.9, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Acadia National Park'), 'Acadia National Park', 198.6, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'National Park of American Samoa'), 'National Park of American Samoa', 33.4, false);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Arches National Park'), 'Arches National Park', 310.3, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Badlands National Park'), 'Badlands National Park', 982.4, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Big Bend National Park'), 'Big Bend National Park', 3242.2, false);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Biscayne National Park'), 'Biscayne National Park', 700, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Black Canyon of the Gunnison National Park'), 'Black Canyon of the Gunnison National Park', 124.6, false);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Bryce Canyon National Park'), 'Bryce Canyon National Park', 145, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Canyonlands National Park'), 'Canyonlands National Park', 1366.2, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Capitol Reef National Park'), 'Capitol Reef National Park', 979, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Carlsbad Caverns National Park'), 'Carlsbad Caverns National Park', 189.3, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Channel Islands National Park'), 'Channel Islands National Park', 1009.9, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Congaree National Park'), 'Congaree National Park', 107.1, false);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Crater Lake National Park'), 'Crater Lake National Park', 741.5, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Cuyahoga Valley National Park'), 'Cuyahoga Valley National Park', 131.8, false);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Death Valley National Park'), 'Death Valley National Park', 13793.3, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Denali National Park'), 'Denali National Park', 19185.8, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Dry Tortugas National Park'), 'Dry Tortugas National Park', 261.8, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Everglades National Park'), 'Everglades National Park', 6106.5, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Gates of the Arctic National Park'), 'Gates of the Arctic National Park', 30448.1, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Gateway Arch National Park'), 'Gateway Arch National Park', 0.8, false);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Glacier National Park'), 'Glacier National Park', 4100, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Glacier Bay National Park'), 'Glacier Bay National Park', 13044.6, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Grand Canyon National Park'), 'Grand Canyon National Park', 4862.9, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Grand Teton National Park'), 'Grand Teton National Park', 1254.7, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Great Basin National Park'), 'Great Basin National Park', 312.3, false);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Great Sand Dunes National Park'), 'Great Sand Dunes National Park', 434.4, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Great Smoky Mountains National Park'), 'Great Smoky Mountains National Park', 2114.2, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Guadalupe Mountains National Park'), 'Guadalupe Mountains National Park', 349.5, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Haleakalā National Park'), 'Haleakalā National Park', 134.6, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Hawaiʻi Volcanoes National Park'), 'Hawaiʻi Volcanoes National Park', 1317.7, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Hot Springs National Park'), 'Hot Springs National Park', 22.5, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Indiana Dunes National Park'), 'Indiana Dunes National Park', 62.1, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Isle Royale National Park'), 'Isle Royale National Park', 2314, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Joshua Tree National Park'), 'Joshua Tree National Park', 3217.9, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Katmai National Park'), 'Katmai National Park', 14870.3, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Kenai Fjords National Park'), 'Kenai Fjords National Park', 2710, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Kings Canyon National Park'), 'Kings Canyon National Park', 1869.2, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Kobuk Valley National Park'), 'Kobuk Valley National Park', 7084.9, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Lake Clark National Park'), 'Lake Clark National Park', 10602, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Lassen Volcanic National Park'), 'Lassen Volcanic National Park', 431.4, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Mammoth Cave National Park'), 'Mammoth Cave National Park', 218.6, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Mesa Verde National Park'), 'Mesa Verde National Park', 212.4, false);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Mount Rainier National Park'), 'Mount Rainier National Park', 956.6, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'New River Gorge National Park and Preserve'), 'New River Gorge National Park and Preserve', 28.4, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'North Cascades National Park'), 'North Cascades National Park', 2042.8, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Olympic National Park'), 'Olympic National Park', 3733.8, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Petrified Forest National Park'), 'Petrified Forest National Park', 895.9, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Pinnacles National Park'), 'Pinnacles National Park', 108, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Redwood National Park'), 'Redwood National Park', 562.5, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Rocky Mountain National Park'), 'Rocky Mountain National Park', 1075.7, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Saguaro National Park'), 'Saguaro National Park', 375.8, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Sequoia National Park'), 'Sequoia National Park', 1635.2, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Shenandoah National Park'), 'Shenandoah National Park', 806.2, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Theodore Roosevelt National Park'), 'Theodore Roosevelt National Park', 285.1, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Virgin Islands National Park'), 'Virgin Islands National Park', 60.9, false);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Voyageurs National Park'), 'Voyageurs National Park', 883.1, false);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'White Sands National Park'), 'White Sands National Park', 592.2, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Wind Cave National Park'), 'Wind Cave National Park', 137.5, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Wrangell-St. Elias National Park'), 'Wrangell-St. Elias National Park', 33682.6, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Yellowstone National Park'), 'Yellowstone National Park', 8983.2, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Yosemite National Park'), 'Yosemite National Park', 3082.7, true);
+INSERT INTO park (park_id, park_name, area, has_camping) VALUES ((select site_id from site where site_name = 'Zion National Park'), 'Zion National Park', 595.9, true);
+
+
+-- INSERT INTO monument (monument_id, monument_name, area, has_camping) VALUES ((select site_id from site where site_name =
+
+
+
 
 -- park states - https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Acadia National Park'), 'ME');
