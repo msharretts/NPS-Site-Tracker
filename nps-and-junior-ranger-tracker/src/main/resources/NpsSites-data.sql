@@ -414,34 +414,43 @@ INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_a
 INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Gila Cliff Dwellings National Monument', '1907-11-16', '2.2', 'False', '79,108');
 INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Governors Island National Monument', '2001-01-19', '0.1', 'False', '589,798');
 INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Grand Portage National Monument', '1960-01-27', '2.9', 'False', '94,137');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Hagerman Fossil Beds National Monument', '1988-11-18');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Hohokam Pima National Monument', '1972-10-21');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Hovenweep National Monument', '1923-03-02');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Jewel Cave National Monument', '1908-02-07');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('John Day Fossil Beds National Monument', '1974-10-26');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Katahdin Woods and Waters National Monument', '2016-08-24');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Lava Beds National Monument', '1925-11-21');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Little Bighorn Battlefield National Monument', '1940-07-01');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Medgar and Myrlie Evers Home National Monument', '2020-12-10');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Mill Springs Battlefield National Monument', '2020-09-22');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Montezuma Castle National Monument', '1906-12-08');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Muir Woods National Monument', '1908-01-09');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Natural Bridges National Monument', '1908-04-16');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Navajo National Monument', '1909-03-20');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Oregon Caves National Monument and Preserve', '1909-07-12');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Organ Pipe Cactus National Monument', '1937-04-13');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Petroglyph National Monument', '1990-06-27');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Pipe Spring National Monument', '1923-05-31');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Pipestone National Monument', '1937-08-25');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Poverty Point National Monument', '1988-10-31');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Rainbow Bridge National Monument', '1910-05-30');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Russell Cave National Monument', '1961-05-11');
-INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Salinas Pueblo Missions National Monument', '1909-11-01');
-
-
-
-
-Continue generating
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Hagerman Fossil Beds National Monument', '1988-11-18', '17.6', 'False', '26,477');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Hohokam Pima National Monument', '1972-10-21', '6.8', 'False', '');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Hovenweep National Monument', '1923-03-02', '3.2', 'False', '40,574');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Jewel Cave National Monument', '1908-02-07', '5.2', 'False', '142,356');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('John Day Fossil Beds National Monument', '1974-10-26', '56.9', 'False', '204,621');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Katahdin Woods and Waters National Monument', '2016-08-24', '354.4', 'False', '');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Lava Beds National Monument', '1925-11-21', '189.0', 'False', '127,771');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Little Bighorn Battlefield National Monument', '1940-07-01', '3.1', 'False', '272,591');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Medgar and Myrlie Evers Home National Monument', '2020-12-10', '0.0', 'False', '');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Mill Springs Battlefield National Monument', '2020-09-22', '5.9', 'False', '');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Montezuma Castle National Monument', '1906-12-08', '4.1', 'False', '390,151');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Muir Woods National Monument', '1908-01-09', '2.2', 'False', '957,932');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Natural Bridges National Monument', '1908-04-16', '30.9', 'False', '103,118');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Navajo National Monument', '1909-03-20', '1.5', 'False', '61,195');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Oregon Caves National Monument', '1909-07-12', '18.4', 'False', '67,417');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Organ Pipe Cactus National Monument', '1937-04-13', '1,338.3', 'False', '260,375');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Petroglyph National Monument', '1990-06-27', '29.2', 'False', '268,613');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Pipe Spring National Monument', '1923-05-31', '0.2', 'False', '25,179');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Pipestone National Monument', '1937-08-25', '1.1', 'False', '73,267');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Poverty Point National Monument', '1988-10-31', '3.7', 'False', '');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Rainbow Bridge National Monument', '1910-05-30', '0.6', 'False', '110,904');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Russell Cave National Monument', '1961-05-11', '1.3', 'False', '21,620');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Salinas Pueblo Missions National Monument', '1909-11-01', '4.3', 'False', '34,629');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Scotts B('Statue of Liberty National Monument', '1924-10-15', '0.2', 'False', '4,335,431');luff National Monument', '1919-12-12', '12.2', 'False', '142,028');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Statue of Liberty National Monument', '1924-10-15', '0.2', 'False', '4,335,431');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Stonewall National Monument', '2016-06-24', '0.0', 'False', '511,220');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Sunset Crater Volcano National Monument', '1930-05-30', '12.3', 'False', '104,583');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Timpanogos Cave National Monument', '1922-10-14', '1.0', 'False', '121,311');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Tonto National Monument', '1907-10-21', '4.5', 'False', '39,822');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Tule Lake National Monument', '2008-12-05', '5.629', 'False', '');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Tule Springs Fossil Beds National Monument', '2014-12-19', '91.7', 'False', '');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Tuzigoot National Monument', '1939-07-25', '3.3', 'False', '98,090');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Virgin Islands Coral Reef National Monument', '2001-01-17', '51.4', 'False', '');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Waco Mammoth National Monument', '2015-07-10', '0.4', 'False', '106,932');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Walnut Canyon National Monument', '1915-11-30', '14.3', 'False', '167,736');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Wupatki National Monument', '1924-12-09', '143.3', 'False', '205,122');
+INSERT INTO site (site_name, date_established, area_km2, has_camping, visitors_annually) VALUES ('Yucca House National Monument', '1919-12-19', '0.1', 'False', '');
 
 
 -- Parks
