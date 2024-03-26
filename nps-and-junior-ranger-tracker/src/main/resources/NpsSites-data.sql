@@ -1,6 +1,6 @@
 START TRANSACTION;
 
-DROP TABLE IF EXISTS site_state, site, designation, designation_site, designation_state, memorial, park, monument, state CASCADE;
+DROP TABLE IF EXISTS site_state, site, designation, designation_site, designation_state, state CASCADE;
 
 CREATE TABLE state (
 	state_abbreviation char(2) NOT NULL,
@@ -12,6 +12,14 @@ CREATE TABLE state (
 CREATE TABLE designation (
 	designation_id serial,
 	designation_name varchar(50) NOT NULL
+	CONSTRAINT CHK_designation_name CHECK (designation_name IN ('Park', 
+													'Monument', 'Battlefield', 
+													 'Battlefield Park', 'Battlefield Site', 
+													 'Historical Park', 'Historic Site', 
+													 'Lakeshore', 'Memorial', 'Military Park', 'Other',
+													 'Parkway', 'Preserve', 'Recreation Area', 
+													 'Reserve', 'River', 'Scenic River','Scenic Trail', 
+													 'Seashore', 'Wild and Scenic River', 'Wild River'))
 );
 
 
@@ -36,20 +44,6 @@ CREATE TABLE site (
 													 'Seashore', 'Wild and Scenic River', 'Wild River'))
 );
 
-CREATE TABLE monument (
-	monument_id int NOT NULL REFERENCES site(site_id),
-	monument_name varchar(50) NOT NULL,
-	CONSTRAINT PK_monument PRIMARY KEY(monument_id),
-	CONSTRAINT UQ_monument_name UNIQUE(monument_name)
-);
-
-CREATE TABLE memorial (
-	memorial_id int NOT NULL REFERENCES site(site_id),
-	memorial_name varchar(50) NOT NULL,
-	CONSTRAINT PK_memorial PRIMARY KEY(memorial_id),
-	CONSTRAINT UQ_memorial_name UNIQUE(memorial_name)
-);
-
 CREATE TABLE designation_state (
 	designation_id int NOT NULL,
 	state_abbreviation char(2) NOT NULL,
@@ -69,12 +63,8 @@ CREATE TABLE designation_site (
 );
 
 -- insert data
-
 -- data collected February 10, 2021
--- state name, abbrev, capital, population (2019 estimate), area (sq km, 2018 data) - https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States
--- state sales tax (base) - https://en.wikipedia.org/wiki/Sales_taxes_in_the_United_States
--- state nickname (first official nickname only, NULL if no official nickname) - https://en.wikipedia.org/wiki/List_of_U.S._state_and_territory_nicknames
--- census region - https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States#Census_Bureau-designated_regions_and_divisions
+-- state name, abbrev https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States
 INSERT INTO state (state_abbreviation, state_name) VALUES ('AL', 'Alabama');
 INSERT INTO state (state_abbreviation, state_name) VALUES ('AK', 'Alaska');
 INSERT INTO state (state_abbreviation, state_name) VALUES ('AS', 'American Samoa');
@@ -175,7 +165,7 @@ INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('G
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Great Sand Dunes National Preserve', '2004-09-24', '168.7', 'true');
 
 
--- National Battlefield
+-- Battlefield
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Antietam National Battlefield', '1890-08-30', '13.1', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Big Hole National Battlefield', '1910-06-23', '3.9', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Cowpens National Battlefield', '1929-03-04', '3.4', 'false');
@@ -187,19 +177,13 @@ INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('P
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Stones River National Battlefield', '1927-03-03', '2.9', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Tupelo National Battlefield', '1933-08-11', '0.0040', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Wilson''s Creek National Battlefield', '1960-04-22', '9.7', 'false');
-
-
 -- Battlefield Site
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Brices Cross Roads National Battlefield Site', '1929-02-21', '0.0040', 'false');
-
-
 -- Battlefield Park
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Kennesaw Mountain National Battlefield Park', '1917-02-18', '11.8', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Manassas National Battlefield Park', '1936-11-14', '20.5', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Richmond National Battlefield Park', '1936-03-02', '33.1', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('River Raisin National Battlefield Park', '2010-10-22', '0.2', 'false');
-
-
 -- Military Park
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Chickamauga and Chattanooga National Military Park', '1890-08-19', '38.5', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Fredericksburg and Spotsylvania County Battlefields Memorial National Military Park', '1927-02-14', '34.0', 'false');
@@ -289,15 +273,13 @@ INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('V
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Washita Battlefield National Historic Site', '1996-11-12', '1.2756', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Whitman Mission National Historic Site', '1963-01-01', '0.5606', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('William Howard Taft National Historic Site', '1969-12-02', '0.0147', 'true');
-
-
 -- Historical Parks
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Abraham Lincoln Birthplace National Historical Park', '2009-03-30', '1.3941', 'true');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Adams National Historical Park', '1998-11-02', '0.0964', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Appomattox Court House National Historical Park', '1954-04-15', '7.1816', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Blackstone River Valley National Historical Park', '2014-12-19', '6.0258', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Boston National Historical Park', '1974-10-01', '0.1773', 'false');
-INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Brown v. Board of Education National Historic Site', '2022-05-12', '0.0075', 'false');
+INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Brown v. Board of Education National Historical Park', '2022-05-12', '0.0075', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Cane River Creole National Historical Park', '1994-11-02', '0.8316', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Cedar Creek and Belle Grove National Historical Park', '2002-12-19', '14.9934', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Chaco Culture National Historical Park', '1980-12-19', '137.4320', 'false');
@@ -553,8 +535,6 @@ INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('T
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Timucuan Ecological and Historic Preserve', '1988-02-16', '187.2', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Valles Caldera National Preserve', '2014-02-19', '363.3', 'false');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Yukon–Charley Rivers National Preserve', '1980-12-02', '10224.4', 'true');
-
-
 -- Reserves
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('City of Rocks National Reserve', '1988-11-18', '58.3', 'true');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Ebey''s Landing National Historical Reserve', '1978-11-10', '78.2', 'false');
@@ -586,8 +566,6 @@ INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('B
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Buffalo National River', '1992-04-22', '381.6', 'true');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Mississippi National River and Recreation Areas', '1988-11-18', '217.6', 'true');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Ozark National Scenic Riverways', '1964-08-27', '326.9', 'true');
-
-
 -- Wild and Scenic Rivers
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Alagnak Wild River', '1980-12-02', '124.1', 'true');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Bluestone National Scenic River', '1988-10-26', '17.4', 'false');
@@ -598,14 +576,10 @@ INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('O
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Rio Grande Wild and Scenic River', '1978-11-10', '53.1', 'true');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Saint Croix National Scenic Riverway', '1968-10-02', '273.0', 'true');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Upper Delaware Scenic and Recreational River', '1978-11-10', '303.5', 'false');
-
-
 -- Lakeshores
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Apostle Islands National Lakeshore', '1970-09-26', '280.7', 'true');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Pictured Rocks National Lakeshore', '1966-10-15', '296.4', 'true');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Sleeping Bear Dunes National Lakeshore', '1970-10-21', '288.1', 'true');
-
-
 -- Seashores
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Assateague Island National Seashore', '1965-09-21', '160.8', 'true');
 INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('Canaveral National Seashore', '1975-01-03', '233.3', 'true');
@@ -643,6 +617,7 @@ INSERT INTO site (site_name, date_established, area_km2, has_camping) VALUES ('W
 
 
 -- data collected February 10, 2021
+-- data collected and updated March 2024
 -- park name, area (sq km, 2019 data) - https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States
 -- has_camping - https://www.nps.gov/subjects/camping/campground.htm
 
@@ -680,8 +655,8 @@ INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FRO
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Great Smoky Mountains National Park'), 'NC');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Great Smoky Mountains National Park'), 'TN');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Guadalupe Mountains National Park'), 'TX');
-INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name =  'Haleakalā National Park'), 'HI');
-INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name =  'Hawaiʻi Volcanoes National Park'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Haleakalā National Park'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hawaiʻi Volcanoes National Park'), 'HI');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hot Springs National Park'), 'AR');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Indiana Dunes National Park'), 'IN');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Isle Royale National Park'), 'MI');
@@ -718,6 +693,437 @@ INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FRO
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Zion National Park'), 'UT');
 
 
+-- Battlefields
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Antietam National Battlefield'), 'MD');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Big Hole National Battlefield'), 'MT');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Cowpens National Battlefield'), 'SC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Donelson National Battlefield'), 'TN');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Donelson National Battlefield'), 'KY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Necessity National Battlefield'), 'PA');															  
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Monocacy National Battlefield'), 'MD');															  
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Moores Creek National Battlefield'), 'NC');															  
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Petersburg National Battlefield'), 'VA');															  
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Stones River National Battlefield'), 'TN');															  
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Tupelo National Battlefield'), 'MS');															  
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Wilson''s Creek National Battlefield'), 'MO');	
+
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Antietam National Battlefield'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Big Hole National Battlefield'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Cowpens National Battlefield'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Donelson National Battlefield'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Necessity National Battlefield'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Monocacy National Battlefield'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Moores Creek National Battlefield'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Petersburg National Battlefield'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Stones River National Battlefield'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Tupelo National Battlefield'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Wilson''s Creek National Battlefield'),	(SELECT designation_id FROM designation WHERE designation_name = 'Battlefield'));														  
+-- Battlefield Sites
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Brices Cross Roads National Battlefield Site'), 'MS');													  
+
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Brices Cross Roads National Battlefield Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield Site'));															  
+-- Battlefield Parks
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kennesaw Mountain National Battlefield Park'), 'GA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Manassas National Battlefield Park'), 'VA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Richmond National Battlefield Park'), 'VA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'River Raisin National Battlefield Park'), 'MI');
+
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kennesaw Mountain National Battlefield Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Manassas National Battlefield Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Richmond National Battlefield Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'River Raisin National Battlefield Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Battlefield Park'));
+-- Military Parks
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chickamauga and Chattanooga National Military Park'), 'GA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chickamauga and Chattanooga National Military Park'), 'TN');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fredericksburg and Spotsylvania County Battlefields Memorial National Military Park'), 'VA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Gettysburg National Military Park'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Guilford Courthouse National Military Park'), 'NC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Horseshoe Bend National Military Park'), 'AL');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kings Mountain National Military Park'), 'SC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pea Ridge National Military Park'), 'AR');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Shiloh National Military Park'), 'MS');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Shiloh National Military Park'), 'TN');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Vicksburg National Military Park'), 'MS');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Vicksburg National Military Park'), 'LA');
+
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chickamauga and Chattanooga National Military Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Military Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fredericksburg and Spotsylvania County Battlefields Memorial National Military Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Military Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Gettysburg National Military Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Military Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Guilford Courthouse National Military Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Military Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Horseshoe Bend National Military Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Military Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kings Mountain National Military Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Military Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pea Ridge National Military Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Military Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Shiloh National Military Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Military Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Vicksburg National Military Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Military Park'));
+
+
+-- Historic Sites
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Allegheny Portage Railroad National Historic Site'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Amache National Historic Site'),'CO');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Andersonville National Historic Site'), 'GA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Andrew Johnson National Historic Site'), 'TN');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Bent''s Old Fort National Historic Site'), 'CO');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Boston African American National Historic Site'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Carl Sandburg Home National Historic Site'), 'NC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Carter G. Woodson Home National Historic Site'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Charles Pinckney National Historic Site'), 'SC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Clara Barton National Historic Site'), 'MD');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Edgar Allan Poe National Historic Site'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Eisenhower National Historic Site'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Eleanor Roosevelt National Historic Site'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Eugene O''Neill National Historic Site'), 'CA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'First Ladies National Historic Site'), 'OH');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ford''s Theatre National Historic Site'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Bowie National Historic Site'), 'AZ');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Davis National Historic Site'), 'TX');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Laramie National Historic Site'), 'WY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Larned National Historic Site'), 'KS');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Point National Historic Site'), 'CA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Raleigh National Historic Site'), 'NC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Scott National Historic Site'), 'KS');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Smith National Historic Site'), 'AR');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Smith National Historic Site'), 'OK');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Union Trading Post National Historic Site'), 'MT');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Union Trading Post National Historic Site'), 'ND');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Vancouver National Historic Site'), 'OR');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Vancouver National Historic Site'), 'WA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Frederick Douglass National Historic Site'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Frederick Law Olmsted National Historic Site'),'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Friendship Hill National Historic Site'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Grant–Kohrs Ranch National Historic Site'), 'MT');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hampton National Historic Site'), 'MD');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Harry S. Truman National Historic Site'), 'MO');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Herbert Hoover National Historic Site'), 'IA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Home of Franklin D. Roosevelt National Historic Site'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Honouliuli National Historic Site'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hopewell Furnace National Historic Site'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hubbell Trading Post National Historic Site'), 'AZ');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'James A. Garfield National Historic Site'), 'OH');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'John Fitzgerald Kennedy National Historic Site'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'John Muir National Historic Site'), 'CA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Knife River Indian Villages National Historic Site'), 'ND');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lincoln Home National Historic Site'), 'IL');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Little Rock Central High School National Historic Site'), 'AR');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Longfellow House — Washington''s Headquarters National Historic Site'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Maggie L. Walker National Historic Site'), 'VA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Manzanar National Historic Site'), 'CA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Martin Van Buren National Historic Site'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Mary McLeod Bethune Council House National Historic Site'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Minidoka National Historic Site'), 'ID');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Minuteman Missile National Historic Site'), 'SD');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'New Philadelphia National Historic Site'), 'IL');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Nicodemus National Historic Site'), 'KS');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ninety Six National Historic Site'), 'SC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pennsylvania Avenue National Historic Site'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'President William Jefferson Clinton Birthplace Home National Historic Site'), 'AR');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Puʻukoholā Heiau National Historic Site'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Sagamore Hill National Historic Site'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint Croix Island International Historic Site'), 'ME');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint Paul''s Church National Historic Site'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Salem Maritime National Historic Site'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'San Juan National Historic Site'), 'PR');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Sand Creek Massacre National Historic Site'), 'CO');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saugus Iron Works National Historic Site'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Springfield Armory National Historic Site'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Steamtown National Historic Site'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Theodore Roosevelt Birthplace National Historic Site'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Theodore Roosevelt Inaugural National Historic Site'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Thomas Stone National Historic Site'), 'MD');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Tuskegee Airmen National Historic Site'), 'AL');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Tuskegee Institute National Historic Site'), 'AL');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ulysses S. Grant National Historic Site'), 'MO');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Vanderbilt Mansion National Historic Site'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Washita Battlefield National Historic Site'), 'OK');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Whitman Mission National Historic Site'), 'WA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'William Howard Taft National Historic Site'), 'OH');
+
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Allegheny Portage Railroad National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Amache National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Andersonville National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Andrew Johnson National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Bent''s Old Fort National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Boston African American National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Carl Sandburg Home National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Carter G. Woodson Home National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Charles Pinckney National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Christiansted National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Clara Barton National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Edgar Allan Poe National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Eisenhower National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Eleanor Roosevelt National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Eugene O''Neill National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'First Ladies National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ford''s Theatre National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Bowie National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Davis National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Laramie National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Larned National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Point National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Raleigh National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Scott National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Smith National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Union Trading Post National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Vancouver National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Frederick Douglass National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Frederick Law Olmsted National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Friendship Hill National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Grant–Kohrs Ranch National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hampton National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Harry S. Truman National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Herbert Hoover National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Home of Franklin D. Roosevelt National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Honouliuli National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hopewell Furnace National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hubbell Trading Post National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'James A. Garfield National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'John Fitzgerald Kennedy National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'John Muir National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Knife River Indian Villages National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lincoln Home National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Little Rock Central High School National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Longfellow House — Washington''s Headquarters National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Maggie L. Walker National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Manzanar National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Martin Van Buren National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Mary McLeod Bethune Council House National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Minidoka National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Minuteman Missile National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'New Philadelphia National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Nicodemus National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ninety Six National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pennsylvania Avenue National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'President William Jefferson Clinton Birthplace Home National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Puʻukoholā Heiau National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Sagamore Hill National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint Croix Island International Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint Paul''s Church National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Salem Maritime National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'San Juan National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Sand Creek Massacre National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saugus Iron Works National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Springfield Armory National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Steamtown National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Theodore Roosevelt Birthplace National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Theodore Roosevelt Inaugural National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Thomas Stone National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Tuskegee Airmen National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Tuskegee Institute National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ulysses S. Grant National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Vanderbilt Mansion National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Washita Battlefield National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Whitman Mission National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'William Howard Taft National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'Historic Site'));
+-- Historical Parks
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Abraham Lincoln Birthplace National Historical Park'), 'KY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Adams National Historical Park'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Appomattox Court House National Historical Park'), 'VA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Blackstone River Valley National Historical Park'), 'RI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Blackstone River Valley National Historical Park'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Boston National Historical Park'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Brown v. Board of Education National Historical Park'), 'KS');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Brown v. Board of Education National Historical Park'), 'SC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Cane River Creole National Historical Park'), 'LA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Cedar Creek and Belle Grove National Historical Park'), 'VA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chaco Culture National Historical Park'), 'NM');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chesapeake and Ohio Canal National Historical Park'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chesapeake and Ohio Canal National Historical Park'), 'MD');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chesapeake and Ohio Canal National Historical Park'), 'WV');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Colonial National Historical Park'), 'VA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Cumberland Gap National Historical Park'), 'KY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Cumberland Gap National Historical Park'), 'TN');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Cumberland Gap National Historical Park'), 'VA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Dayton Aviation Heritage National Historical Park'), 'OH');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'First State National Historical Park'), 'DE');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'First State National Historical Park'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Sumter and Fort Moultrie National Historical Park'), 'SC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'George Rogers Clark National Historical Park'), 'IN');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Golden Spike National Historical Park'), 'UT');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Harpers Ferry National Historical Park'), 'WV');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Harpers Ferry National Historical Park'), 'VA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Harpers Ferry National Historical Park'), 'MD');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Harriet Tubman National Historical Park'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Harriet Tubman Underground Railroad National Historical Park'), 'MD');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Homestead National Historical Park'), 'NE');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hopewell Culture National Historical Park'), 'OH');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Independence National Historical Park'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Jean Lafitte National Historical Park and Preserve'), 'LA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Jimmy Carter National Historical Park'), 'GA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kalaupapa National Historical Park'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kaloko-Honokōhau National Historical Park'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Keweenaw National Historical Park'), 'MI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Klondike Gold Rush National Historical Park'), 'AK');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Klondike Gold Rush National Historical Park'), 'WA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lewis and Clark National Historical Park'), 'OR');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lewis and Clark National Historical Park'), 'WA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lowell National Historical Park'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lyndon B. Johnson National Historical Park'), 'TX');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Manhattan Project National Historical Park'), 'NM');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Manhattan Project National Historical Park'), 'TN');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Manhattan Project National Historical Park'), 'WA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Marsh-Billings-Rockefeller National Historical Park'), 'VT');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Martin Luther King Jr. National Historical Park'), 'GA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Minute Man National Historical Park'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Morristown National Historical Park'), 'NJ');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Natchez National Historical Park'), 'MS');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'New Bedford Whaling National Historical Park'), 'MA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'New Orleans Jazz National Historical Park'), 'LA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Nez Perce National Historical Park'), 'ID');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Nez Perce National Historical Park'), 'MT');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Nez Perce National Historical Park'), 'OR');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Nez Perce National Historical Park'), 'WA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ocmulgee Mounds National Historical Park'), 'GA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Palo Alto Battlefield National Historical Park'), 'TX');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Paterson Great Falls National Historical Park'), 'NJ');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pecos National Historical Park'), 'NM');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pullman National Historical Park'), 'IL');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Puʻuhonua o Hōnaunau National Historical Park'), 'HI'); 
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Reconstruction Era National Historical Park'), 'SC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Rosie the Riveter/World War II Home Front National Historical Park'), 'CA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint-Gaudens National Historical Park'), 'NH');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ste. Genevieve National Historical Park'), 'MO');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'San Antonio Missions National Historical Park'), 'TX');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'San Francisco Maritime National Historical Park'), 'CA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'San Juan Island National Historical Park'), 'WA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saratoga National Historical Park'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Sitka National Historical Park'), 'AK');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Thomas Edison National Historical Park'), 'NJ');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Tumacácori National Historical Park'), 'AZ');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Valley Forge National Historical Park'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Weir Farm National Historical Park'), 'CT');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Women''s Rights National Historical Park'), 'NY');
+
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Abraham Lincoln Birthplace National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Adams National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Appomattox Court House National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Blackstone River Valley National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Boston National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Brown v. Board of Education National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Cane River Creole National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Cedar Creek and Belle Grove National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chaco Culture National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chesapeake and Ohio Canal National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Colonial National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Cumberland Gap National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Dayton Aviation Heritage National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'First State National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Sumter and Fort Moultrie National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'George Rogers Clark National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Golden Spike National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Harpers Ferry National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Harriet Tubman National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Harriet Tubman Underground Railroad National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Homestead National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hopewell Culture National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Independence National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Jean Lafitte National Historical Park and Preserve'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Jimmy Carter National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kalaupapa National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kaloko-Honokōhau National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Keweenaw National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Klondike Gold Rush National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lewis and Clark National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lowell National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lyndon B. Johnson National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Manhattan Project National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Marsh-Billings-Rockefeller National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Martin Luther King Jr. National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Minute Man National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Morristown National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Natchez National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'New Bedford Whaling National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'New Orleans Jazz National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Nez Perce National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ocmulgee Mounds National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Palo Alto Battlefield National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Paterson Great Falls National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pecos National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pullman National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Puʻuhonua o Hōnaunau National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Reconstruction Era National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Rosie the Riveter/World War II Home Front National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint-Gaudens National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ste. Genevieve National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Salt River Bay National Historical Park and Ecological Preserve'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'San Antonio Missions National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'San Francisco Maritime National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'San Juan Island National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saratoga National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Sitka National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Thomas Edison National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Tumacácori National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Valley Forge National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'War in the Pacific National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Weir Farm National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Women''s Rights National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'Historical Park'));
+
+
+-- Memorials
+
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Arkansas Post National Memorial'), 'AK');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Arlington House, The Robert E. Lee National Memorial'), 'VA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chamizal National Memorial'), 'TX');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Coronado National Memorial'), 'AZ');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'De Soto National Memorial'), 'FL');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Dwight D. Eisenhower Memorial'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Federal Hall National Memorial'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Flight 93 National Memorial'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Caroline National Memorial'), 'FL');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Franklin Delano Roosevelt Memorial'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'General Grant National Memorial'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hamilton Grange National Memorial'), 'NY');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Johnstown Flood National Memorial'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Korean War Veterans Memorial'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lincoln Boyhood National Memorial'), 'IN');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lincoln Memorial'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lyndon Baines Johnson Memorial Grove on the Potomac'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Martin Luther King Jr. Memorial'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Mount Rushmore National Memorial'), 'SD');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pearl Harbor National Memorial'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Perry''s Victory and International Peace Memorial'), 'OH');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Port Chicago Naval Magazine National Memorial'), 'CA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Roger Williams National Memorial'), 'RI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Thaddeus Kosciuszko National Memorial'), 'PA');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Theodore Roosevelt Island'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Thomas Jefferson Memorial'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Vietnam Veterans Memorial'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Washington Monument'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'World War I Memorial'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'World War II Memorial'), 'DC');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Wright Brothers National Memorial'), 'NC'); 
+
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Arkansas Post National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Arlington House, The Robert E. Lee National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chamizal National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Coronado National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'De Soto National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Dwight D. Eisenhower Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Federal Hall National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Flight 93 National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Caroline National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Franklin Delano Roosevelt Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'General Grant National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hamilton Grange National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Johnstown Flood National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Korean War Veterans Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lincoln Boyhood National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lincoln Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lyndon Baines Johnson Memorial Grove on the Potomac'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Martin Luther King Jr. Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Mount Rushmore National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pearl Harbor National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Perry''s Victory and International Peace Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Port Chicago Naval Magazine National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Roger Williams National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Thaddeus Kosciuszko National Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Theodore Roosevelt Island'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Thomas Jefferson Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Vietnam Veterans Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Washington Monument'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'World War I Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'World War II Memorial'), (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Wright Brothers National Memorial'),  (SELECT designation_id FROM designation WHERE designation_name = 'Memorial'));
+															   
+															   
 -- foreign keys
 
 ALTER TABLE site_state ADD CONSTRAINT FK_site_state_site FOREIGN KEY(site_id) REFERENCES site(site_id);
