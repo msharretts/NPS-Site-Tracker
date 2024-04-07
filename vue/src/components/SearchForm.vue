@@ -1,7 +1,8 @@
 <template>
 <div>
     <form action="">
-        <input type="text">
+        <input type="text" placeholder="Park Name">
+        <select name="" id="">{{  }}</select>
     </form>
 </div>
 </template>

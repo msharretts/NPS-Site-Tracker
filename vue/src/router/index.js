@@ -1,6 +1,8 @@
 import { createRouter as _createRouter, createWebHistory } from 'vue-router';
 
 import HomeView from '@/views/HomeView.vue';
+import SiteView from '@/views/SiteView.vue';
+import SearchView from '@/views/SearchView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -17,9 +19,16 @@ const routes = [
     component: HomeView,
 
   },
-  // {
-  //   path: 
-  // }
+  {
+    name: 'site-view',
+    path: '/sites',
+    component: SiteView,
+  },
+  {
+    name: 'search-view',
+    path: '/search',
+    component: SearchView,
+  }
 ];
 
 export function createRouter () {
