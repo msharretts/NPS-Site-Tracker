@@ -1,6 +1,7 @@
 # National Park Service Database
 
 ## Overview
+**What started out as practice creating a database quickly got away from me.**
 This repository contains a PostgreSQL database script that includes information on over 400 National Park Service sites. The database is normalized to best capture comprehensive data on each park's name, site type, state location, date established, size, and other relevant information. Eventually, the repository will include files for frontend using Vue.js, HTML, and CSS, as well as a Java program for searching and querying the database.
 
 ## Features
