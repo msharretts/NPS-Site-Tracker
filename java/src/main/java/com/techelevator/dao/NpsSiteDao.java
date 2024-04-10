@@ -7,11 +7,11 @@ import java.util.Map;
 
 public interface NpsSiteDao {
 
-    Map<Integer, NpsSite> getSites();
+    List<NpsSite> getSites();
 
-    Map<Integer, NpsSite> getSitesByState(String stateName);
+    List<NpsSite> getSitesByState(String stateName);
 
-    Map<Integer, NpsSite> getSitesByDesignation(String siteDesignation);
+    List<NpsSite> getSitesByDesignation(String siteDesignation);
 
     NpsSite getSiteById(int siteId);
 

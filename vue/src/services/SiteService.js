@@ -6,11 +6,19 @@ const http = axios.create({
 
 export default {
   
-  getSites() {
+  getAllSites() {
     return http.get('/sites');
   },
 
-  getSite(siteId) {
+  getSitesByDesignation(designation) {
+    return http.get(`/sites/designation/${designation}`);
+  },
+
+  getSitesByState(stateName) {
+    return http.get(`/sites/states/${stateName}`);
+  },
+
+  getSiteById(siteId) {
     return http.get(`/sites/${siteId}`);
   },
 

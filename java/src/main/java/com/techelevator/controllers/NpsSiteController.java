@@ -4,12 +4,10 @@ import com.techelevator.dao.NpsSiteDao;
 import com.techelevator.dao.UsaStateDao;
 import com.techelevator.model.NpsSite;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin
@@ -26,8 +24,24 @@ public class NpsSiteController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(path = "/sites")
-    public Map<Integer, NpsSite> getSites() {
+    @GetMapping("/sites")
+    public List<NpsSite> getAllSites() {
         return npsSiteDao.getSites();
+    }
+
+    @GetMapping("/sites/designation/{designation}")
+    public List<NpsSite> getSitesByDesignation(@PathVariable String designation) {
+        return npsSiteDao.getSitesByDesignation(designation);
+    }
+
+    @GetMapping("/sites/states/{stateName}")
+    public List<NpsSite> getSitesByState(@PathVariable String stateName) {
+        return npsSiteDao.getSitesByState(stateName);
+    }
+
+    @GetMapping("/sites/{siteId}")
+    public NpsSite getSiteById(int siteId) {
+        Integer id = new Integer(siteId);
+        return npsSiteDao.getSiteById(id);
     }
 }

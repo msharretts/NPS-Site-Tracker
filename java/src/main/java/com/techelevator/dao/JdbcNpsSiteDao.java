@@ -22,9 +22,10 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
     }
 
     @Override
-    public Map<Integer, NpsSite> getSites() {
+    public List<NpsSite> getSites() {
         Map<Integer, NpsSite> mapOfSites = new HashMap<>();
-        String sql = "SELECT * FROM site;";
+        List<NpsSite> listOfSites = new ArrayList<>();
+        String sql = "SELECT site_id, site_name, date_established, area_km2, has_camping FROM site;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -34,13 +35,17 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database.", e);
         }
-        return mapOfSites;
+        for (NpsSite site : mapOfSites.values()) {
+            listOfSites.add(site);
+        }
+        return listOfSites;
     }
 
     @Override
-    public Map<Integer, NpsSite> getSitesByState(String stateName) {
+    public List<NpsSite> getSitesByState(String stateName) {
         Map<Integer, NpsSite> mapOfSites = new HashMap<>();
-        String sql = "SELECT * FROM site " +
+        List<NpsSite> listOfSites = new ArrayList<>();
+        String sql = "SELECT site_id, site_name, date_established, area_km2, has_camping FROM site " +
                 "JOIN site_state USING (site_id) " +
                 "JOIN state USING (state_abbreviation) " +
                 "WHERE state_name = ?;";
@@ -53,13 +58,17 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database.", e);
         }
-        return mapOfSites;
+        for (NpsSite site : mapOfSites.values()) {
+            listOfSites.add(site);
+        }
+        return listOfSites;
     }
 
     @Override
-    public Map<Integer, NpsSite> getSitesByDesignation(String siteDesignation) {
+    public List<NpsSite> getSitesByDesignation(String siteDesignation) {
         Map<Integer, NpsSite> mapOfSites = new HashMap<>();
-        String sql = "SELECT * FROM site " +
+        List<NpsSite> listOfSites = new ArrayList<>();
+        String sql = "SELECT site_id, site_name, date_established, area_km2, has_camping FROM site " +
                 "JOIN designation_site USING (site_id) " +
                 "JOIN designation USING (designation_id) " +
                 "WHERE designation_name = ?;";
@@ -72,13 +81,16 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database.", e);
         }
-        return mapOfSites;
+        for (NpsSite site : mapOfSites.values()) {
+            listOfSites.add(site);
+        }
+        return listOfSites;
     }
 
     @Override
     public NpsSite getSiteById(int siteId) {
         NpsSite npsSite = new NpsSite();
-        String sql = "SELECT * FROM site WHERE site_id = ?;";
+        String sql = "SELECT site_id, site_name, date_established, area_km2, has_camping FROM site WHERE site_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, siteId);
             if (results.next()) {
@@ -93,7 +105,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
     @Override
     public NpsSite getSiteByName(String siteName) {
         NpsSite npsSite = new NpsSite();
-        String sql = "SELECT * FROM site WHERE site_name = ?;";
+        String sql = "SELECT site_id, site_name, date_established, area_km2, has_camping FROM site WHERE site_name = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, siteName);
             if (results.next()) {

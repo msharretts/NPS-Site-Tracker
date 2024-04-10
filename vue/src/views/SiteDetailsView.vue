@@ -1,25 +1,22 @@
 <template>
-    Site Name:
- {{ site.siteName }}
+    <SiteDetail />
 </template>
 
-
 <script>
-
-import siteService from '../services/SiteService';
-
+import SiteDetail from '@/components/SiteDetail.vue';
+import siteService from '@/services/SiteService';
 
 export default {
 
     components: {
-    
+        SiteDetail,
     },
 
     data() {
         return {
             site: {}
-            }
-        },
+        }
+    },
 
     methods: {
 
@@ -36,6 +33,7 @@ export default {
         this.retrieveSite();
     }
 }
+
 
 
 </script>
