@@ -14,10 +14,14 @@ export default {
     return http.get(`/sites/designation/${designation}`);
   },
 
-  getSitesByState(stateName) {
-    return http.get(`/sites/states/${stateName}`);
+  getSitesByState(stateAbbreviation) {
+    return http.get(`/sites/states/${stateAbbreviation}`);
   },
 
+  getSitesByStateAndDesignation(stateAbbreviation, designation) {
+     return http.get(`/sites/states/${stateAbbreviation}/designation/${designation}`)
+  },
+ 
   getSiteById(siteId) {
     return http.get(`/sites/${siteId}`);
   },

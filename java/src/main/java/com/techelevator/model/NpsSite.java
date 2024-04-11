@@ -3,28 +3,27 @@ package com.techelevator.model;
 import java.util.Date;
 
 public class NpsSite {
-    private int parkId;
+    private int siteId;
     private String siteName;
     private java.sql.Date dateEstablished;
     private double areaInKm2;
     private boolean hasCamping;
 
-    public void NpsSite(String siteName, int parkId, java.sql.Date dateEstablished, double areaInKm2, boolean hasCamping) {
+    public void NpsSite(String siteName, int siteId, java.sql.Date dateEstablished, double areaInKm2, boolean hasCamping) {
         this.siteName = siteName;
-        this.parkId = parkId;
+        this.siteId = siteId;
         this.dateEstablished = dateEstablished;
         this.areaInKm2 = areaInKm2;
         this.hasCamping = hasCamping;
     }
 
-    public int getParkId() {
-        return parkId;
+    public int getSiteId() {
+        return siteId;
     }
 
-    public void setParkId(int parkId) {
-        this.parkId = parkId;
+    public void setSiteId(int siteId) {
+        this.siteId = siteId;
     }
-
     public String getSiteName() {
         return siteName;
     }

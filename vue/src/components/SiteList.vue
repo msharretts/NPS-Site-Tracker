@@ -1,5 +1,5 @@
 <template>
-  <div class="sites">
+  <div class="sites" v-if="sites.length">
     <h2>Search Results</h2>
     <div>
       <router-link :to="{ name: 'site-details-view', params: { id: site.siteId }}" v-for="site in sites" :key="site.siteId">
@@ -44,7 +44,7 @@ export default {
 
 a:link,
 a:visited {
-  color: rgb(243, 243, 243);
+  color: rgb(89, 18, 18);
   text-decoration: none;
 }
 </style>

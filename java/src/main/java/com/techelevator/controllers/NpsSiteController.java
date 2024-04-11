@@ -29,16 +29,25 @@ public class NpsSiteController {
         return npsSiteDao.getSites();
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/sites/designation/{designation}")
     public List<NpsSite> getSitesByDesignation(@PathVariable String designation) {
         return npsSiteDao.getSitesByDesignation(designation);
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/sites/states/{stateName}")
     public List<NpsSite> getSitesByState(@PathVariable String stateName) {
         return npsSiteDao.getSitesByState(stateName);
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/sites/states/{stateAbbreviation}/designation/{designation}")
+    public List<NpsSite> getSitesByStateAndDesignation(@PathVariable String stateAbbreviation, @PathVariable String designation) {
+        return npsSiteDao.getSitesByStateAndDesignation(stateAbbreviation, designation);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/sites/{siteId}")
     public NpsSite getSiteById(int siteId) {
         Integer id = new Integer(siteId);

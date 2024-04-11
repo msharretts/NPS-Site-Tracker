@@ -30,7 +30,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
                 NpsSite npsSite = mapRowToSite(results);
-                mapOfSites.put(npsSite.getParkId(), npsSite);
+                mapOfSites.put(npsSite.getSiteId(), npsSite);
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database.", e);
@@ -42,18 +42,17 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
     }
 
     @Override
-    public List<NpsSite> getSitesByState(String stateName) {
+    public List<NpsSite> getSitesByState(String stateAbbreviation) {
         Map<Integer, NpsSite> mapOfSites = new HashMap<>();
         List<NpsSite> listOfSites = new ArrayList<>();
         String sql = "SELECT site_id, site_name, date_established, area_km2, has_camping FROM site " +
                 "JOIN site_state USING (site_id) " +
-                "JOIN state USING (state_abbreviation) " +
-                "WHERE state_name = ?;";
+                "WHERE state_abbreviation = ?;";
         try {
-            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, stateName);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, stateAbbreviation);
             while (results.next()) {
                 NpsSite npsSite = mapRowToSite(results);
-                mapOfSites.put(npsSite.getParkId(), npsSite);
+                mapOfSites.put(npsSite.getSiteId(), npsSite);
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database.", e);
@@ -76,7 +75,31 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, siteDesignation);
             while (results.next()) {
                 NpsSite npsSite = mapRowToSite(results);
-                mapOfSites.put(npsSite.getParkId(), npsSite);
+                mapOfSites.put(npsSite.getSiteId(), npsSite);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database.", e);
+        }
+        for (NpsSite site : mapOfSites.values()) {
+            listOfSites.add(site);
+        }
+        return listOfSites;
+    }
+
+    @Override
+    public List<NpsSite> getSitesByStateAndDesignation(String stateAbbreviation, String siteDesignation) {
+        Map<Integer, NpsSite> mapOfSites = new HashMap<>();
+        List<NpsSite> listOfSites = new ArrayList<>();
+        String sql = "SELECT site_id, site_name, date_established, area_km2, has_camping FROM site " +
+                "JOIN designation_site USING (site_id) " +
+                "JOIN designation USING (designation_id) " +
+                "JOIN site_state USING (site_id) " +
+                "WHERE designation_name = ? AND state_abbreviation = ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, siteDesignation, stateAbbreviation);
+            while (results.next()) {
+                NpsSite npsSite = mapRowToSite(results);
+                mapOfSites.put(npsSite.getSiteId(), npsSite);
             }
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database.", e);
@@ -102,6 +125,8 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
         return npsSite;
     }
 
+
+
     @Override
     public NpsSite getSiteByName(String siteName) {
         NpsSite npsSite = new NpsSite();
@@ -119,7 +144,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
 
     private NpsSite mapRowToSite(SqlRowSet results) {
         NpsSite npsSite = new NpsSite();
-        npsSite.setParkId(results.getInt("site_id"));
+        npsSite.setSiteId(results.getInt("site_id"));
         npsSite.setSiteName(results.getString("site_name"));
         npsSite.setDateEstablished(results.getDate("date_established"));
         npsSite.setAreaInKm2(results.getDouble("area_km2"));

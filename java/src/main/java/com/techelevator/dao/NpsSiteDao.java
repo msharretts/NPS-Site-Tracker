@@ -9,9 +9,10 @@ public interface NpsSiteDao {
 
     List<NpsSite> getSites();
 
-    List<NpsSite> getSitesByState(String stateName);
+    List<NpsSite> getSitesByState(String stateAbbreviation);
 
     List<NpsSite> getSitesByDesignation(String siteDesignation);
+    List<NpsSite> getSitesByStateAndDesignation(String stateAbbreviation, String siteDesignation);
 
     NpsSite getSiteById(int siteId);
 

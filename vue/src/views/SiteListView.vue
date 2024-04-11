@@ -20,7 +20,7 @@ export default {
 
   data() {
     return {
-      site: { id: '', name: '', dateEstablished: '', area: '', hasCamping: '' },
+      site: { siteId: '', name: '', dateEstablished: '', area: '', hasCamping: '' },
     };
   },
 
