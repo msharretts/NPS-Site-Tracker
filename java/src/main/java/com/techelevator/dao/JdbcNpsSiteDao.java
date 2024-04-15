@@ -113,7 +113,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
     @Override
     public NpsSite getSiteById(int siteId) {
         NpsSite npsSite = new NpsSite();
-        String sql = "SELECT site_id, site_name, date_established, area_km2, has_camping FROM site WHERE site_id = ?;";
+        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping FROM site WHERE site_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, siteId);
             if (results.next()) {
@@ -146,7 +146,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
         NpsSite npsSite = new NpsSite();
         npsSite.setSiteId(results.getInt("site_id"));
         npsSite.setSiteName(results.getString("site_name"));
-        npsSite.setDateEstablished(results.getDate("date_established"));
+        npsSite.setDateEstablished(results.getDate("date_established").toLocalDate());
         npsSite.setAreaInKm2(results.getDouble("area_km2"));
         npsSite.setHasCamping(results.getBoolean("has_camping"));
         return npsSite;

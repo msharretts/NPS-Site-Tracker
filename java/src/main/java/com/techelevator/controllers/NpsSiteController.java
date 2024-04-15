@@ -50,7 +50,6 @@ public class NpsSiteController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/sites/{siteId}")
     public NpsSite getSiteById(int siteId) {
-        Integer id = new Integer(siteId);
-        return npsSiteDao.getSiteById(id);
+        return npsSiteDao.getSiteById(siteId);
     }
 }

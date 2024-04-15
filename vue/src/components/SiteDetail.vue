@@ -1,6 +1,8 @@
 <template>
     Site Name:
- {{ site.siteName }}
+    {{ site.siteName }}
+
+    <a :href="website" :target="'_blank'">Website</a>
 </template>
 
 
@@ -12,14 +14,20 @@ import siteService from '../services/SiteService';
 export default {
 
     components: {
-    
+
     },
 
     data() {
         return {
-            site: {}
-            }
-        },
+            site: {},
+        }
+    },
+
+    computed: {
+        website() {
+            return 'https://www.nps.gov/';
+        }
+    },
 
     methods: {
 

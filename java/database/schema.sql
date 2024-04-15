@@ -1,7 +1,5 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS site_state, site, designation, designation_site, designation_state, state CASCADE;
-
 CREATE TABLE state (
 	state_abbreviation char(2) NOT NULL,
 	state_name varchar(50) NOT NULL,
@@ -25,7 +23,7 @@ CREATE TABLE designation (
 CREATE TABLE site (
 	site_id serial,
 	site_name varchar(100) NOT NULL,
-	nps_call_letters varchar(4), --NOT NULL,
+	nps_call_letters varchar(4) NOT NULL,
 	date_established date NOT NULL,
 	area_km2 numeric(6,1), --NOT NULL,
 	has_camping boolean NOT NULL,

@@ -1,16 +1,19 @@
 package com.techelevator.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class NpsSite {
     private int siteId;
     private String siteName;
-    private java.sql.Date dateEstablished;
+    private String npsCallLetters;
+    private LocalDate dateEstablished;
     private double areaInKm2;
     private boolean hasCamping;
 
-    public void NpsSite(String siteName, int siteId, java.sql.Date dateEstablished, double areaInKm2, boolean hasCamping) {
+    public void NpsSite(String siteName, String npsCallLetters, int siteId, LocalDate dateEstablished, double areaInKm2, boolean hasCamping) {
         this.siteName = siteName;
+        this.npsCallLetters = npsCallLetters;
         this.siteId = siteId;
         this.dateEstablished = dateEstablished;
         this.areaInKm2 = areaInKm2;
@@ -32,11 +35,11 @@ public class NpsSite {
         this.siteName = siteName;
     }
 
-    public Date getDateEstablished() {
+    public LocalDate getDateEstablished() {
         return dateEstablished;
     }
 
-    public void setDateEstablished(java.sql.Date dateEstablished) {
+    public void setDateEstablished(LocalDate dateEstablished) {
         this.dateEstablished = dateEstablished;
     }
 
@@ -55,4 +58,13 @@ public class NpsSite {
     public void setHasCamping(boolean hasCamping) {
         this.hasCamping = hasCamping;
     }
+
+    public String getNpsCallLetters() {
+        return npsCallLetters;
+    }
+
+    public void setNpsCallLetters(String npsCallLetters) {
+        this.npsCallLetters = npsCallLetters;
+    }
+
 }
