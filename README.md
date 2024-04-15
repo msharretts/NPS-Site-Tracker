@@ -8,7 +8,7 @@ This repository contains a PostgreSQL database script that includes information 
 - **Database Schema**: The PostgreSQL database script defines a well-structured schema to store information about National Park Service sites, ensuring efficient data storage and retrieval.
 - **Comprehensive Data**: The database includes detailed information on each site, such as its name, site type (e.g., National Park, National Monument, National Historic Site), state location, date established, size (in square kilometers), and whether camping is offered there. This information was gathered using Wikipedia, cross-referenced with the National Park Service website as well as the National Park Service archives website.
 - **Search Functionality**: The accompanying Java program will provide users with the ability to search for parks based on various criteria, such as name, site type, state location, date established, size, etc.
-- **Eventual Frontend Interface**: The Vue.js frontend, coupled with HTML and CSS, will offer a user-friendly interface for interacting with the database, allowing users to browse, search, and view information about National Park Service sites.
+- **Frontend Interface - Under Development**: The Vue.js frontend, offers search functionality for the database, allowing users to search by site designation ('National Park', 'National Monument', etc.) by state or by a combination of both and view information about National Park Service sites.
 
 ## Technology Used
 - **Backend Development**:
