@@ -1,6 +1,7 @@
 <template>
   <div class="sites" v-if="sites.length">
     <h2>Search Results</h2>
+    <h4>{{ numberOfSites }} Result{{ sOnResults }} Found:</h4>
     <div>
       <router-link :to="{ name: 'site-details-view', params: { id: site.siteId }}" v-for="site in sites" :key="site.siteId">
         <div class="siteCardList">
@@ -20,6 +21,21 @@ export default {
 
   components: {
     SiteCard,
+  },
+
+  computed: {
+
+    numberOfSites() {
+      return this.sites.length;
+    },
+
+    sOnResults() {
+      if (this.sites.length == 1) {
+        return '';
+      } else {
+        return 's';
+      }
+    }
   }
 };
 </script>

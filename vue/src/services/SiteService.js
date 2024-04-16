@@ -26,10 +26,6 @@ export default {
     return http.get(`/sites/${siteId}`);
   },
 
-  getStates() {
-    return http.get('/states');
-  },
-
   getState(stateName) {
     return http.get(`/states/${stateName}`);
   }

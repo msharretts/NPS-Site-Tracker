@@ -4,6 +4,9 @@ public class UsaState {
     private String stateName;
     private String stateAbbreviation;
 
+    public UsaState() {
+    }
+
     public UsaState(String stateName, String stateAbbreviation) {
         this.stateName = stateName;
         this.stateAbbreviation = stateAbbreviation;

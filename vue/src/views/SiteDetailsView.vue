@@ -1,5 +1,5 @@
 <template>
-    <SiteDetail v-if="!isLoading"/>
+    <SiteDetail v-if="!isLoading" :site="site" />
 </template>
 
 <script>
@@ -14,10 +14,7 @@ export default {
 
     data() {
         return {
-            site: {
-                type: Object,
-                required: true,
-            },
+            site: {},
             isLoading: true,
         }
     },
@@ -28,7 +25,7 @@ export default {
             const id = this.$route.params.id;
             siteService.getSiteById(id).then(response => {
                 this.site = response.data;
-                isLoading = false;
+                this.isLoading = false;
 
             }).catch
         }

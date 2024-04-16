@@ -49,7 +49,7 @@ public class NpsSiteController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/sites/{siteId}")
-    public NpsSite getSiteById(int siteId) {
+    public NpsSite getSiteById(@PathVariable int siteId) {
         return npsSiteDao.getSiteById(siteId);
     }
 }
