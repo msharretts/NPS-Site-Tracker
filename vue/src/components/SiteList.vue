@@ -1,11 +1,13 @@
 <template>
   <div class="sites" v-if="sites.length">
-    <h2>Search Results</h2>
-    <h4>{{ numberOfSites }} Result{{ sOnResults }} Found:</h4>
-    <div>
+    <h2 class="title is-3">Search Results</h2>
+    <h4 class="title is-5">{{ numberOfSites }} Result{{ sOnResults }} Found:</h4>
+    <div class="skeleton-lines">
       <router-link :to="{ name: 'site-details-view', params: { id: site.siteId }}" v-for="site in sites" :key="site.siteId">
         <div class="siteCardList">
-          <SiteCard :site="site" />
+          <span class="bulma-fa-mixin"><i class="fas fa-hiking"></i></span>
+          &nbsp;&nbsp;
+          <SiteCard :site="site" class="bulma-block-mixin has-text-black"/>
         </div>
       </router-link>
     </div>
@@ -63,4 +65,14 @@ a:visited {
   color: rgb(89, 18, 18);
   text-decoration: none;
 }
+
+.siteCardList {
+  display: flex;
+
+}
+
+.fa-hiking {
+  color: #046a1a;
+}
 </style>
+

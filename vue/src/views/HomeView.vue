@@ -1,9 +1,8 @@
 <template>
   <div>
-
-    <div>
-      <h1>National Park Service Sites</h1>
-      <SearchFeature />
+    <div id="home-elements">
+      <div><h1 class="title is-1">National Park Service Sites</h1></div>
+      <div><SearchFeature /></div>
     </div>
   </div>
 </template>
@@ -37,3 +36,10 @@ export default {
 }
 </script>
 
+<style scoped>
+#home-elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>

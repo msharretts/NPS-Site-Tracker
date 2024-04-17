@@ -1,16 +1,17 @@
 <template>
-    <div>Site Name:
-        {{ site.siteName }}
+    <div class="panel is-success">
+        <div class="panel-heading">
+            {{ site.siteName }}
+        </div>
 
-        <a :href="website" :target="'_blank'">Website</a>
-    </div>
-    <div>Date Established: {{ site.dateEstablished }}</div>
-    <div>Area: {{ site.areaInKm2 }} square kilometers</div>
-    <div>Camping Available: {{ site.hasCamping }}</div>
+        <div class="panel-block">Date Established: {{ site.dateEstablished }}</div>
+        <div class="panel-block">Area: {{ site.areaInKm2 }} square kilometers</div>
+        <div class="panel-block">Camping Available: {{ hasCampingAsYOrN }}</div>
+        <a :href="website" :target="'_blank'" class="panel-block">Find Out More</a>
 
-
-    <div v-if="notification">
-        {{ notification.message }}
+        <div v-if="notification">
+            {{ notification.message }}
+        </div>
     </div>
 </template>
 
@@ -30,13 +31,21 @@ export default {
 
     data() {
         return {
-            
+
         }
     },
 
     computed: {
         website() {
             return 'https://www.nps.gov/' + this.site.npsCallLetters;
+        },
+
+        hasCampingAsYOrN() {
+            if (this.site.hasCamping) {
+                return 'Yes';
+            } else {
+                return 'No';
+            }
         }
     },
 

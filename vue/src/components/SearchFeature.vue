@@ -1,21 +1,34 @@
 <template>
-    <div>
-        <label for="site-category-dropdown">Search By Designation:</label>
-        <select v-model="designationSelection" name="site-category-dropdown" id="site-category-dropdown">
-            <option value=""> </option>
-            <option v-for="designation in designations" :value="designation.designationName" 
-            :key="designation.designationId">{{ designation.designationName }}</option>
-        </select>
+    <div id="search-bar-container">
+        <div class="field">
+            <label for="site-category-dropdown" class="label">Search By Designation:</label>
+            <div class="control">
+                <div class="select">
+                    <select v-model="designationSelection" name="site-category-dropdown" id="site-category-dropdown">
+                        <option value=""> </option>
+                        <option v-for="designation in designations" :value="designation.designationName"
+                            :key="designation.designationId">{{ designation.designationName }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label for="state-dropdown" class="label">Search By State:</label>
+            <div class="control">
+                <div class="select">
+                    <select v-model="stateSelection" name="state-dropdown" id="state-dropdown">
+                        <option value=""> </option>
+                        <option v-for="state in states" :value="state.stateAbbreviation" :key="state.stateAbbreviation">{{
+                            state.stateName }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="search-button-container">
+            <button  class="button is-light is-focused " @click="retrieveSites">Search</button>
+        </div>
     </div>
-    <div >
-        <label for="state-dropdown">Search By State:</label>
-        <select v-model="stateSelection" name="state-dropdown" id="state-dropdown">
-            <option value=""> </option>
-            <option v-for="state in states" :value="state.stateAbbreviation" 
-            :key="state.stateAbbreviation">{{ state.stateName }}</option>
-        </select>
-    </div>
-    <input type="button" @click="retrieveSites" value="Go!">
+
     <SiteList :sites="sites" />
 </template>
 
@@ -137,3 +150,28 @@ export default {
 }
 
 </script>
+
+<style scoped>
+#search-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-around;
+}
+
+
+#search-button-container {
+    display: flex;
+    justify-content: end;
+    padding-top: 1.4rem;
+}
+</style>
+
+    <!-- <i class="fas fa-mountain"></i> -->
+    <!-- <i class="fas fa-leaf"></i> -->
+    <!-- <i class="fab fa-pagelines"></i> -->
+    <!-- <i class="fas fa-hiking"></i> -->
+    <!-- <i class="fas fa-feather-alt"></i> -->
+    <!-- <i class="fas fa-monument"></i> -->
+    <!-- <i class="fas fa-landmark"></i> -->
+    <!-- <i class="fas fa-water"></i> -->
