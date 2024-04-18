@@ -14,9 +14,7 @@
           </div>
         </router-link>
       </div>
-
     </div>
-
   </div>
 </template>
   
@@ -81,8 +79,7 @@ a:visited {
 }
 
 div.sites {
-  padding: 1rem 0 0 8rem ;
+  padding: 1rem 0 0 8rem;
 }
-
 </style>
 

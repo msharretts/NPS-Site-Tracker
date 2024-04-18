@@ -35,8 +35,9 @@
                 <button class="button is-light is-focused " @click="retrieveSites">Search</button>
             </div>
         </div>
-
+        <div v-if="notification">{{ notification.message }}</div>
         <SiteList :sites="sites" />
+        
     </div>
 </template>
 
@@ -61,6 +62,12 @@ export default {
 
     components: {
         SiteList,
+    },
+
+    computed: {
+        notification() {
+            return this.$store.state.notification;
+        }
     },
 
     methods: {
@@ -120,6 +127,9 @@ export default {
                     }
                 });
             }
+            if (!this.sites.length) {
+                this.$store.commit('SET_NOTIFICATION', "No results found. Try different search parameters.")
+            }
         },
 
         retrieveStates() {
@@ -156,7 +166,7 @@ export default {
     created() {
         this.retrieveStates();
         this.retrieveDesignations();
-        if(this.$store.state.designationSearch || this.$store.state.stateSearch) {
+        if (this.$store.state.designationSearch || this.$store.state.stateSearch) {
             this.designationSelection = this.$store.state.designationSearch;
             this.stateSelection = this.$store.state.stateSearch;
             this.retrieveSites();
