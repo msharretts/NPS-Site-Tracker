@@ -65,6 +65,8 @@ export default {
 
     methods: {
         retrieveSites() {
+            this.$store.commit('SET_DESIGNATION_SEARCH', this.designationSelection);
+            this.$store.commit('SET_STATE_SEARCH', this.stateSelection);
             if (this.designationSelection === '' && this.stateSelection === '') {
                 siteService.getAllSites().then(response => {
                     this.sites = response.data;
@@ -154,6 +156,11 @@ export default {
     created() {
         this.retrieveStates();
         this.retrieveDesignations();
+        if(this.$store.state.designationSearch || this.$store.state.stateSearch) {
+            this.designationSelection = this.$store.state.designationSearch;
+            this.stateSelection = this.$store.state.stateSearch;
+            this.retrieveSites();
+        }
     }
 }
 
@@ -170,8 +177,10 @@ export default {
 
 #search-button-container {
     display: flex;
-    justify-content: end;
+    justify-content: flex-start;
     padding-top: 1.4rem;
+    padding-left: 1rem;
+    flex-grow: .75;
 }
 
 
@@ -184,12 +193,12 @@ export default {
 #designation-search-div {
     display: flex;
     justify-content: flex-end;
-    flex-grow: 1;
+    flex-grow: .75;
 }
 
 #state-search-div {
-    padding-left: 2rem;
-    flex-grow: .75;
+    padding-left: 1rem;
+    flex-grow: 0;
 }
 </style>
 

@@ -4,7 +4,8 @@ const NOTIFICATION_TIMEOUT = 6000;
 export function createStore() {
   return _createStore({
     state: {
-
+      designationSearch: '',
+      stateSearch: '',
     },
 
     mutations: {
@@ -42,6 +43,19 @@ export function createStore() {
         }
         state.notification = null;
       },
+
+      CLEAR_SEARCH(state) {
+        state.designationSearch = '';
+        state.stateSearch = '';
+      },
+
+      SET_DESIGNATION_SEARCH(state,term) {
+        state.designationSearch = term;
+      }, 
+
+      SET_STATE_SEARCH(state,term) {
+        state.stateSearch = term;
+      }
     },
   });
 }

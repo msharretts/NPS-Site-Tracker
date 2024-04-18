@@ -1,7 +1,10 @@
 <template>
+    <a id="back-button" class="button is-success" @click="$router.back()"><i class="fas fa-arrow-left">Back</i></a>
+
     <div class="panel is-success">
-        <div class="panel-heading">
-            {{ site.siteName }}
+        <div id="panel-heading" class="panel-heading">
+            <p>{{ site.siteName }}</p>
+
         </div>
 
         <div class="panel-block">Date Established: {{ dateFormatted }}</div>
@@ -81,3 +84,13 @@ export default {
 
 
 </script>
+
+
+
+<style scoped>
+
+
+#back-button {
+    margin: 2rem 0;
+}
+</style>

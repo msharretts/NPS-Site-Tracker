@@ -4,9 +4,8 @@
     </div>
     <nav id="nav-breadcrumb" class="breadcrumb">
       <ul>
-        <li><router-link v-bind:to="{ name: 'home-view' }">Home</router-link></li>
+        <li @click="goToSearch">Home</li>&nbsp;&nbsp;
         <li><router-link v-bind:to="{ name: 'about-view' }">About</router-link></li>
-        <li></li>
 
       </ul>
 
@@ -14,3 +13,18 @@
     <router-view />
   </div>
 </template>
+
+<script>
+
+export default {
+  methods: {
+    goToSearch() {
+      this.$store.commit('CLEAR_SEARCH');
+      this.$router.push({name: 'home-view'});
+    }
+  }
+
+
+}
+
+</script>
