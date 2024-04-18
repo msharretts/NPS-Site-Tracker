@@ -4,7 +4,7 @@
             {{ site.siteName }}
         </div>
 
-        <div class="panel-block">Date Established: {{ site.dateEstablished }}</div>
+        <div class="panel-block">Date Established: {{ dateFormatted }}</div>
         <div class="panel-block">Area: {{ site.areaInKm2 }} square kilometers</div>
         <div class="panel-block">Camping Available: {{ hasCampingAsYOrN }}</div>
         <a :href="website" :target="'_blank'" class="panel-block">Find Out More</a>
@@ -31,7 +31,7 @@ export default {
 
     data() {
         return {
-
+            dateFormatted: new Date(this.site.dateEstablished).toDateString(),
         }
     },
 

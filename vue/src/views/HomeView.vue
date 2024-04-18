@@ -2,7 +2,7 @@
   <div>
     <div id="home-elements">
       <div><h1 class="title is-1">National Park Service Sites</h1></div>
-      <div><SearchFeature /></div>
+      <div id="search-feature-div"><SearchFeature /></div>
     </div>
   </div>
 </template>
@@ -41,5 +41,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#search-feature-div {
+  width: 90%
 }
 </style>

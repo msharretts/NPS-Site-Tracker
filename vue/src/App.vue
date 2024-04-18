@@ -2,12 +2,15 @@
   <div class="container">
     <div>
     </div>
-    <div id="nav">
-      <div>
-        <router-link v-bind:to="{ name: 'home-view' }">Home</router-link>
+    <nav id="nav-breadcrumb" class="breadcrumb">
+      <ul>
+        <li><router-link v-bind:to="{ name: 'home-view' }">Home</router-link></li>
+        <li><router-link v-bind:to="{ name: 'about-view' }">About</router-link></li>
+        <li></li>
 
-      </div>
-    </div>
+      </ul>
+
+    </nav>
     <router-view />
   </div>
 </template>

@@ -2,14 +2,19 @@
   <div class="sites" v-if="sites.length">
     <h2 class="title is-3">Search Results</h2>
     <h4 class="title is-5">{{ numberOfSites }} Result{{ sOnResults }} Found:</h4>
-    <div class="skeleton-lines">
-      <router-link :to="{ name: 'site-details-view', params: { id: site.siteId }}" v-for="site in sites" :key="site.siteId">
-        <div class="siteCardList">
-          <span class="bulma-fa-mixin"><i class="fas fa-hiking"></i></span>
-          &nbsp;&nbsp;
-          <SiteCard :site="site" class="bulma-block-mixin has-text-black"/>
-        </div>
-      </router-link>
+    <!-- <div class="skeleton-lines">  -->
+    <div class="fixed-grid">
+      <div class="grid">
+        <router-link :to="{ name: 'site-details-view', params: { id: site.siteId } }" v-for="site in sites"
+          :key="site.siteId">
+          <div class="siteCardList cell">
+            <span class="bulma-fa-mixin"><i class="fas fa-hiking"></i></span>
+            &nbsp;&nbsp;
+            <SiteCard :site="site" class="bulma-block-mixin has-text-black" />
+          </div>
+        </router-link>
+      </div>
+
     </div>
 
   </div>
@@ -74,5 +79,10 @@ a:visited {
 .fa-hiking {
   color: #046a1a;
 }
+
+div.sites {
+  padding: 1rem 0 0 8rem ;
+}
+
 </style>
 

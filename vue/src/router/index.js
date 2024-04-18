@@ -3,6 +3,7 @@ import { createRouter as _createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import SiteListView from '@/views/SiteListView.vue';
 import SiteDetailsView from '../views/SiteDetailsView.vue';
+import AboutView from '../views/AboutView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -29,6 +30,12 @@ const routes = [
     path: '/site/:id',
     component: SiteDetailsView
   },
+
+  {
+    name: 'about-view',
+    path: '/about',
+    component: AboutView
+  }
 ];
 
 export function createRouter () {
