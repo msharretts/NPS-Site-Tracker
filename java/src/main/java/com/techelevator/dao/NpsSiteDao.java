@@ -18,5 +18,7 @@ public interface NpsSiteDao {
 
     NpsSite getSiteByName(String siteName);
 
+    List<NpsSite> getSitesByHasCamping();
+
 
 }

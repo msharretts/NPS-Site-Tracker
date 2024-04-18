@@ -1,7 +1,6 @@
 <template>
     <div>
         <div id="search-bar-container">
-
             <div id="designation-search-div" class="field">
                 <div id="designation-div">
                     <label for="site-category-dropdown" class="label">Search By Designation:</label>
@@ -25,19 +24,28 @@
                         <select v-model="stateSelection" name="state-dropdown" id="state-dropdown">
                             <option value=""> </option>
                             <option v-for="state in states" :value="state.stateAbbreviation" :key="state.stateAbbreviation">
-                                {{
-                                    state.stateName }}</option>
+                                {{ state.stateName }}</option>
                         </select>
                     </div>
                 </div>
+            </div>
+            <div id="checkbox-div">
+                <label for="camping-checkbox" class="checkbox">
+                    <input type="checkbox" v-model="hasCamping"> Camping Available</label>
+                <label for="junior-ranger-checkbox" class="checkbox">
+                    <input type="checkbox" v-model="hasJuniorRanger"> Junior Ranger Program</label>
+            </div>
+            <div>
+
             </div>
             <div id="search-button-container">
                 <button class="button is-light is-focused " @click="retrieveSites">Search</button>
             </div>
         </div>
+
         <div v-if="notification">{{ notification.message }}</div>
         <SiteList :sites="sites" />
-        
+
     </div>
 </template>
 
@@ -57,6 +65,8 @@ export default {
             stateSelection: '',
             states: [],
             designations: [],
+            hasCamping: '',
+            hasJuniorRanger: '',
         }
     },
 
@@ -72,11 +82,17 @@ export default {
 
     methods: {
         retrieveSites() {
+            if (this.hasJuniorRanger) {
+                this.$store.commit('SET_HAS_JUNIOR_RANGER_PREFERENCE', this.hasJuniorRanger);
+            }
             this.$store.commit('SET_DESIGNATION_SEARCH', this.designationSelection);
             this.$store.commit('SET_STATE_SEARCH', this.stateSelection);
+
             if (this.designationSelection === '' && this.stateSelection === '') {
                 siteService.getAllSites().then(response => {
                     this.sites = response.data;
+                    this.checkHasCamping();
+
                 }).catch(error => {
                     if (error.response) {
                         this.$store.commit('SET_NOTIFICATION',
@@ -90,6 +106,8 @@ export default {
             } else if (this.designationSelection === '') {
                 siteService.getSitesByState(this.stateSelection).then(response => {
                     this.sites = response.data;
+                    this.checkHasCamping();
+
                 }).catch(error => {
                     if (error.response) {
                         this.$store.commit('SET_NOTIFICATION',
@@ -103,6 +121,8 @@ export default {
             } else if (this.stateSelection === '') {
                 siteService.getSitesByDesignation(this.designationSelection).then(response => {
                     this.sites = response.data;
+                    this.checkHasCamping();
+
                 }).catch(error => {
                     if (error.response) {
                         this.$store.commit('SET_NOTIFICATION',
@@ -116,6 +136,8 @@ export default {
             } else {
                 siteService.getSitesByStateAndDesignation(this.stateSelection, this.designationSelection).then(response => {
                     this.sites = response.data;
+                    this.checkHasCamping();
+
                 }).catch(error => {
                     if (error.response) {
                         this.$store.commit('SET_NOTIFICATION',
@@ -127,8 +149,9 @@ export default {
                     }
                 });
             }
-            if (!this.sites.length) {
-                this.$store.commit('SET_NOTIFICATION', "No results found. Try different search parameters.")
+
+            if (this.sites.length == 0) {
+                this.$store.commit('SET_NOTIFICATION', "No results found. Try different search parameters.");
             }
         },
 
@@ -160,6 +183,13 @@ export default {
                     this.$store.commit('SET_NOTIFICATION', "Error getting designations. Request could not be created.");
                 }
             });
+        },
+
+        checkHasCamping() {
+            if (this.hasCamping) {
+                this.$store.commit('SET_HAS_CAMPING_PREFERENCE', this.hasCamping);
+                this.sites = this.sites.filter(site => site.hasCamping == true);
+            }
         }
     },
 
@@ -189,8 +219,14 @@ export default {
     display: flex;
     justify-content: flex-start;
     padding-top: 1.4rem;
-    padding-left: 1rem;
-    flex-grow: .75;
+    flex-grow: 1;
+}
+
+#checkbox-div {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+    gap: 2rem;
 }
 
 
@@ -203,12 +239,13 @@ export default {
 #designation-search-div {
     display: flex;
     justify-content: flex-end;
-    flex-grow: .75;
+    flex-grow: 1;
+
 }
 
 #state-search-div {
     padding-left: 1rem;
-    flex-grow: 0;
+    /* flex-grow: 1; */
 }
 </style>
 

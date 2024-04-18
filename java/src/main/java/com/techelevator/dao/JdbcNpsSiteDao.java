@@ -127,6 +127,12 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
         return npsSite;
     }
 
+    @Override
+    public List<NpsSite> getSitesByHasCamping() {
+        return null;
+    }
+
+
     private NpsSite mapRowToSite(SqlRowSet results) {
         NpsSite npsSite = new NpsSite();
         npsSite.setSiteId(results.getInt("site_id"));

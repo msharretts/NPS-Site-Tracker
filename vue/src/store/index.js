@@ -1,11 +1,13 @@
 import { createStore as _createStore } from 'vuex';
-const NOTIFICATION_TIMEOUT = 6000;
+const NOTIFICATION_TIMEOUT = 3000;
 
 export function createStore() {
   return _createStore({
     state: {
       designationSearch: '',
       stateSearch: '',
+      hasCampingPreference: '',
+      hasJuniorRangerPreference: '',
     },
 
     mutations: {
@@ -55,6 +57,14 @@ export function createStore() {
 
       SET_STATE_SEARCH(state,term) {
         state.stateSearch = term;
+      },
+
+      SET_HAS_CAMPING_PREFERENCE(state,term) {
+        state.hasCampingPreference = term;
+      },
+
+      SET_HAS_JUNIOR_RANGER_PREFERENCE(state,term) {
+        state.hasJuniorRangerPreference = term;
       }
     },
   });

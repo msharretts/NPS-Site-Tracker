@@ -46,4 +46,8 @@ export default {
 #search-feature-div {
   width: 90%
 }
+
+div > h1 {
+  padding-bottom: 1.5rem;
+}
 </style>
