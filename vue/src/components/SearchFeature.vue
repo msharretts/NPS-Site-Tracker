@@ -92,6 +92,7 @@ export default {
                 siteService.getAllSites().then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
+                    this.setNotificationIfEmptyList();
 
                 }).catch(error => {
                     if (error.response) {
@@ -107,6 +108,7 @@ export default {
                 siteService.getSitesByState(this.stateSelection).then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
+                    this.setNotificationIfEmptyList();
 
                 }).catch(error => {
                     if (error.response) {
@@ -122,6 +124,7 @@ export default {
                 siteService.getSitesByDesignation(this.designationSelection).then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
+                    this.setNotificationIfEmptyList();
 
                 }).catch(error => {
                     if (error.response) {
@@ -137,6 +140,7 @@ export default {
                 siteService.getSitesByStateAndDesignation(this.stateSelection, this.designationSelection).then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
+                    this.setNotificationIfEmptyList();
 
                 }).catch(error => {
                     if (error.response) {
@@ -150,9 +154,7 @@ export default {
                 });
             }
 
-            if (this.sites.length == 0) {
-                this.$store.commit('SET_NOTIFICATION', "No results found. Try different search parameters.");
-            }
+
         },
 
         retrieveStates() {
@@ -189,6 +191,12 @@ export default {
             if (this.hasCamping) {
                 this.$store.commit('SET_HAS_CAMPING_PREFERENCE', this.hasCamping);
                 this.sites = this.sites.filter(site => site.hasCamping == true);
+            }
+        },
+
+        setNotificationIfEmptyList() {
+            if (this.sites.length == 0) {
+                this.$store.commit('SET_NOTIFICATION', "No results found. Try different search parameters.");
             }
         }
     },
