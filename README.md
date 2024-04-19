@@ -4,15 +4,16 @@
 **What started out as practice creating a database quickly got away from me.**
 This repository contains a PostgreSQL database script that includes information on over 400 National Park Service sites. The database is normalized to best capture comprehensive data on each park's name, site type, state location, date established, size, and other relevant information. Eventually, the repository will include files for frontend using Vue.js, HTML, and CSS, as well as a Java program for searching and querying the database.
 
+<img width="894" alt="screenshot-search-feature" src="https://github.com/msharretts/NPS-Site-Tracker/assets/155783310/bda9abe4-1e84-4df1-b908-966960cbb962">
+
 ## Features
 - **Database Schema**: The PostgreSQL database script defines a well-structured schema to store information about National Park Service sites, ensuring efficient data storage and retrieval.
-- **Comprehensive Data**: The database includes detailed information on each site, such as its name, site type (e.g., National Park, National Monument, National Historic Site), state location, date established, size (in square kilometers), and whether camping is offered there. This information was gathered using Wikipedia, cross-referenced with the National Park Service website as well as the National Park Service archives website.
-- **Search Functionality**: The accompanying Java program will provide users with the ability to search for parks based on various criteria, such as name, site type, state location, date established, size, etc.
-- **Frontend Interface - Under Development**: The Vue.js frontend, offers search functionality for the database, allowing users to search by site designation ('National Park', 'National Monument', etc.) by state or by a combination of both and view information about National Park Service sites.
+- **Comprehensive Data**: The database includes detailed information on each site, such as its name, site type (e.g., National Park, National Monument, National Historic Site), state location, date established, size (in square kilometers), whether camping is offered there, and whether the site offers a Junior Ranger program. This information was gathered using Wikipedia, cross-referenced with the National Park Service website as well as the National Park Service archives website.
+- **Frontend Interface - Search Functionality**: The Vue.js frontend, along with an accompanying Java program, offers search functionality for the database. Users have the ability to search for parks based on various criteria, such as site designation ('National Park', 'National Monument', etc.) state location, camping and Junior Ranger program availibility.
 
 ## Technology Used
 - **Backend Development**:
-   - PostgreSQL, IntelliJ Idea, SQL, and Java
+   - PostgreSQL, IntelliJ Idea, SQL, Postman, and Java
 - **Frontend Development**:
    - Visual Studio Code, Vue.js, HTML, and CSS
 
