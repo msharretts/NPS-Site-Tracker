@@ -17,7 +17,7 @@ This repository contains a PostgreSQL database script that includes information 
    - Visual Studio Code, Vue.js, HTML, and CSS
 
 ## Credit
-Data collected throughout March 2024
+Data collected throughout March & April 2024
 
 Wikipedia (Site Name, Date Established*, Area**):
 - https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States
@@ -42,3 +42,6 @@ Camping Information:
   
 Designation Information & State Location:
 - https://www.nps.gov/aboutus/national-park-system.htm
+
+Junior Ranger Program Locations: 
+- https://www.nps.gov/kids/parks-with-junior-ranger-programs.htm
