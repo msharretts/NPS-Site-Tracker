@@ -298,8 +298,6 @@ export default {
 #designation-search-div {
     display: flex;
     justify-content: flex-end;
-    /* flex-grow: 1; */
-
 }
 
 </style>
