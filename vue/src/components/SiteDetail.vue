@@ -14,7 +14,7 @@
             <div class="panel-block has-background-light">Area: {{ site.areaInKm2 }} square kilometers</div>
             <div class="panel-block has-background-white">Camping Available: {{ hasCampingAsYOrN }}</div>
             <div class="panel-block has-background-light">Junior Ranger Program: {{ hasJuniorRangerAsYOrN }}</div>
-            <a :href="website" :target="'_blank'" class="panel-block has-background-white">Find Out More</a>
+            <a :href="website" :target="'_blank'" class="panel-block has-background-white title is-6">Find Out More</a>
 
             <div v-if="notification">
                 {{ notification.message }}
