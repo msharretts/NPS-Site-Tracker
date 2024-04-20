@@ -50,7 +50,7 @@
 
         </div>
 
-        <div v-if="notification">{{ notification.message }}</div>
+        <div class="container is-fluid" v-if="notification">{{ notification.message }}</div>
         <SiteList :sites="sites" />
 
     </div>

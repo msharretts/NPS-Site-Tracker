@@ -1,20 +1,24 @@
 <template>
-    <a id="back-button" class="button is-success" @click="$router.back()"><i class="fas fa-arrow-left">Back</i></a>
+    <div class="container is-fluid">
+        <a id="back-button" class="button is-success has-text-success-40-invert" @click="$router.back()"><i
+                class="fas fa-arrow-left">&nbsp;&nbsp;Back</i></a>
 
-    <div class="panel is-success">
-        <div id="panel-heading" class="panel-heading">
-            <p>{{ site.siteName }}</p>
 
-        </div>
+        <div class="panel is-success">
+            <div id="panel-heading" class="panel-heading">
+                <p class="has-text-success-40-invert">{{ site.siteName }}</p>
 
-        <div class="panel-block">Date Established: {{ dateFormatted }}</div>
-        <div class="panel-block">Area: {{ site.areaInKm2 }} square kilometers</div>
-        <div class="panel-block">Camping Available: {{ hasCampingAsYOrN }}</div>
-        <div class="panel-block">Junior Ranger Program: {{ hasJuniorRangerAsYOrN }}</div>
-        <a :href="website" :target="'_blank'" class="panel-block">Find Out More</a>
+            </div>
 
-        <div v-if="notification">
-            {{ notification.message }}
+            <div class="panel-block has-background-white">Date Established: {{ dateFormatted }}</div>
+            <div class="panel-block has-background-light">Area: {{ site.areaInKm2 }} square kilometers</div>
+            <div class="panel-block has-background-white">Camping Available: {{ hasCampingAsYOrN }}</div>
+            <div class="panel-block has-background-light">Junior Ranger Program: {{ hasJuniorRangerAsYOrN }}</div>
+            <a :href="website" :target="'_blank'" class="panel-block has-background-white">Find Out More</a>
+
+            <div v-if="notification">
+                {{ notification.message }}
+            </div>
         </div>
     </div>
 </template>
@@ -97,8 +101,6 @@ export default {
 
 
 <style scoped>
-
-
 #back-button {
     margin: 2rem 0;
 }

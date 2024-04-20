@@ -1,5 +1,5 @@
-<template>
-  <div class="container">
+<template >
+  <div>
     <div>
     </div>
     <nav id="nav-breadcrumb" class="breadcrumb is-right">

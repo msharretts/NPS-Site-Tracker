@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <div id="home-elements">
       <div><h1 class="title is-1">National Park Service Sites</h1></div>
       <div id="search-feature-div"><SearchFeature /></div>
