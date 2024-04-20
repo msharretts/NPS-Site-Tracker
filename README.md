@@ -2,9 +2,9 @@
 
 ## Overview
 **What started out as practice creating a database quickly got away from me.**
-This repository contains a PostgreSQL database script that includes information on over 400 National Park Service sites. The database is normalized to best capture comprehensive data on each park's name, site type, state location, date established, size, and other relevant information. Eventually, the repository will include files for frontend using Vue.js, HTML, and CSS, as well as a Java program for searching and querying the database.
+This repository contains a PostgreSQL database script that includes information on over 400 National Park Service sites. The database is normalized to best capture comprehensive data on each park's name, site type, state location, date established, size, and other relevant information. The repository also includes a Java program for searching and querying the database, as well as files for frontend using Vue.js, HTML, and CSS. 
 
-<img width="894" alt="screenshot-search-feature" src="https://github.com/msharretts/NPS-Site-Tracker/assets/155783310/bda9abe4-1e84-4df1-b908-966960cbb962">
+<img width="714" alt="screenshot-search-feature" src="https://github.com/msharretts/NPS-Site-Tracker/assets/155783310/5e11382a-c7f3-408d-a2b3-bcf8850dd494">
 
 ## Features
 - **Database Schema**: The PostgreSQL database script defines a well-structured schema to store information about National Park Service sites, ensuring efficient data storage and retrieval.
