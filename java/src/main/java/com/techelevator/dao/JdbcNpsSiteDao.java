@@ -25,7 +25,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
     @Override
     public List<NpsSite> getSites() {
         List<NpsSite> listOfSites = new ArrayList<>();
-        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping FROM site ORDER BY site_name;";
+        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger FROM site ORDER BY site_name;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
             while (results.next()) {
@@ -41,7 +41,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
     @Override
     public List<NpsSite> getSitesByState(String stateAbbreviation) {
         List<NpsSite> listOfSites = new ArrayList<>();
-        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping FROM site " +
+        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger FROM site " +
                 "JOIN site_state USING (site_id) " +
                 "WHERE state_abbreviation = ? ORDER BY site_name;";
         try {
@@ -59,7 +59,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
     @Override
     public List<NpsSite> getSitesByDesignation(String siteDesignation) {
         List<NpsSite> listOfSites = new ArrayList<>();
-        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping FROM site " +
+        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger FROM site " +
                 "JOIN designation_site USING (site_id) " +
                 "JOIN designation USING (designation_id) " +
                 "WHERE designation_name = ? ORDER BY site_name;";
@@ -78,7 +78,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
     @Override
     public List<NpsSite> getSitesByStateAndDesignation(String stateAbbreviation, String siteDesignation) {
         List<NpsSite> listOfSites = new ArrayList<>();
-        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping FROM site " +
+        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger FROM site " +
                 "JOIN designation_site USING (site_id) " +
                 "JOIN designation USING (designation_id) " +
                 "JOIN site_state USING (site_id) " +
@@ -98,7 +98,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
     @Override
     public NpsSite getSiteById(int siteId) {
         NpsSite npsSite = new NpsSite();
-        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping FROM site WHERE site_id = ?;";
+        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger FROM site WHERE site_id = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, siteId);
             if (results.next()) {
@@ -115,7 +115,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
     @Override
     public NpsSite getSiteByName(String siteName) {
         NpsSite npsSite = new NpsSite();
-        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping FROM site WHERE site_name = ?;";
+        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger FROM site WHERE site_name = ?;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, siteName);
             if (results.next()) {
@@ -141,6 +141,7 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
         npsSite.setDateEstablished(results.getDate("date_established").toLocalDate());
         npsSite.setAreaInKm2(results.getDouble("area_km2"));
         npsSite.setHasCamping(results.getBoolean("has_camping"));
+        npsSite.setHasJuniorRanger(results.getBoolean("has_junior_ranger"));
         return npsSite;
     }
 }

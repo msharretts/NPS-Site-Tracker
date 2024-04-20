@@ -44,7 +44,7 @@ export default {
 }
 
 #search-feature-div {
-  width: 90%
+  width: 100%
 }
 
 div > h1 {

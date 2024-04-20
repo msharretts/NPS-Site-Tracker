@@ -49,6 +49,8 @@ export function createStore() {
       CLEAR_SEARCH(state) {
         state.designationSearch = '';
         state.stateSearch = '';
+        state.hasCampingPreference = '';
+        state.hasJuniorRangerPreference = '';
       },
 
       SET_DESIGNATION_SEARCH(state,term) {

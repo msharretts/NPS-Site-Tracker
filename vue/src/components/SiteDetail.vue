@@ -10,6 +10,7 @@
         <div class="panel-block">Date Established: {{ dateFormatted }}</div>
         <div class="panel-block">Area: {{ site.areaInKm2 }} square kilometers</div>
         <div class="panel-block">Camping Available: {{ hasCampingAsYOrN }}</div>
+        <div class="panel-block">Junior Ranger Program: {{ hasJuniorRangerAsYOrN }}</div>
         <a :href="website" :target="'_blank'" class="panel-block">Find Out More</a>
 
         <div v-if="notification">
@@ -45,6 +46,14 @@ export default {
 
         hasCampingAsYOrN() {
             if (this.site.hasCamping) {
+                return 'Yes';
+            } else {
+                return 'No';
+            }
+        },
+
+        hasJuniorRangerAsYOrN() {
+            if (this.site.hasJuniorRanger) {
                 return 'Yes';
             } else {
                 return 'No';

@@ -1,6 +1,10 @@
 <template>
     <div>
+
         <div id="search-bar-container">
+            <div id="clear-button-container">
+                <button class="button is-light is-focused " @click="clearPreferences">Clear</button>
+            </div>
             <div id="designation-search-div" class="field">
                 <div id="designation-div">
                     <label for="site-category-dropdown" class="label">Search By Designation:</label>
@@ -16,7 +20,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="state-search-div" class="field">
                 <label for="state-dropdown" class="label">Search By State:</label>
                 <div class="control">
@@ -30,17 +33,21 @@
                 </div>
             </div>
             <div id="checkbox-div">
-                <label for="camping-checkbox" class="checkbox">
-                    <input type="checkbox" v-model="hasCamping"> Camping Available</label>
-                <label for="junior-ranger-checkbox" class="checkbox">
-                    <input type="checkbox" v-model="hasJuniorRanger"> Junior Ranger Program</label>
-            </div>
-            <div>
+                <div id="camping-checkbox">
+                    <label for="camping-checkbox" class="checkbox">
+                        <input type="checkbox" v-model="hasCamping"> Camping Available</label>
+                </div>
+                <div id="junior-checkbox">
+                    <label for="junior-ranger-checkbox" class="checkbox">
+                        <input type="checkbox" v-model="hasJuniorRanger"> Junior Ranger Program</label>
+                </div>
 
             </div>
+
             <div id="search-button-container">
                 <button class="button is-light is-focused " @click="retrieveSites">Search</button>
             </div>
+
         </div>
 
         <div v-if="notification">{{ notification.message }}</div>
@@ -82,9 +89,7 @@ export default {
 
     methods: {
         retrieveSites() {
-            if (this.hasJuniorRanger) {
-                this.$store.commit('SET_HAS_JUNIOR_RANGER_PREFERENCE', this.hasJuniorRanger);
-            }
+            this.$store.commit('CLEAR_SEARCH');
             this.$store.commit('SET_DESIGNATION_SEARCH', this.designationSelection);
             this.$store.commit('SET_STATE_SEARCH', this.stateSelection);
 
@@ -92,6 +97,7 @@ export default {
                 siteService.getAllSites().then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
+                    this.checkHasJuniorRanger();
                     this.setNotificationIfEmptyList();
 
                 }).catch(error => {
@@ -108,6 +114,7 @@ export default {
                 siteService.getSitesByState(this.stateSelection).then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
+                    this.checkHasJuniorRanger();
                     this.setNotificationIfEmptyList();
 
                 }).catch(error => {
@@ -124,6 +131,7 @@ export default {
                 siteService.getSitesByDesignation(this.designationSelection).then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
+                    this.checkHasJuniorRanger();
                     this.setNotificationIfEmptyList();
 
                 }).catch(error => {
@@ -140,6 +148,7 @@ export default {
                 siteService.getSitesByStateAndDesignation(this.stateSelection, this.designationSelection).then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
+                    this.checkHasJuniorRanger();
                     this.setNotificationIfEmptyList();
 
                 }).catch(error => {
@@ -155,6 +164,14 @@ export default {
             }
 
 
+        },
+
+        clearPreferences() {
+            this.designationSelection = '',
+                this.stateSelection = '',
+                this.hasCamping = '',
+                this.hasJuniorRanger = '',
+                this.sites = []
         },
 
         retrieveStates() {
@@ -194,6 +211,13 @@ export default {
             }
         },
 
+        checkHasJuniorRanger() {
+            if (this.hasJuniorRanger) {
+                this.$store.commit('SET_HAS_JUNIOR_RANGER_PREFERENCE', this.hasJuniorRanger);
+                this.sites = this.sites.filter(site => site.hasJuniorRanger == true);
+            }
+        },
+
         setNotificationIfEmptyList() {
             if (this.sites.length == 0) {
                 this.$store.commit('SET_NOTIFICATION', "No results found. Try different search parameters.");
@@ -204,10 +228,29 @@ export default {
     created() {
         this.retrieveStates();
         this.retrieveDesignations();
-        if (this.$store.state.designationSearch || this.$store.state.stateSearch) {
-            this.designationSelection = this.$store.state.designationSearch;
-            this.stateSelection = this.$store.state.stateSearch;
-            this.retrieveSites();
+        if (this.$store.state.designationSearch || this.$store.state.stateSearch || this.$store.state.hasCampingPreference || this.$store.state.hasJuniorRangerPreference) {
+            if (this.$store.state.hasCampingPreference && this.$store.state.hasJuniorRangerPreference) {
+                this.hasCamping = this.$store.state.hasCampingPreference;
+                this.hasJuniorRanger = this.$store.state.hasJuniorRangerPreference;
+                this.designationSelection = this.$store.state.designationSearch;
+                this.stateSelection = this.$store.state.stateSearch;
+                this.retrieveSites();
+            } else if (this.$store.state.hasCampingPreference) {
+                this.hasCamping = this.$store.state.hasCampingPreference;
+                this.designationSelection = this.$store.state.designationSearch;
+                this.stateSelection = this.$store.state.stateSearch;
+                this.retrieveSites();
+            } else if (this.$store.state.hasJuniorRangerPreference) {
+                this.hasJuniorRanger = this.$store.state.hasJuniorRangerPreference;
+                this.designationSelection = this.$store.state.designationSearch;
+                this.stateSelection = this.$store.state.stateSearch;
+                this.retrieveSites();
+            } else {
+                this.designationSelection = this.$store.state.designationSearch;
+                this.stateSelection = this.$store.state.stateSearch;
+                this.retrieveSites();
+            }
+
         }
     }
 }
@@ -226,15 +269,23 @@ export default {
 #search-button-container {
     display: flex;
     justify-content: flex-start;
-    padding-top: 1.4rem;
+    padding-top: 1.3rem;
+    flex-grow: 1;
+}
+
+#clear-button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1.3rem;
     flex-grow: 1;
 }
 
 #checkbox-div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding-top: 1.5rem;
-    gap: 2rem;
+    padding-top: .5rem;
+    gap: .75rem;
 }
 
 
@@ -247,14 +298,10 @@ export default {
 #designation-search-div {
     display: flex;
     justify-content: flex-end;
-    flex-grow: 1;
-
-}
-
-#state-search-div {
-    padding-left: 1rem;
     /* flex-grow: 1; */
+
 }
+
 </style>
 
     <!-- <i class="fas fa-mountain"></i> -->

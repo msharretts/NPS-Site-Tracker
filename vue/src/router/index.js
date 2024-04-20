@@ -4,6 +4,7 @@ import HomeView from '@/views/HomeView.vue';
 import SiteListView from '@/views/SiteListView.vue';
 import SiteDetailsView from '../views/SiteDetailsView.vue';
 import AboutView from '../views/AboutView.vue';
+import OdditiesView from '@/views/OdditiesView.vue';
 
 /**
  * The Vue Router is used to "direct" the browser to render a specific view component
@@ -35,6 +36,12 @@ const routes = [
     name: 'about-view',
     path: '/about',
     component: AboutView
+  },
+
+  {
+    name: 'oddities-view',
+    path: '/oddities',
+    component: OdditiesView
   }
 ];
 

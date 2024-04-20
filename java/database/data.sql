@@ -105,7 +105,7 @@ INSERT INTO designation (designation_name) VALUES ('National Wild and Scenic Riv
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Gates of the Arctic National Park and Preserve', 'GAAR', '1980-12-02', '34287.0', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Denali National Park and Preserve', 'DENA', '1917-02-26', '24584.8', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Wrangell-St. Elias National Park and Preserve', 'WRST', '1980-12-02', '53320.6', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lake Clark National Park and Preserve', 'LACL', '1980-12-02', '16309.3', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lake Clark National Park and Preserve', 'LACL', '1980-12-02', '16309.3', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Katmai National Park and Preserve', 'KATM', '1980-12-02', '16564.7', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Aniakchak National Monument and Preserve', 'ANIA', '1978-12-01', '2433.3', 'true', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Glacier Bay National Park and Preserve', 'GLBA', '1980-12-02', '13281.0', 'true', 'true');
@@ -144,7 +144,7 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 
 -- Battlefield
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Antietam National Battlefield', 'ANTI', '1890-08-30', '13.1', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Big Hole National Battlefield', 'BIHO', '1910-06-23', '3.9', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Big Hole National Battlefield', 'BIHO', '1910-06-23', '3.9', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cowpens National Battlefield', 'COWP', '1929-03-04', '3.4', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Donelson National Battlefield', 'FODO', '1933-08-10', '5.3', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Necessity National Battlefield', 'FONE', '1931-03-04', '3.7', 'false', 'true');
@@ -152,7 +152,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Moores Creek National Battlefield', 'MOCR', '1926-06-02', '0.4', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Petersburg National Battlefield', 'PETE', '1926-07-03', '37.9', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Stones River National Battlefield', 'STRI', '1927-03-03', '2.9', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Tupelo National Battlefield', 'TUPE', '1933-08-11', '0.0040', 'false', 'false';
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Tupelo National Battlefield', 'TUPE', '1933-08-11', '0.0040', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Wilson''s Creek National Battlefield', 'WICR', '1960-04-22', '9.7', 'false', 'true');
 
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Antietam National Battlefield'), 'MD');
@@ -189,9 +189,9 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 
 -- Battlefield Park
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Kennesaw Mountain National Battlefield Park', 'KEMO', '1917-02-18', '11.8', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Manassas National Battlefield Park', 'MANA', '1936-11-14', '20.5', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Richmond National Battlefield Park', 'RICH', '1936-03-02', '33.1', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('River Raisin National Battlefield Park', 'RIRA', '2010-10-22', '0.2', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Manassas National Battlefield Park', 'MANA', '1936-11-14', '20.5', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Richmond National Battlefield Park', 'RICH', '1936-03-02', '33.1', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('River Raisin National Battlefield Park', 'RIRA', '2010-10-22', '0.2', 'false', 'true');
 
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kennesaw Mountain National Battlefield Park'), 'GA');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Manassas National Battlefield Park'), 'VA');
@@ -209,10 +209,10 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fredericksburg and Spotsylvania County Battlefields Memorial National Military Park', 'FRED', '1927-02-14', '34.0', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Gettysburg National Military Park', 'GETT', '1895-02-11', '24.4', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Guilford Courthouse National Military Park', 'GUCO', '1917-03-02', '1.0', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Horseshoe Bend National Military Park', 'HOBE', '1956-07-25', '8.3', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Horseshoe Bend National Military Park', 'HOBE', '1956-07-25', '8.3', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Kings Mountain National Military Park', 'KIMO', '1933-08-10', '16.0', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pea Ridge National Military Park', 'PERI', '1956-07-20', '17.4', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Shiloh National Military Park', 'SHIL', '1894-12-27', '37.7', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Shiloh National Military Park', 'SHIL', '1894-12-27', '37.7', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Vicksburg National Military Park', 'VICK', '1899-02-21', '10.2', 'false', 'true');
 
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Chickamauga and Chattanooga National Military Park'), 'GA');
@@ -247,19 +247,19 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Bent''s Old Fort National Historic Site', 'BEOL', '1960-06-03', '3.2316', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Boston African American National Historic Site', 'BOAF', '1980-10-10', '0.0024', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Carl Sandburg Home National Historic Site', 'CARL', '1968-10-17', '1.0865', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Carter G. Woodson Home National Historic Site', 'CAWO', '2006-02-27', '0.00061', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Charles Pinckney National Historic Site', 'CHPI', '1988-09-08', '0.1151', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Carter G. Woodson Home National Historic Site', 'CAWO', '2006-02-27', '0.00061', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Charles Pinckney National Historic Site', 'CHPI', '1988-09-08', '0.1151', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Christiansted National Historic Site', 'CHRI', '1961-01-16', '0.1099', 'true', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Clara Barton National Historic Site', 'CLBA', '1974-10-26', '0.0348', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Edgar Allan Poe National Historic Site', 'EDAL', '1978-11-10', '0.0021', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Eisenhower National Historic Site', 'EISE', '1967-11-27', '2.7942', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Clara Barton National Historic Site', 'CLBA', '1974-10-26', '0.0348', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Edgar Allan Poe National Historic Site', 'EDAL', '1978-11-10', '0.0021', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Eisenhower National Historic Site', 'EISE', '1967-11-27', '2.7942', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Eleanor Roosevelt National Historic Site', 'ELRO', '1977-05-26', '0.7305', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Eugene O''Neill National Historic Site', 'EUON', '1976-10-12', '0.0534', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('First Ladies National Historic Site', 'FILA', '2000-10-11', '0.0019', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Ford''s Theatre National Historic Site', 'FOTH', '1970-06-23', '0.0012', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Ford''s Theatre National Historic Site', 'FOTH', '1970-06-23', '0.0012', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Bowie National Historic Site', 'FOBO', '1964-08-30', '4.0446', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Davis National Historic Site', 'FODA', '1961-09-08', '2.1165', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Laramie National Historic Site', 'FOLA', '1960-04-29', '3.5334', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Laramie National Historic Site', 'FOLA', '1960-04-29', '3.5334', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Larned National Historic Site', 'FOLS', '1964-08-31', '2.9072', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Point National Historic Site', 'FOPO', '1970-10-16', '0.1174', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Raleigh National Historic Site', 'FORA', '1941-04-05', '2.0871', 'false', 'true');
@@ -267,7 +267,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Smith National Historic Site', 'FOSM', '1961-09-13', '0.3035', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Union Trading Post National Historic Site', 'FOUN', '1966-06-20', '1.7812', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Vancouver National Historic Site', 'FOVA', '1961-06-30', '0.8366', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Frederick Douglass National Historic Site', 'FRDO', '1988-02-12', '0.0347', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Frederick Douglass National Historic Site', 'FRDO', '1988-02-12', '0.0347', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Frederick Law Olmsted National Historic Site', 'FRLA', '1979-05-01', '0.0292', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Friendship Hill National Historic Site', 'FRHI', '1978-11-10', '2.7298', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Grant–Kohrs Ranch National Historic Site', 'GRKO', '1972-08-25', '6.5496', 'false', 'true');
@@ -277,7 +277,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Home of Franklin D. Roosevelt National Historic Site', 'HOFR', '1944-01-15', '3.3930', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Honouliuli National Historic Site', 'HONO', '2019-03-12', '0.6251', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hopewell Furnace National Historic Site', 'HOFU', '1985-09-18', '3.4320', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hubbell Trading Post National Historic Site', 'HUTR', '1965-08-28', '0.6479', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hubbell Trading Post National Historic Site', 'HUTR', '1965-08-28', '0.6479', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('James A. Garfield National Historic Site', 'JAGA', '1980-12-28', '0.0316', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('John Fitzgerald Kennedy National Historic Site', 'JOFI', '1967-05-26', '0.00036', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('John Muir National Historic Site', 'JOMU', '1964-08-31', '1.3927', 'false', 'true');
@@ -285,7 +285,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lincoln Home National Historic Site', 'LIHO', '1971-08-18', '0.0495', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Little Rock Central High School National Historic Site', 'CHSC', '1999-11-06', '0.1142', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Longfellow House — Washington''s Headquarters National Historic Site', 'LONG', '2010-12-22', '0.0080', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Maggie L. Walker National Historic Site', 'MAWA', '1978-11-10', '0.0052', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Maggie L. Walker National Historic Site', 'MAWA', '1978-11-10', '0.0052', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Manzanar National Historic Site', 'MANZ', '1992-03-03', '3.2934', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Martin Van Buren National Historic Site', 'MAVA', '1974-10-26', '1.1531', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Mary McLeod Bethune Council House National Historic Site', 'MAMC', '1991-12-11', '0.00028', 'false', 'true');
@@ -296,19 +296,19 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Ninety Six National Historic Site', 'NISI', '1976-08-19', '4.1356', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pennsylvania Avenue National Historic Site', 'PAAV', '1965-09-30', '0.0713', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('President William Jefferson Clinton Birthplace Home National Historic Site', 'WICL', '2010-12-14', '0.0028', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Puʻukoholā Heiau National Historic Site', 'PUHE', '1972-08-17', '0.3490', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Puʻukoholā Heiau National Historic Site', 'PUHE', '1972-08-17', '0.3490', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Sagamore Hill National Historic Site', 'SAHI', '1963-07-08', '0.3360', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Saint Paul''s Church National Historic Site', 'SAPA', '1978-11-10', '0.0248', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Salem Maritime National Historic Site', 'SAMA', '1938-03-17', '0.0365', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('San Juan National Historic Site', 'SAJU', '1949-02-14', '0.3040', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Sand Creek Massacre National Historic Site', 'SAND', '2007-04-27', '50.9230', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Sand Creek Massacre National Historic Site', 'SAND', '2007-04-27', '50.9230', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Saugus Iron Works National Historic Site', 'SAIR', '1968-04-05', '0.0344', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Springfield Armory National Historic Site', 'SPAR', '1974-10-26', '0.2223', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Steamtown National Historic Site', 'STEA', '1986-10-30', '0.2528', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Theodore Roosevelt Birthplace National Historic Site', 'THRB', '1970-06-18', '0.00045', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Theodore Roosevelt Inaugural National Historic Site', 'THRI', '1966-11-02', '0.0048', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Theodore Roosevelt Inaugural National Historic Site', 'THRI', '1966-11-02', '0.0048', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Thomas Stone National Historic Site', 'THST', '1978-11-10', '1.3284', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Tuskegee Airmen National Historic Site', 'TUAI', '1998-11-06', '0.3629', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Tuskegee Airmen National Historic Site', 'TUAI', '1998-11-06', '0.3629', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Tuskegee Institute National Historic Site', 'TUIN', '1974-10-26', '0.2344', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Ulysses S. Grant National Historic Site', 'ULSG', '1989-10-02', '0.0388', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Vanderbilt Mansion National Historic Site', 'VAMA', '1940-12-18', '0.8565', 'false', 'true');
@@ -473,7 +473,7 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 
 
 -- International Historic Site
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Saint Croix Island International Historic Site', 'SACR', '1984-09-25', '0.026', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Saint Croix Island International Historic Site', 'SACR', '1984-09-25', '0.026', 'false', 'true');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint Croix Island International Historic Site'), 'ME');
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint Croix Island International Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'International Historic Site'));
 
@@ -489,19 +489,19 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cedar Creek and Belle Grove National Historical Park', 'CEBE', '2002-12-19', '14.9934', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Chaco Culture National Historical Park', 'CHCU', '1980-12-19', '137.4320', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Chesapeake and Ohio Canal National Historical Park', 'CHOH', '1971-01-08', '79.3887', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Colonial National Historical Park', 'COLO', '1936-06-05', '35.1066', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cumberland Gap National Historical Park', 'CUGA', '1940-06-11', '99.3375', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Colonial National Historical Park', 'COLO', '1936-06-05', '35.1066', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cumberland Gap National Historical Park', 'CUGA', '1940-06-11', '99.3375', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Dayton Aviation Heritage National Historical Park', 'DAAV', '1992-10-16', '0.4474', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('First State National Historical Park', 'FRST', '2014-12-19', '5.7029', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Sumter and Fort Moultrie National Historical Park', 'FOSU', '2019-03-12', '0.9410', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('George Rogers Clark National Historical Park', 'GERO', '1966-07-23', '0.1059', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Golden Spike National Historical Park', 'GOSP', '2019-03-12', '11.0693', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Sumter and Fort Moultrie National Historical Park', 'FOSU', '2019-03-12', '0.9410', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('George Rogers Clark National Historical Park', 'GERO', '1966-07-23', '0.1059', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Golden Spike National Historical Park', 'GOSP', '2019-03-12', '11.0693', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Harpers Ferry National Historical Park', 'HAFE', '1963-05-29', '14.8487', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Harriet Tubman National Historical Park', 'HART', '2017-01-10', '0.1275', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Harriet Tubman Underground Railroad National Historical Park', 'HATU', '2014-12-19', '1.9425', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Harriet Tubman Underground Railroad National Historical Park', 'HATU', '2014-12-19', '1.9425', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Homestead National Historical Park', 'HOME', '2021-01-13', '0.8517', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hopewell Culture National Historical Park', 'HOCU', '1992-05-27', '7.1863', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Independence National Historical Park', 'INDE', '1948-06-28', '0.1816', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Independence National Historical Park', 'INDE', '1948-06-28', '0.1816', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Jean Lafitte National Historical Park and Preserve', 'JELA', '1978-11-10', '104.7159', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Jimmy Carter National Historical Park', 'JICA', '2021-01-13', '0.3171', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Kalaupapa National Historical Park', 'KALA', '1980-12-22', '43.6206', 'false', 'true');
@@ -509,14 +509,14 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Keweenaw National Historical Park', 'KEWE', '1992-10-27', '7.5676', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Klondike Gold Rush National Historical Park', 'KLGO', '1976-06-30', '52.5949', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lewis and Clark National Historical Park', 'LECL', '2004-10-30', '13.8004', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lowell National Historical Park', 'LOWE', '1978-06-05', '0.5735', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lowell National Historical Park', 'LOWE', '1978-06-05', '0.5735', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lyndon B. Johnson National Historical Park', 'LYJO', '1980-12-28', '6.3605', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Manhattan Project National Historical Park', 'MAPR', '2015-11-11', '0.4598', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Marsh-Billings-Rockefeller National Historical Park', 'MABI', '1998-10-21', '2.6024', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Martin Luther King Jr. National Historical Park', 'MALU', '2018-01-08', '0.1585', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Minute Man National Historical Park', 'MIMA', '1959-09-21', '4.1592', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Minute Man National Historical Park', 'MIMA', '1959-09-21', '4.1592', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Morristown National Historical Park', 'MORR', '1933-07-04', '6.9230', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Natchez National Historical Park', 'NATC', '1988-10-07', '0.4846', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Natchez National Historical Park', 'NATC', '1988-10-07', '0.4846', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('New Bedford Whaling National Historical Park', 'NEBE', '1996-11-12', '0.1376', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('New Orleans Jazz National Historical Park', 'JAZZ', '1994-10-31', '0.0208', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Nez Perce National Historical Park', 'NEPE', '1965-05-15', '18.4736', 'false', 'true');
@@ -538,10 +538,10 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Sitka National Historical Park', 'SITK', '1972-10-18', '0.4706', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Thomas Edison National Historical Park', 'EDIS', '2009-03-30', '0.0860', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Tumacácori National Historical Park', 'TUMA', '1990-08-06', '1.4582', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Valley Forge National Historical Park', 'VAFO', '1976-07-04', '14.0367', 'true', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('War in the Pacific National Historical Park', 'WAPA', '1978-08-18', '8.2177', 'true', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Weir Farm National Historical Park', 'WEFA', '2021-01-05', '0.3003', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Women''s Rights National Historical Park', 'WORI', '1980-12-28', '0.0301', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Valley Forge National Historical Park', 'VAFO', '1976-07-04', '14.0367', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('War in the Pacific National Historical Park', 'WAPA', '1978-08-18', '8.2177', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Weir Farm National Historical Park', 'WEFA', '2021-01-05', '0.3003', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Women''s Rights National Historical Park', 'WORI', '1980-12-28', '0.0301', 'false', 'true');
 
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Abraham Lincoln Birthplace National Historical Park'), 'KY');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Adams National Historical Park'), 'MA');
@@ -689,11 +689,11 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 
 
 -- Memorials
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Arkansas Post National Memorial', 'ARPO', '1960-07-06', '3.0655', 'true', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Arlington House, The Robert E. Lee National Memorial', 'ARHO', '1955-06-25', '0.1136', 'true', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Chamizal National Memorial', 'CHAM', '1974-02-04', '0.2222', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Coronado National Memorial', 'CORO', '1952-11-05', '19.5472', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('De Soto National Memorial', 'DESO', '1948-03-11', '0.12', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Arkansas Post National Memorial', 'ARPO', '1960-07-06', '3.0655', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Arlington House, The Robert E. Lee National Memorial', 'ARHO', '1955-06-25', '0.1136', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Chamizal National Memorial', 'CHAM', '1974-02-04', '0.2222', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Coronado National Memorial', 'CORO', '1952-11-05', '19.5472', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('De Soto National Memorial', 'DESO', '1948-03-11', '0.12', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Dwight D. Eisenhower Memorial', 'DWEI', '2020-09-17', '0.0137', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Federal Hall National Memorial', 'FEHA', '1955-08-11', '0.0018', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Flight 93 National Memorial', 'FLNI', '2011-09-10', '9.3885', 'false', 'true');
@@ -701,24 +701,24 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Franklin Delano Roosevelt Memorial', 'FRDE', '1997-05-02', '0.0329', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('General Grant National Memorial', 'GEGR', '1959-05-01', '0.0031', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hamilton Grange National Memorial', 'HAGR', '1988-11-19', '0.0042', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Johnstown Flood National Memorial', 'JOFL', '1964-08-31', '0.7194', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Korean War Veterans Memorial', 'KOWA', '1995-07-27', '0.0063', 'true', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lincoln Boyhood National Memorial', 'LIBO', '1962-02-19', '0.8080', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lincoln Memorial', 'LINC', '1922-05-30', '0.0295', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Johnstown Flood National Memorial', 'JOFL', '1964-08-31', '0.7194', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Korean War Veterans Memorial', 'KOWA', '1995-07-27', '0.0063', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lincoln Boyhood National Memorial', 'LIBO', '1962-02-19', '0.8080', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lincoln Memorial', 'LINC', '1922-05-30', '0.0295', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lyndon Baines Johnson Memorial Grove on the Potomac', 'LYBA', '1974-09-27', '0.0688', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Martin Luther King Jr. Memorial', 'MALU', '2011-08-28', '0.0111', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Martin Luther King Jr. Memorial', 'MLKM', '2011-08-28', '0.0111', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Mount Rushmore National Memorial', 'MORU', '1939-07-01', '5.1737', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pearl Harbor National Memorial', 'PERL', '2019-03-12', '0.0862', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pearl Harbor National Memorial', 'PERL', '2019-03-12', '0.0862', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Perry''s Victory and International Peace Memorial', 'PEVI', '1972-10-26', '0.1027', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Port Chicago Naval Magazine National Memorial', 'POCH', '1992-10-28', '0.0202', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Roger Williams National Memorial', 'ROWI', '1965-10-22', '0.0185', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Thaddeus Kosciuszko National Memorial', 'THKO', '1972-10-21', '0.0081', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Theodore Roosevelt Island', 'THIS', '1967-10-27', '0.3581', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Thaddeus Kosciuszko National Memorial', 'THKO', '1972-10-21', '0.0081', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Theodore Roosevelt Island', 'THIS', '1967-10-27', '0.3581', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Thomas Jefferson Memorial', 'THJE', '1943-04-13', '0.0743', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Vietnam Veterans Memorial', 'VIVE', '1982-11-13', '0.0088', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Washington Monument', 'WASH', '1885-02-21', '0.4290', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Washington Monument', 'WAMO', '1885-02-21', '0.4290', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('World War I Memorial', 'WWIM', '2014-12-19', '0.0071', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('World War II Memorial', 'WWII', '2004-05-29', '0.0334', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('World War II Memorial', 'WWII', '2004-05-29', '0.0334', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Wright Brothers National Memorial', 'WRBR', '1953-12-04', '1.7338', 'false', 'true');
 
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Arkansas Post National Memorial'), 'AK');
@@ -787,7 +787,7 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 
 
 -- Monuments
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('African Burial Ground National Monument', 'AFBG', '2006-02-27', '0.001', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('African Burial Ground National Monument', 'AFBG', '2006-02-27', '0.001', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Agate Fossil Beds National Monument', 'AGFO', '1997-06-14', '12.4', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Alibates Flint Quarries National Monument', 'ALFL', '1965-08-21', '5.5', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Aztec Ruins National Monument', 'AZRU', '1923-01-24', '1.3', 'false', 'true');
@@ -798,7 +798,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Buck Island Reef National Monument', 'BUIS', '1961-12-28', '77.0', 'true', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cabrillo National Monument', 'CABR', '1913-10-14', '0.6', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Camp Nelson National Monument', 'CANE', '2018-10-26', '1.5', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Canyon de Chelly National Monument', 'CACH', '1931-04-01', '339.3', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Canyon de Chelly National Monument', 'CACH', '1931-04-01', '339.3', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cape Krusenstern National Monument', 'CAKR', '1978-12-01', '2626.8', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Capulin Volcano National Monument', 'CAVO', '1916-08-09', '3.2', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Casa Grande Ruins National Monument', 'CAGR', '1918-08-03', '1.9', 'false', 'true');
@@ -812,7 +812,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Colorado National Monument', 'COLM', '1911-05-24', '83.1', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Devils Postpile National Monument', 'DEPO', '1911-07-06', '3.2', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Devils Tower National Monument', 'DETO', '1906-09-24', '5.5', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Dinosaur National Monument', 'DINO', '1915-10-4', '851.0', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Dinosaur National Monument', 'DINO', '1915-10-4', '851.0', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Effigy Mounds National Monument', 'EFMO', '1949-10-25', '10.2', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('El Malpais National Monument', 'ELMA', '1987-12-31', '462.7', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('El Morro National Monument', 'ELMO', '1906-12-8', '5.2', 'true', 'true');
@@ -820,7 +820,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Florissant Fossil Beds National Monument', 'FLFO', '1969-08-20', '25.5', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Frederica National Monument', 'FOFR', '1936-05-26', '1.2', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Matanzas National Monument', 'FOMA', '1924-10-15', '1.2', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort McHenry National Monument and Historic Shrine Monument', 'FOMC', '1925-03-03', '0.2', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort McHenry National Monument and Historic Shrine', 'FOMC', '1925-03-03', '0.2', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Monroe National Monument', 'FOMR', '2011-11-01', '1.5', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Pulaski National Monument', 'FOPU', '1924-10-15', '22.8', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Stanwix National Monument', 'FOST', '1935-08-21', '0.1', 'false', 'true');
@@ -829,37 +829,37 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Freedom Riders National Monument', 'FRRI', '2017-01-12', '0.02', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('George Washington Birthplace National Monument', 'GEWA', '1930-01-23', '2.6', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('George Washington Carver National Monument', 'GWCA', '1943-07-14', '0.8', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Gila Cliff Dwellings National Monument', 'GICL', '1907-11-16', '2.2', 'true', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Governors Island National Monument', 'GOIS', '2001-01-19', '0.1', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Gila Cliff Dwellings National Monument', 'GICL', '1907-11-16', '2.2', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Governors Island National Monument', 'GOIS', '2001-01-19', '0.1', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Grand Canyon-Parashant National Monument', 'PARA', '2000-01-11', '4132.0', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Grand Portage National Monument', 'GRPO', '1960-01-27', '2.9', 'true', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hagerman Fossil Beds National Monument', 'HAFO', '1988-11-18', '17.6', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Grand Portage National Monument', 'GRPO', '1960-01-27', '2.9', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hagerman Fossil Beds National Monument', 'HAFO', '1988-11-18', '17.6', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hohokam Pima National Monument', 'HOPI', '1972-10-21', '6.8', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hovenweep National Monument', 'HOVE', '1923-03-02', '3.2', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hovenweep National Monument', 'HOVE', '1923-03-02', '3.2', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Jewel Cave National Monument', 'JECA', '1908-02-07', '5.2', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('John Day Fossil Beds National Monument', 'JODA', '1974-10-26', '56.9', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('John Day Fossil Beds National Monument', 'JODA', '1974-10-26', '56.9', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Katahdin Woods and Waters National Monument', 'KAWW', '2016-08-24', '354.4', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lava Beds National Monument', 'LABE', '1925-11-21', '189.0', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lava Beds National Monument', 'LABE', '1925-11-21', '189.0', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Little Bighorn Battlefield National Monument', 'LIBI', '1940-07-01', '3.1', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Medgar and Myrlie Evers Home National Monument', 'MEMY', '2020-12-10', '0.0', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Mill Springs Battlefield National Monument', 'MISP', '2020-09-22', '5.9', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Montezuma Castle National Monument', 'MOCA', '1906-12-08', '4.1', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Muir Woods National Monument', 'MUWO', '1908-01-09', '2.2', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Natural Bridges National Monument', 'NABR', '1908-04-16', '30.9', 'true', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Navajo National Monument', 'NAVA', '1909-03-20', '1.5', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Natural Bridges National Monument', 'NABR', '1908-04-16', '30.9', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Navajo National Monument', 'NAVA', '1909-03-20', '1.5', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Oregon Caves National Monument', 'ORCA', '1909-07-12', '18.4', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Organ Pipe Cactus National Monument', 'ORPI', '1937-04-13', '1338.3', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Petroglyph National Monument', 'PETR', '1990-06-27', '29.2', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pipe Spring National Monument', 'PISP', '1923-05-31', '0.2', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pipe Spring National Monument', 'PISP', '1923-05-31', '0.2', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pipestone National Monument', 'PIPE', '1937-08-25', '1.1', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Poverty Point National Monument', 'POPO', '1988-10-31', '3.7', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Rainbow Bridge National Monument', 'RABR', '1910-05-30', '0.6', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Russell Cave National Monument', 'RUCA', '1961-05-11', '1.3', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Russell Cave National Monument', 'RUCA', '1961-05-11', '1.3', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Salinas Pueblo Missions National Monument', 'SAPU', '1909-11-01', '4.3', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Scotts Bluff National Monument', 'SCBL', '1919-12-12', '12.2', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Statue of Liberty National Monument', 'STLI', '1924-10-15', '0.2', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Stonewall National Monument', 'STON', '2016-06-24', '0.0', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Sunset Crater Volcano National Monument', 'SUCR', '1930-05-30', '12.3', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Sunset Crater Volcano National Monument', 'SUCR', '1930-05-30', '12.3', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Timpanogos Cave National Monument', 'TICA', '1922-10-14', '1.0', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Tonto National Monument', 'TONT', '1907-10-21', '4.5', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Tule Lake National Monument', 'TULE','2008-12-05', '5.629', 'false', 'false');
@@ -906,7 +906,7 @@ INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FRO
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Florissant Fossil Beds National Monument'), 'CO');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Frederica National Monument'), 'GA');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Matanzas National Monument'), 'FL');
-INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort McHenry National Monument and Historic Shrine Monument'), 'MD');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort McHenry National Monument and Historic Shrine'), 'MD');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Monroe National Monument'), 'VA');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Pulaski National Monument'), 'GA');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Stanwix National Monument'), 'NY');
@@ -992,7 +992,7 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Florissant Fossil Beds National Monument'), (SELECT designation_id FROM designation WHERE designation_name = 'National Monument'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Frederica National Monument'), (SELECT designation_id FROM designation WHERE designation_name = 'National Monument'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Matanzas National Monument'), (SELECT designation_id FROM designation WHERE designation_name = 'National Monument'));
-INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort McHenry National Monument and Historic Shrine Monument'), (SELECT designation_id FROM designation WHERE designation_name = 'National Monument'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort McHenry National Monument and Historic Shrine'), (SELECT designation_id FROM designation WHERE designation_name = 'National Monument'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Monroe National Monument'), (SELECT designation_id FROM designation WHERE designation_name = 'National Monument'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Pulaski National Monument'), (SELECT designation_id FROM designation WHERE designation_name = 'National Monument'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Fort Stanwix National Monument'), (SELECT designation_id FROM designation WHERE designation_name = 'National Monument'));
@@ -1047,15 +1047,15 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 -- Parks
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Acadia National Park', 'ACAD', '1919-02-26', '198.6', 'true', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Arches National Park', 'ARCH', '1971-11-12', '310.3', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Badlands National Park', 'BADL', '1978-11-10', '982.4', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Badlands National Park', 'BADL', '1978-11-10', '982.4', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Big Bend National Park', 'BIBE', '1944-06-12', '3242.2', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Biscayne National Park', 'BISC', '1980-06-28', '700', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Black Canyon of the Gunnison National Park', 'BLCA', '1999-10-21', '124.6', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Black Canyon of the Gunnison National Park', 'BLCA', '1999-10-21', '124.6', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Bryce Canyon National Park', 'BRCA', '1928-02-25', '145', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Canyonlands National Park', 'CANY', '1964-09-12', '1366.2', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Capitol Reef National Park', 'CARE', '1971-12-18', '979', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Carlsbad Caverns National Park', 'CAVE', '1930-05-14', '189.3', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Channel Islands National Park', 'CHIS', '1980-03-05', '1009.9', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Channel Islands National Park', 'CHIS', '1980-03-05', '1009.9', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Congaree National Park', 'CONG', '2003-11-10', '107.1', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Crater Lake National Park', 'CRLA', '1902-05-22', '741.5', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cuyahoga Valley National Park', 'CUVA', '2000-10-11', '131.8', 'false', 'true');
@@ -1075,13 +1075,13 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Indiana Dunes National Park', 'INDU', '2019-02-15', '62.1', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Isle Royale National Park', 'ISRO', '1940-04-03', '2314', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Joshua Tree National Park', 'JOTR', '1994-10-31', '3217.9', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Kenai Fjords National Park', 'KEFJ', '1980-12-02', '2710', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Kenai Fjords National Park', 'KEFJ', '1980-12-02', '2710', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Kings Canyon National Park', 'SEKI', '1940-03-04', '1869.2', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Kobuk Valley National Park', 'KOVA', '1980-12-02', '7084.9', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lassen Volcanic National Park', 'LAVO', '1916-08-09', '431.4', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Mammoth Cave National Park', 'MACA', '1941-07-01', '218.6', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Mesa Verde National Park', 'MEVE', '1906-06-29', '212.4', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Mount Rainier National Park', 'MORA', '1899-03-02', '956.6', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Mount Rainier National Park', 'MORA', '1899-03-02', '956.6', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('National Park of American Samoa', 'NPSA', '1988-10-31', '33.4', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('New River Gorge National Park and Preserve', 'NERI', '2020-12-27', '28.4', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('North Cascades National Park', 'NOCA', '1968-10-02', '2042.8', 'true', 'true');
@@ -1092,13 +1092,13 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Rocky Mountain National Park', 'ROMO', '1915-01-26', '1075.7', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Saguaro National Park', 'SAGU', '1994-10-14', '375.8', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Sequoia National Park', 'SEKI', '1890-09-25', '1635.2', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Shenandoah National Park', 'SHEN', '1935-12-26', '806.2', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Shenandoah National Park', 'SHEN', '1935-12-26', '806.2', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Theodore Roosevelt National Park', 'THRO', '1978-11-10', '285.1', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Virgin Islands National Park', 'VIIS', '1956-08-02', '60.9', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Voyageurs National Park', 'VOYA', '1975-04-08', '883.1', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('White Sands National Park', 'WHSA', '2019-12-20', '592.2', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Wind Cave National Park', 'WICA', '1903-01-09', '137.5', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Yellowstone National Park', 'YELL', '1872-03-01', '8983.2', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Yellowstone National Park', 'YELL', '1872-03-01', '8983.2', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Yosemite National Park', 'YOSE', '1890-10-01', '3082.7', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Zion National Park', 'ZION', '1919-11-19', '595.9', 'true', 'true');
 
@@ -1222,7 +1222,7 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 
 
 -- Parkways
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Blue Ridge Parkway', 'BLRI', '1936-06-30', '403.9', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Blue Ridge Parkway', 'BLRI', '1936-06-30', '403.9', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('George Washington Memorial Parkway', 'GWMP', '1930-05-29', '27.4', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('John D. Rockefeller Jr. Memorial Parkway', 'JODR', '1972-08-25', '96.2', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Natchez Trace Parkway', 'NATR', '1938-05-08', '211.7', 'true', 'true');
@@ -1292,15 +1292,15 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Bighorn Canyon National Recreation Area', 'BICA', '1966-10-15', '486.8', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Boston Harbor Islands National Recreation Area', 'BOHA', '1996-11-12', '6.0', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Chattahoochee River National Recreation Area', 'CHAT', '1978-08-15', '50.6', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Chickasaw National Recreation Area', 'CHIC', '1976-03-17', '40.1', 'true', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Curecanti National Recreation Area', 'CURE', '1965-02-11', '176.4', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Chickasaw National Recreation Area', 'CHIC', '1976-03-17', '40.1', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Curecanti National Recreation Area', 'CURE', '1965-02-11', '176.4', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Delaware Water Gap National Recreation Area', 'DEWA', '1965-09-01', '278.1', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Gateway National Recreation Area', 'GATE', '1972-10-27', '107.7', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Gauley River National Recreation Area', 'GARI', '1988-10-26', '46.8', 'true', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Glen Canyon National Recreation Area', 'GLCA', '1972-10-27', '5075.2', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Golden Gate National Recreation Area', 'GOGA', '1972-10-27', '332.3', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lake Chelan National Recreation Area', 'LACH', '1968-10-02', '250.7', 'false', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lake Mead National Recreation Area', 'LAKE', '1964-10-08', '6053.3', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lake Mead National Recreation Area', 'LAKE', '1964-10-08', '6053.3', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lake Meredith National Recreation Area', 'LAMR', '1990-11-28', '182.0', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lake Roosevelt National Recreation Area', 'LARO', '1997-01-01', '406.3', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Ross Lake National Recreation Area', 'ROLA', '1968-10-02', '475.8', 'false', 'false');
@@ -1352,9 +1352,9 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 
 
 -- National Rivers
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Big South Fork National River and Recreation Area', 'BISO', '1974-03-07', '500.6', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Big South Fork National River and Recreation Area', 'BISO', '1974-03-07', '500.6', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Buffalo National River', 'BUFF', '1992-04-22', '381.6', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Mississippi National River and Recreation Areas', 'MISS', '1988-11-18', '217.6', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Mississippi National River and Recreation Areas', 'MISS', '1988-11-18', '217.6', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Ozark National Scenic Riverways', 'OZAR', '1964-08-27', '326.9', 'true', 'true');
 
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Big South Fork National River and Recreation Area'), 'KY');
@@ -1375,7 +1375,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Great Egg Harbor Scenic and Recreational River', 'GREG', '1992-10-27', '175.3', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Missouri National Recreational River', 'MNRR', '1978-11-10', '196.1', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Niobrara National Scenic River', 'NIOB', '1991-05-24', '117.8', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Obed Wild and Scenic River', 'OBED', '1976-10-12', '22.2', 'true', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Obed Wild and Scenic River', 'OBED', '1976-10-12', '22.2', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Rio Grande Wild and Scenic River', 'RIGR', '1978-11-10', '53.1', 'true', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Saint Croix National Scenic Riverway', 'SACN', '1968-10-02', '273.0', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Upper Delaware Scenic and Recreational River', 'UPDE', '1978-11-10', '303.5', 'false', 'true');
@@ -1421,14 +1421,14 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 -- Seashores
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Assateague Island National Seashore', 'ASIS', '1965-09-21', '160.8', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Canaveral National Seashore', 'CANA', '1975-01-03', '233.3', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cape Cod National Seashore', 'CACO', '1966-06-01', '176.5', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cape Hatteras National Seashore', 'CAHA', '1953-01-12', '122.8', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cape Lookout National Seashore', 'CALO', '1966-03-10', '114.3', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cumberland Island National Seashore', 'CUIS', '1972-10-23', '147.4', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fire Island National Seashore', 'FIIS', '1964-09-11', '79.2', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Gulf Islands National Seashore', 'GUIS', '1971-01-08', '558.4', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Padre Island National Seashore', 'PAIS', '1968-04-06', '527.8', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Point Reyes National Seashore', 'PORE', '1972-10-20', '287.6', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cape Cod National Seashore', 'CACO', '1966-06-01', '176.5', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cape Hatteras National Seashore', 'CAHA', '1953-01-12', '122.8', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cape Lookout National Seashore', 'CALO', '1966-03-10', '114.3', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Cumberland Island National Seashore', 'CUIS', '1972-10-23', '147.4', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fire Island National Seashore', 'FIIS', '1964-09-11', '79.2', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Gulf Islands National Seashore', 'GUIS', '1971-01-08', '558.4', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Padre Island National Seashore', 'PAIS', '1968-04-06', '527.8', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Point Reyes National Seashore', 'PORE', '1972-10-20', '287.6', 'true', 'true');
 
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Assateague Island National Seashore'), 'MD');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Assateague Island National Seashore'), 'VA');
@@ -1456,12 +1456,12 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 
 
 -- Scenic Trails
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Appalachian National Scenic Trail', 'APPA', '1968-10-02', '975.3', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Ice Age National Scenic Trail', 'IATR', '1980-10-03', null, 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Natchez Trace National Scenic Trail', 'NATT', '1983-03-28', '44.5', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('New England National Scenic Trail', 'NEEN', '2009-03-30', null, 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('North Country National Scenic Trail', 'NOCO', '1980-03-05', null, 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Potomac Heritage National Scenic Trail', 'POHE', '1983-03-28', '0.0', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Appalachian National Scenic Trail', 'APPA', '1968-10-02', '975.3', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Ice Age National Scenic Trail', 'IATR', '1980-10-03', null, 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Natchez Trace National Scenic Trail', 'NATT', '1983-03-28', '44.5', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('New England National Scenic Trail', 'NEEN', '2009-03-30', null, 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('North Country National Scenic Trail', 'NOCO', '1980-03-05', null, 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Potomac Heritage National Scenic Trail', 'POHE', '1983-03-28', '0.0', 'false', 'false');
 
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Appalachian National Scenic Trail'), 'CT');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Appalachian National Scenic Trail'), 'GA');
@@ -1504,17 +1504,17 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 
 
 --Other designations
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Catoctin Mountain Park', 'CATO', '1954-07-12', '23.8', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Constitution Gardens', 'COGA', '1986-09-17', '0.2', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Fort Washington Park', 'FOWA', '1930-05-29', '1.4', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Greenbelt Park', 'GREE', '1950-08-03', '4.8', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('National Capital Parks - East', 'NACE', '1970-07-16', '35.2', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('National Mall and Memorial Parks', 'NAMA', '1965-01-01', '0.6', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Piscataway Park', 'PISC', '1961-10-04', '18.7', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Prince William Forest Park', 'PRWI', '1948-06-22', '65.1', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Rock Creek Park', 'ROCR', '1980-09-27', '7.1', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('The White House and President''s Park', 'WHHO', '1961-09-22', '0.1', 'false');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping) VALUES ('Wolf Trap National Park for the Performing Arts', 'WOTR', '2002-08-21', '0.5', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Catoctin Mountain Park', 'CATO', '1954-07-12', '23.8', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Constitution Gardens', 'COGA', '1986-09-17', '0.2', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Fort Washington Park', 'FOWA', '1930-05-29', '1.4', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Greenbelt Park', 'GREE', '1950-08-03', '4.8', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('National Capital Parks - East', 'NACE', '1970-07-16', '35.2', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('National Mall and Memorial Parks', 'NAMA', '1965-01-01', '0.6', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Piscataway Park', 'PISC', '1961-10-04', '18.7', 'false', 'false');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Prince William Forest Park', 'PRWI', '1948-06-22', '65.1', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Rock Creek Park', 'ROCR', '1980-09-27', '7.1', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('The White House and President''s Park', 'WHHO', '1961-09-22', '0.1', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Wolf Trap National Park for the Performing Arts', 'WOTR', '2002-08-21', '0.5', 'false', 'true');
 
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Catoctin Mountain Park'), 'MD');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Constitution Gardens'), 'DC');

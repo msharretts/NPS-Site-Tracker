@@ -10,14 +10,16 @@ public class NpsSite {
     private LocalDate dateEstablished;
     private double areaInKm2;
     private boolean hasCamping;
+    private boolean hasJuniorRanger;
 
-    public void NpsSite(String siteName, String npsCallLetters, int siteId, LocalDate dateEstablished, double areaInKm2, boolean hasCamping) {
+    public void NpsSite(String siteName, String npsCallLetters, int siteId, LocalDate dateEstablished, double areaInKm2, boolean hasCamping, boolean hasJuniorRanger) {
         this.siteName = siteName;
         this.npsCallLetters = npsCallLetters;
         this.siteId = siteId;
         this.dateEstablished = dateEstablished;
         this.areaInKm2 = areaInKm2;
         this.hasCamping = hasCamping;
+        this.hasJuniorRanger = hasJuniorRanger;
     }
 
     public int getSiteId() {
@@ -33,6 +35,14 @@ public class NpsSite {
 
     public void setSiteName(String siteName) {
         this.siteName = siteName;
+    }
+
+    public String getNpsCallLetters() {
+        return npsCallLetters;
+    }
+
+    public void setNpsCallLetters(String npsCallLetters) {
+        this.npsCallLetters = npsCallLetters;
     }
 
     public LocalDate getDateEstablished() {
@@ -59,12 +69,11 @@ public class NpsSite {
         this.hasCamping = hasCamping;
     }
 
-    public String getNpsCallLetters() {
-        return npsCallLetters;
+    public boolean isHasJuniorRanger() {
+        return hasJuniorRanger;
     }
 
-    public void setNpsCallLetters(String npsCallLetters) {
-        this.npsCallLetters = npsCallLetters;
+    public void setHasJuniorRanger(boolean hasJuniorRanger) {
+        this.hasJuniorRanger = hasJuniorRanger;
     }
-
 }
