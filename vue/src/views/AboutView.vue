@@ -5,14 +5,18 @@
         </div>
 
     </div>
+
     <div class="container is-fluid">
-        <div class="box has-background-link-95">
+        <div class="box">
+            <h2 class="title is-4">A Bit About the National Park Service</h2>
+        </div>
+        <div class="box has-background-link-85">
             <h2 class="title is-4">How It Started</h2>
             <p class="block">In the summer of 2009, I was selected for a Junior Ranger Ambassador internship with the
                 National Park Service (NPS). I had never heard of the Junior Ranger program before then, but these
                 programs exist at hundreds of NPS sites. They allow kids to learn about a location by completing
                 activities, usually in a Junior Ranger booklet. When finished, kids are awarded a Junior Ranger badge
-                for the specific site they're visiting and are sworn in by a real ranger.</p>
+                for the specific site they're visiting and are sworn in by an NPS ranger.</p>
             <div id="image-bar" class="block is-flex is-justify-content-space-evenly">
                 <figure class="image is-128x128">
                     <img class="is-rounded" src="../assets/junior-ranger-pics/depojr.jpg" />

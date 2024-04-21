@@ -8,10 +8,10 @@
           <router-link @click="goToSearch" v-bind:to="{ name: 'home-view' }"><i class="fas fa-home"></i>&nbsp;Home</router-link>
         </li>
         <li>
-          <router-link v-bind:to="{ name: 'about-view' }"><i class="fas fa-info-circle"></i>&nbsp; About</router-link>
+          <router-link v-bind:to="{ name: 'oddities-view' }"><i class="fas fa-question-circle"></i>&nbsp; Oddities</router-link>
         </li>
         <li>
-          <router-link v-bind:to="{ name: 'oddities-view' }"><i class="fas fa-question-circle"></i>&nbsp; Oddities</router-link>
+          <router-link v-bind:to="{ name: 'about-view' }"><i class="fas fa-info-circle"></i>&nbsp; About</router-link>
         </li>
       </ul>
 
