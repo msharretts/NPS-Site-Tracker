@@ -61,9 +61,9 @@
                 <li>Add state locations to the detailed site view</li>
                 <li>Add designation(s) to detailed site view</li>
                 <li>Include pictures from an outside API to make the results page more attractive</li>
-                <li>Create user accounts so users can track sites they've visited and Jr Ranger programs they've completed
-                </li>
+                <li>Create user accounts so users can track sites they've visited and Jr Ranger programs they've completed</li>
                 <li>Allow users to attach reviews and/or pictures to sites they've visited</li>
+                <li>Adding fee information to the database</li>
             </ul>
         </div>
 

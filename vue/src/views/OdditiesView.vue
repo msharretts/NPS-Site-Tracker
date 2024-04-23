@@ -16,6 +16,93 @@
 
         </div>
         <div class="box">
+            <h2 class="title is-4">Sites with Multiple Locations</h2>
+            <p class="block">While it's not unusual to have an NPS site span more than one state, especially in the case of
+                National Scenic Trails, a few sites are notable for having multiple locations in noncontiguous
+                states.
+            </p>
+            <p class="block">The
+                <a href="https://www.nps.gov/mapr/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Manhattan Project
+                    National Historical Park</a>
+                is located in three cities:
+                <span class="has-text-weight-bold">Hanford, Washington; Los Alamos, New Mexico;</span>
+                and
+                <span class="has-text-weight-bold">Oak Ridge, Tennessee.</span>
+                All three sites share one webpage, as well as the <span class="has-text-weight-bold">MAPR</span>
+                call letters, but each site has its own Junior Ranger booklet.
+            </p>
+            <p class="block">The
+                <a href="https://www.nps.gov/klgo/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">
+                    Klondike Gold Rush National Historical Park,</a>
+                with the call letters <span class="has-text-weight-bold">KLGO,</span> is located in
+                <span class="has-text-weight-bold">Skagway, Alaska,</span> but also has a
+                <a href="https://www.nps.gov/klse/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Seattle Unit,</a>
+                which has it's own call letters, <span class="has-text-weight-bold">KLSE,</span> a separate webpage,
+                and its own Junior Ranger program.
+            </p>
+            <p class="block">The
+                <a href="https://www.nps.gov/till/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Emmett Till and Mamie Till-Mobley National Monument </a>
+                is located in
+                <span class="has-text-weight-bold">Sumner and Glendora, Mississippi,</span>
+                as well as
+                <span class="has-text-weight-bold">Chicago, Illinois.</span>
+                Both sites share a webpage and the call letters <span class="has-text-weight-bold">TILL.</span>
+            </p>
+        </div>
+        <div class="box">
+            <h2 class="title is-4">River Designations</h2>
+            <p class="block">Most NPS sites follow a straightforward naming practice of
+                <span class="has-text-weight-bold">'Name' + 'Designation'.</span>
+                There are two official river designations within the National Park Service. There are
+                <span class="has-text-weight-bold">National Rivers</span>
+                and
+                <span class="has-text-weight-bold">National Wild and Scenic Rivers.</span>
+                While a few rivers follow convention, many do not. Note that some leave off the
+                <span class="has-text-weight-bold">'National'</span>
+                as in the case of
+                <a href="https://www.nps.gov/obed/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Obed Wild and Scenic River</a>
+                or
+                <a href="https://www.nps.gov/rigr/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Rio Grande Wild and Scenic River.</a>
+                Others are even more varied; here are some examples:
+            </p>
+            <ul class="block oddities-list">
+                <li><a href="https://www.nps.gov/ozar/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Ozark National Scenic Riverways</a>
+                    is a <span class="has-text-weight-bold">National River</span></li>
+                <li><a href="https://www.nps.gov/alag/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Alagnak Wild River</a>
+                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span></li>
+                <li><a href="https://www.nps.gov/blue/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Bluestone National Scenic River</a>
+                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span></li>
+                <li><a href="https://www.nps.gov/mnrr/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Missouri National Recreational River</a>
+                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span></li>
+                <li><a href="https://www.nps.gov/sacn/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Saint Croix National Scenic Riverway</a>
+                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span></li>
+                <li><a href="https://www.nps.gov/greg/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Great Egg Harbor National Scenic and Recreational
+                        River</a>
+                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span>
+                </li>
+                <li><a href="https://www.nps.gov/upde/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Upper Delaware Scenic and Recreational River</a>
+                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span>
+                </li>
+            </ul>
+            <p class="block">As if that's not enough, there are some rivers that are named as rivers and recreation areas.
+                There are some recreation areas that are listed as rivers and recreation areas. Each of these only has one
+                actual designation though, as opposed to some other NPS sites, which have multiple designations.
+            </p>
+        </div>
+        <div class="box">
             <h2 class="title is-4">Call Letter Oddities</h2>
             <p class="block">Every NPS site has a unique set of call letters. These four letters typically come
                 from the first four letters of sites with a one word name, or the first two letters of the first
@@ -33,12 +120,13 @@
                 <span class="has-text-weight-bold">Jefferson National Expansion Memorial.</span>
             </p>
             <p class="block"><a href="https://www.nps.gov/tule/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Tule Lake National Monument</a> 
+                    class="title is-5 has-text-success-5-invert">Tule Lake National Monument</a>
                 and
                 <a href="https://www.nps.gov/tusk/index.htm" :target="'_blank'"
                     class="title is-5 has-text-success-5-invert">Tule Springs Fossil Beds National Monument</a>
                 would presumably have the call letters <span class="has-text-weight-bold">TULA</span>
-                and <span class="has-text-weight-bold">TUSP</span> but instead use <span class="has-text-weight-bold">TULE</span> 
+                and <span class="has-text-weight-bold">TUSP</span> but instead use <span
+                    class="has-text-weight-bold">TULE</span>
                 and the humorous call letters <span class="has-text-weight-bold">TUSK.</span>
             </p>
             <p class="block">Other sites don't follow convention in order to prevent unfortunate call letter instances. For
@@ -92,55 +180,7 @@
             <h2 class="title is-4">December 2, 1980</h2>
         </div>
 
-        <div class="box">
-            <h2 class="title is-4">River Designations</h2>
-            <p class="block">Most NPS sites follow a straightforward naming practice of
-                <span class="has-text-weight-bold">'Name' + 'Designation'.</span>
-                There are two official river designations within the National Park Service. There are
-                <span class="has-text-weight-bold">National Rivers</span>
-                and
-                <span class="has-text-weight-bold">National Wild and Scenic Rivers.</span>
-                While a few rivers follow convention, many do not. Note that some leave off the
-                <span class="has-text-weight-bold">'National'</span>
-                as in the case of
-                <a href="https://www.nps.gov/obed/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Obed Wild and Scenic River</a>
-                or
-                <a href="https://www.nps.gov/rigr/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Rio Grande Wild and Scenic River.</a>
-                Others are even more varied; here are some examples:
-            </p>
-            <ul class="block oddities-list">
-                <li><a href="https://www.nps.gov/ozar/index.htm" :target="'_blank'"
-                        class="title is-5 has-text-success-5-invert">Ozark National Scenic Riverways</a>
-                    is a <span class="has-text-weight-bold">National River</span></li>
-                <li><a href="https://www.nps.gov/alag/index.htm" :target="'_blank'"
-                        class="title is-5 has-text-success-5-invert">Alagnak Wild River</a>
-                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span></li>
-                <li><a href="https://www.nps.gov/blue/index.htm" :target="'_blank'"
-                        class="title is-5 has-text-success-5-invert">Bluestone National Scenic River</a>
-                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span></li>
-                <li><a href="https://www.nps.gov/mnrr/index.htm" :target="'_blank'"
-                        class="title is-5 has-text-success-5-invert">Missouri National Recreational River</a>
-                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span></li>
-                <li><a href="https://www.nps.gov/sacn/index.htm" :target="'_blank'"
-                        class="title is-5 has-text-success-5-invert">Saint Croix National Scenic Riverway</a>
-                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span></li>
-                <li><a href="https://www.nps.gov/greg/index.htm" :target="'_blank'"
-                        class="title is-5 has-text-success-5-invert">Great Egg Harbor National Scenic and Recreational
-                        River</a>
-                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span>
-                </li>
-                <li><a href="https://www.nps.gov/upde/index.htm" :target="'_blank'"
-                        class="title is-5 has-text-success-5-invert">Upper Delaware Scenic and Recreational River</a>
-                    is a <span class="has-text-weight-bold">National Wild and Scenic River</span>
-                </li>
-            </ul>
-            <p class="block">As if that's not enough, there are some rivers that are named as rivers and recreation areas.
-                There are some recreation areas that are listed as rivers and recreation areas. Each of these only has one
-                actual designation though, as opposed to some other NPS sites, which have multiple designations.
-            </p>
-        </div>
+
         <div class="box">
             <h2 class="title is-4">Other Designation Oddities</h2>
             <p>Washington Monument</p>
@@ -151,44 +191,7 @@
             <p>National Mall sites</p>
             <p>sites not listed as having junior ranger programs that do</p>
         </div>
-        <div class="box">
-            <h2 class="title is-4">Sites with Multiple Locations</h2>
-            <p class="block">While it's not unusual to have an NPS site span more than one state, especially in the case of
-                National Scenic Trails, a couple of sites are notable for having multiple locations in noncontiguous
-                states.
-            </p>
-            <p class="block">The
-                <a href="https://www.nps.gov/mapr/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Manhattan Project
-                    National Historical Park</a>
-                is located in three cities:
-                <span class="has-text-weight-bold">Hanford, Washington; Los Alamos, New Mexico;</span>
-                and
-                <span class="has-text-weight-bold">Oak Ridge, Tennessee.</span>
-                All three sites share one webpage, as well as the <span class="has-text-weight-bold">MAPR</span>
-                call letters, but each site has its own Junior Ranger booklet.
-            </p>
-            <p class="block">The
-                <a href="https://www.nps.gov/klgo/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">
-                    Klondike Gold Rush National Historical Park,</a>
-                with the call letters <span class="has-text-weight-bold">KLGO,</span> is located in
-                <span class="has-text-weight-bold">Skagway, Alaska,</span> but also has a
-                <a href="https://www.nps.gov/klse/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Seattle Unit,</a>
-                which has it's own call letters, <span class="has-text-weight-bold">KLSE,</span> a separate webpage,
-                and its own Junior Ranger program.
-            </p>
-            <p class="block">The
-                <a href="https://www.nps.gov/till/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Emmett Till and Mamie Till-Mobley National Monument </a>
-                is located in
-                <span class="has-text-weight-bold">Sumner and Glendora, Mississippi,</span>
-                as well as
-                <span class="has-text-weight-bold">Chicago, Illinois.</span>
-                Both sites share a webpage and the call letters <span class="has-text-weight-bold">TILL.</span>
-            </p>
-        </div>
+
         <div class="box">
             <h2 class="title is-4">Sites not included as NPS sites</h2>
             <p>hiking trails</p>
