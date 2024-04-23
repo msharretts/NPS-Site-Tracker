@@ -11,46 +11,103 @@
             <h2 class="title is-4">How Many NPS Sites Are There?</h2>
             <p class="block">The easy answer to this question is <span class="has-text-weight-bold">429,</span> which
                 is the number listed on the National Park Service website. The more you dig into this though, the
-                more confusing it becomes.
+                more confusing it becomes. You may notice that if you hit search on the home page, without selecting
+                any search criteria, <span class="has-text-weight-bold">420</span> sites will be returned. This is
+                because there are nine parks and monuments that have two designations.
             </p>
-
+            <ul class="block oddities-list">
+                <li>
+                    <a href="https://www.nps.gov/gaar/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert"> Gates of the Arctic National Park and Preserve</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/dena/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Denali National Park and Preserve</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/wrst/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert"> Wrangell-St. Elias National Park and Preserve</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/lacl/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Lake Clark National Park and Preserve</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/katm/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Katmai National Park and Preserve</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/ania/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Aniakchak National Monument and Preserve</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/glba/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Glacier Bay National Park and Preserve</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/crmo/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Craters of the Moon National Monument and Preserve</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/grsa/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Great Sand Dunes National Park and Preserve</a>
+                </li>
+            </ul>
+            <p class="block">These sites are all listed as either a <span class="has-text-weight-bold">National Park</span> 
+                or a <span class="has-text-weight-bold">National Monument</span> while also being a 
+                <span class="has-text-weight-bold">National Preserve.</span> While technically, these are two seperate
+                'sites', according to NPS. Each site listed above has only one web page and is administered 
+                as a single unit, rather than two separate units.
+            </p>
+            <p class="block"></p>
         </div>
         <div class="box">
-            <h2 class="title is-4">Sites with Multiple Locations</h2>
-            <p class="block">While it's not unusual to have an NPS site span more than one state, especially in the case of
-                National Scenic Trails, a few sites are notable for having multiple locations in noncontiguous
-                states.
-            </p>
+            <h2 class="title is-4">Designation Oddities</h2>
             <p class="block">The
-                <a href="https://www.nps.gov/mapr/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Manhattan Project
-                    National Historical Park</a>
-                is located in three cities:
-                <span class="has-text-weight-bold">Hanford, Washington; Los Alamos, New Mexico;</span>
-                and
-                <span class="has-text-weight-bold">Oak Ridge, Tennessee.</span>
-                All three sites share one webpage, as well as the <span class="has-text-weight-bold">MAPR</span>
-                call letters, but each site has its own Junior Ranger booklet.
+                <a href="https://www.nps.gov/wamo/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Washington Monument</a>
+                in addition to being a <span class="has-text-weight-bold">National Memorial</span> rather than a
+                <span class="has-text-weight-bold">National Monument</span> is one of only a handful of sites not
+                following the naming convention of listing the type of site as part of the name. To be fair,
+                <span class="has-text-weight-bold">Washington Monument National Memorial</span> would be a mouthful.
             </p>
-            <p class="block">The
-                <a href="https://www.nps.gov/klgo/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">
-                    Klondike Gold Rush National Historical Park,</a>
-                with the call letters <span class="has-text-weight-bold">KLGO,</span> is located in
-                <span class="has-text-weight-bold">Skagway, Alaska,</span> but also has a
-                <a href="https://www.nps.gov/klse/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Seattle Unit,</a>
-                which has it's own call letters, <span class="has-text-weight-bold">KLSE,</span> a separate webpage,
-                and its own Junior Ranger program.
+            <p class="block">There are 16 NPS sites that fall into three battlefield categories:
+                <span class="has-text-weight-bold">National Battlefield, National Battlefield Site,</span> and
+                <span class="has-text-weight-bold">National Battlefield Park.</span> One further site with
+                'Battlefield' in the name is classified as a <span class="has-text-weight-bold">Military Park,</span>
+                which seems reasonable. However, there are also four sites with 'Battlefield' in the name that are
+                not designated as National Battlefields. They are:
             </p>
+            <ul class="block oddities-list">
+                <li>
+                    <a href="https://www.nps.gov/waba/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Washita Battlefield National Historic Site</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/paal/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Palo Alto Battlefield National Historical Park</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/libi/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Little Bighorn Battlefield National Monument*</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/waba/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Mill Springs Battlefield National Monument*</a>
+                </li>
+            </ul>
             <p class="block">The
-                <a href="https://www.nps.gov/till/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Emmett Till and Mamie Till-Mobley National Monument </a>
-                is located in
-                <span class="has-text-weight-bold">Sumner and Glendora, Mississippi,</span>
-                as well as
-                <span class="has-text-weight-bold">Chicago, Illinois.</span>
-                Both sites share a webpage and the call letters <span class="has-text-weight-bold">TILL.</span>
+                <a href="https://www.nps.gov/biso/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Big South Fork National River and Recreation Area</a>
+                and the
+                <a href="https://www.nps.gov/miss/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Mississippi National River and Recreation Areas</a>
+                are both only listed as <span class="has-text-weight-bold">National Rivers</span> and not as
+                <span class="has-text-weight-bold">National Recreation Areas.</span> On the other hand, the
+                <a href="https://www.nps.gov/chat/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Chattahoochee River National Recreation Area</a>
+                is the opposite, being listed as a <span class="has-text-weight-bold">National Recreation Area</span>
+                but not a <span class="has-text-weight-bold">National River.</span>
             </p>
         </div>
         <div class="box">
@@ -100,6 +157,44 @@
             <p class="block">As if that's not enough, there are some rivers that are named as rivers and recreation areas.
                 There are some recreation areas that are listed as rivers and recreation areas. Each of these only has one
                 actual designation though, as opposed to some other NPS sites, which have multiple designations.
+            </p>
+        </div>
+        <div class="box">
+            <h2 class="title is-4">Sites with Multiple Locations</h2>
+            <p class="block">While it's not unusual to have an NPS site span more than one state, especially in the case of
+                National Scenic Trails, a few sites are notable for having multiple locations in noncontiguous
+                states.
+            </p>
+            <p class="block">The
+                <a href="https://www.nps.gov/mapr/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Manhattan Project
+                    National Historical Park</a>
+                is located in three cities:
+                <span class="has-text-weight-bold">Hanford, Washington; Los Alamos, New Mexico;</span>
+                and
+                <span class="has-text-weight-bold">Oak Ridge, Tennessee.</span>
+                All three sites share one webpage, as well as the <span class="has-text-weight-bold">MAPR</span>
+                call letters, but each site has its own Junior Ranger booklet.
+            </p>
+            <p class="block">The
+                <a href="https://www.nps.gov/klgo/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">
+                    Klondike Gold Rush National Historical Park,</a>
+                with the call letters <span class="has-text-weight-bold">KLGO,</span> is located in
+                <span class="has-text-weight-bold">Skagway, Alaska,</span> but also has a
+                <a href="https://www.nps.gov/klse/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Seattle Unit,</a>
+                which has it's own call letters, <span class="has-text-weight-bold">KLSE,</span> a separate webpage,
+                and its own Junior Ranger program.
+            </p>
+            <p class="block">The
+                <a href="https://www.nps.gov/till/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Emmett Till and Mamie Till-Mobley National Monument </a>
+                is located in
+                <span class="has-text-weight-bold">Sumner and Glendora, Mississippi,</span>
+                as well as
+                <span class="has-text-weight-bold">Chicago, Illinois.</span>
+                Both sites share a webpage and the call letters <span class="has-text-weight-bold">TILL.</span>
             </p>
         </div>
         <div class="box">
@@ -178,13 +273,6 @@
 
         <div class="box">
             <h2 class="title is-4">December 2, 1980</h2>
-        </div>
-
-
-        <div class="box">
-            <h2 class="title is-4">Other Designation Oddities</h2>
-            <p>Washington Monument</p>
-            <p>Names not following naming conventions</p>
         </div>
         <div class="box">
             <h2 class="title is-4">Junior Ranger Inconsistencies</h2>
