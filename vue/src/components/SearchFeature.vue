@@ -205,14 +205,14 @@ export default {
         },
 
         checkHasCamping() {
-            if (this.hasCamping) {
+            if (this.hasCamping == true) {
                 this.$store.commit('SET_HAS_CAMPING_PREFERENCE', this.hasCamping);
                 this.sites = this.sites.filter(site => site.hasCamping == true);
             }
         },
 
         checkHasJuniorRanger() {
-            if (this.hasJuniorRanger) {
+            if (this.hasJuniorRanger == true) {
                 this.$store.commit('SET_HAS_JUNIOR_RANGER_PREFERENCE', this.hasJuniorRanger);
                 this.sites = this.sites.filter(site => site.hasJuniorRanger == true);
             }

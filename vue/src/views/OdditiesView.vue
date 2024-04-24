@@ -1,14 +1,33 @@
 <template>
     <div id="oddities-page" class="block">
-        <div class="block">
-            <h1 class="title is-1">Oddities & Inconsistencies</h1>
+        <div id="oddities-title-div" class="block">
+            <figure id="park-geek-figure" class="image is-96x96">
+                <img class="is-rounded" src="../assets/junior-ranger-pics/park-geek.jpg" />
+            </figure>
+            <div id="oddities-h1-div" class="block">
+                <h1 class="title is-1">Oddities & Inconsistencies</h1>
+            </div>
+
         </div>
         <p class="block">Working on this project, I came across so many oddities and inconsistencies. Some of those
             are cataloged here for anyone interested.</p>
     </div>
+
+
     <div class="container is-fluid">
-        <div class="box">
-            <h2 class="title is-4">How Many NPS Sites Are There?</h2>
+        <div v-if="boxOneCollapsed" id="oddities-box-1-collapsed" class="box">
+            <div id="box-1-title-c" class="box-title">
+                <h2 class="title is-4">How Many NPS Sites Are There?</h2>
+                <h4 @click="changeCollapsed(1)" class="title is-6">EXPAND</h4>
+            </div>
+        </div>
+
+        <div v-else id="oddities-box-1-expanded" class="box">
+            <div id="box-1-title-e" class="box-title">
+                <h2 class="title is-4">How Many NPS Sites Are There?</h2>
+                <h4 @click="changeCollapsed(1)" class="title is-6">COLLAPSE</h4>
+            </div>
+
             <p class="block">The easy answer to this question is <span class="has-text-weight-bold">429,</span> which
                 is the number listed on the National Park Service website. The more you dig into this though, the
                 more confusing it becomes. You may notice that if you hit search on the home page, without selecting
@@ -18,51 +37,65 @@
             <ul class="block oddities-list">
                 <li>
                     <a href="https://www.nps.gov/gaar/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert"> Gates of the Arctic National Park and Preserve</a>
+                        class="title is-5 has-text-success-5-invert"> Gates of the Arctic National Park and Preserve</a>
                 </li>
                 <li>
                     <a href="https://www.nps.gov/dena/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Denali National Park and Preserve</a>
+                        class="title is-5 has-text-success-5-invert">Denali National Park and Preserve</a>
                 </li>
                 <li>
                     <a href="https://www.nps.gov/wrst/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert"> Wrangell-St. Elias National Park and Preserve</a>
+                        class="title is-5 has-text-success-5-invert"> Wrangell-St. Elias National Park and Preserve</a>
                 </li>
                 <li>
                     <a href="https://www.nps.gov/lacl/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Lake Clark National Park and Preserve</a>
+                        class="title is-5 has-text-success-5-invert">Lake Clark National Park and Preserve</a>
                 </li>
                 <li>
                     <a href="https://www.nps.gov/katm/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Katmai National Park and Preserve</a>
+                        class="title is-5 has-text-success-5-invert">Katmai National Park and Preserve</a>
                 </li>
                 <li>
                     <a href="https://www.nps.gov/ania/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Aniakchak National Monument and Preserve</a>
+                        class="title is-5 has-text-success-5-invert">Aniakchak National Monument and Preserve</a>
                 </li>
                 <li>
                     <a href="https://www.nps.gov/glba/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Glacier Bay National Park and Preserve</a>
+                        class="title is-5 has-text-success-5-invert">Glacier Bay National Park and Preserve</a>
                 </li>
                 <li>
                     <a href="https://www.nps.gov/crmo/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Craters of the Moon National Monument and Preserve</a>
+                        class="title is-5 has-text-success-5-invert">Craters of the Moon National Monument and Preserve</a>
                 </li>
                 <li>
                     <a href="https://www.nps.gov/grsa/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Great Sand Dunes National Park and Preserve</a>
+                        class="title is-5 has-text-success-5-invert">Great Sand Dunes National Park and Preserve</a>
                 </li>
             </ul>
-            <p class="block">These sites are all listed as either a <span class="has-text-weight-bold">National Park</span> 
-                or a <span class="has-text-weight-bold">National Monument</span> while also being a 
-                <span class="has-text-weight-bold">National Preserve.</span> While technically, these are two seperate
-                'sites', according to NPS. Each site listed above has only one web page and is administered 
+            <p class="block">These sites are all listed as either a <span class="has-text-weight-bold">National Park</span>
+                or a <span class="has-text-weight-bold">National Monument</span> while also being a
+                <span class="has-text-weight-bold">National Preserve.</span> While technically, these are two separate
+                'sites', according to NPS, each site listed above has only one web page and is administered
                 as a single unit, rather than two separate units.
             </p>
-            <p class="block"></p>
+            <p class="block">Additionally, the National Park Service web site lists
+                <span class="has-text-weight-bold">175 'Related Areas'</span> that are not official NPS sites, but
+                that have some NPS involvement. Many of these sites have their own NPS web pages.
+            </p>
         </div>
-        <div class="box">
-            <h2 class="title is-4">Designation Oddities</h2>
+
+        <div v-if="boxTwoCollapsed" id="oddities-box-2-collapsed" class="box">
+            <div id="box-2-title-c" class="box-title">
+                <h2 class="title is-4">Designation Oddities</h2>
+                <h4 @click="changeCollapsed(2)" class="title is-6">EXPAND</h4>
+            </div>
+        </div>
+
+        <div v-else id="oddities-box-2-expanded" class="box">
+            <div id="box-2-title-e" class="box-title">
+                <h2 class="title is-4">Designation Oddities</h2>
+                <h4 @click="changeCollapsed(2)" class="title is-6">COLLAPSE</h4>
+            </div>
             <p class="block">The
                 <a href="https://www.nps.gov/wamo/index.htm" :target="'_blank'"
                     class="title is-5 has-text-success-5-invert">Washington Monument</a>
@@ -96,29 +129,34 @@
                         class="title is-5 has-text-success-5-invert">Mill Springs Battlefield National Monument*</a>
                 </li>
             </ul>
-            <p class="block">The
-                <a href="https://www.nps.gov/biso/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Big South Fork National River and Recreation Area</a>
-                and the
-                <a href="https://www.nps.gov/miss/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Mississippi National River and Recreation Areas</a>
-                are both only listed as <span class="has-text-weight-bold">National Rivers</span> and not as
-                <span class="has-text-weight-bold">National Recreation Areas.</span> On the other hand, the
-                <a href="https://www.nps.gov/chat/index.htm" :target="'_blank'"
-                    class="title is-5 has-text-success-5-invert">Chattahoochee River National Recreation Area</a>
-                is the opposite, being listed as a <span class="has-text-weight-bold">National Recreation Area</span>
-                but not a <span class="has-text-weight-bold">National River.</span>
+            <p class="block">
+                <span class="title is-5 has-text-success-5-invert">*</span> There is a likely explanation for why 
+                these are National Monuments. Monuments can be created with only a Presidential signature, while other 
+                types of sites require Congressional approval. It's much easier to establish a National 
+                Monument, therefore, several NPS sites began as Monuments and were later redesignated, 
             </p>
         </div>
-        <div class="box">
-            <h2 class="title is-4">River Designations</h2>
+
+
+        <div v-if="boxThreeCollapsed" id="oddities-box-3-collapsed" class="box">
+            <div id="box-3-title-c" class="box-title">
+                <h2 class="title is-4">River Designations</h2>
+                <h4 @click="changeCollapsed(3)" class="title is-6">EXPAND</h4>
+            </div>
+        </div>
+
+        <div v-else id="oddities-box-3-expanded" class="box">
+            <div id="box-3-title-e" class="box-title">
+                <h2 class="title is-4">River Designations</h2>
+                <h4 @click="changeCollapsed(3)" class="title is-6">COLLAPSE</h4>
+            </div>
             <p class="block">Most NPS sites follow a straightforward naming practice of
                 <span class="has-text-weight-bold">'Name' + 'Designation'.</span>
                 There are two official river designations within the National Park Service. There are
                 <span class="has-text-weight-bold">National Rivers</span>
                 and
                 <span class="has-text-weight-bold">National Wild and Scenic Rivers.</span>
-                While a few rivers follow convention, many do not. Note that some leave off the
+                While a few rivers follow naming convention, many do not. Note that some leave off the
                 <span class="has-text-weight-bold">'National'</span>
                 as in the case of
                 <a href="https://www.nps.gov/obed/index.htm" :target="'_blank'"
@@ -154,13 +192,33 @@
                     is a <span class="has-text-weight-bold">National Wild and Scenic River</span>
                 </li>
             </ul>
-            <p class="block">As if that's not enough, there are some rivers that are named as rivers and recreation areas.
-                There are some recreation areas that are listed as rivers and recreation areas. Each of these only has one
-                actual designation though, as opposed to some other NPS sites, which have multiple designations.
+            <p class="block">Also, the
+                <a href="https://www.nps.gov/biso/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Big South Fork National River and Recreation Area</a>
+                and the
+                <a href="https://www.nps.gov/miss/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Mississippi National River and Recreation Areas</a>
+                are both only listed as <span class="has-text-weight-bold">National Rivers</span> and not as
+                <span class="has-text-weight-bold">National Recreation Areas.</span> On the other hand, the
+                <a href="https://www.nps.gov/chat/index.htm" :target="'_blank'"
+                    class="title is-5 has-text-success-5-invert">Chattahoochee River National Recreation Area</a>
+                is the opposite, being listed as a <span class="has-text-weight-bold">National Recreation Area</span>
+                but not a <span class="has-text-weight-bold">National River.</span>
             </p>
         </div>
-        <div class="box">
-            <h2 class="title is-4">Sites with Multiple Locations</h2>
+
+        <div v-if="boxFourCollapsed" id="oddities-box-4-collapsed" class="box">
+            <div id="box-4-title-c" class="box-title">
+                <h2 class="title is-4">Sites with Multiple Locations</h2>
+                <h4 @click="changeCollapsed(4)" class="title is-6">EXPAND</h4>
+            </div>
+        </div>
+
+        <div v-else id="oddities-box-4-expanded" class="box">
+            <div id="box-4-title-e" class="box-title">
+                <h2 class="title is-4">Sites with Multiple Locations</h2>
+                <h4 @click="changeCollapsed(4)" class="title is-6">COLLAPSE</h4>
+            </div>
             <p class="block">While it's not unusual to have an NPS site span more than one state, especially in the case of
                 National Scenic Trails, a few sites are notable for having multiple locations in noncontiguous
                 states.
@@ -197,8 +255,19 @@
                 Both sites share a webpage and the call letters <span class="has-text-weight-bold">TILL.</span>
             </p>
         </div>
-        <div class="box">
-            <h2 class="title is-4">Call Letter Oddities</h2>
+
+        <div v-if="boxFiveCollapsed" id="oddities-box-5-collapsed" class="box">
+            <div id="box-5-title-c" class="box-title">
+                <h2 class="title is-4">Call Letter Oddities</h2>
+                <h4 @click="changeCollapsed(5)" class="title is-6">EXPAND</h4>
+            </div>
+        </div>
+
+        <div v-else id="oddities-box-5-expanded" class="box">
+            <div id="box-5-title-e" class="box-title">
+                <h2 class="title is-4">Call Letter Oddities</h2>
+                <h4 @click="changeCollapsed(5)" class="title is-6">COLLAPSE</h4>
+            </div>
             <p class="block">Every NPS site has a unique set of call letters. These four letters typically come
                 from the first four letters of sites with a one word name, or the first two letters of the first
                 word and the first two letters of the second word of a multi-word park name.
@@ -270,26 +339,40 @@
 
             </ul>
         </div>
-
-        <div class="box">
-            <h2 class="title is-4">December 2, 1980</h2>
-        </div>
-        <div class="box">
-            <h2 class="title is-4">Junior Ranger Inconsistencies</h2>
-            <p>National Mall sites</p>
-            <p>sites not listed as having junior ranger programs that do</p>
-        </div>
-
-        <div class="box">
-            <h2 class="title is-4">Sites not included as NPS sites</h2>
-            <p>hiking trails</p>
-            <p>websites</p>
-        </div>
     </div>
 </template>
 
 <script>
 
+export default {
+
+    data() {
+        return {
+            boxOneCollapsed: true,
+            boxTwoCollapsed: true,
+            boxThreeCollapsed: true,
+            boxFourCollapsed: true,
+            boxFiveCollapsed: true,
+
+        }
+    },
+
+    methods: {
+        changeCollapsed(boxNum) {
+            if (boxNum == 1) {
+                this.boxOneCollapsed = !this.boxOneCollapsed;
+            } else if (boxNum == 2) {
+                this.boxTwoCollapsed = !this.boxTwoCollapsed;
+            } else if (boxNum == 3) {
+                this.boxThreeCollapsed = !this.boxThreeCollapsed;
+            } else if (boxNum == 4) {
+                this.boxFourCollapsed = !this.boxFourCollapsed;
+            } else if (boxNum == 5) {
+                this.boxFiveCollapsed = !this.boxFiveCollapsed;
+            }
+        }
+    }
+}
 
 </script>
 
@@ -300,6 +383,29 @@
     align-items: center;
 }
 
+#oddities-title-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+}
+
+#oddities-h1-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+}
+
+#park-geek-figure {
+    margin-right: 2rem;
+}
+
+.box-title {
+    display: flex;
+    justify-content: space-between;
+}
+
 .oddities-list {
     list-style-type: disc;
     list-style-position: outside;
@@ -308,6 +414,5 @@
 
 li {
     line-height: 2rem;
-    ;
 }
 </style>

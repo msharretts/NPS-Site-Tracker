@@ -7,10 +7,8 @@
     </div>
 
     <div class="container is-fluid">
+
         <div class="box">
-            <h2 class="title is-4">A Bit About the National Park Service</h2>
-        </div>
-        <div class="box has-background-link-85">
             <h2 class="title is-4">How It Started</h2>
             <p class="block">In the summer of 2009, I was selected for a Junior Ranger Ambassador internship with the
                 National Park Service (NPS). I had never heard of the Junior Ranger program before then, but these
@@ -47,28 +45,62 @@
                 participating, and it's a great way to learn about a site.)
             </p>
         </div>
-        <div class="box">
-            <h2 class="title is-4">Making the Database</h2>
-        </div>
 
         <div class="box">
             <h2 class="title is-4">Future Plans</h2>
             <p class="block">There is a lot I'd still like to do with this project. Ideas for the future include:</p>
-            <ul id="future-features">
-                <li>Searching by Site Name</li>
-                <li>Searching by Date Established</li>
-                <li>Searching by Area</li>
-                <li>Add state locations to the detailed site view</li>
-                <li>Add designation(s) to detailed site view</li>
+            <ul id="future-features" class="about-list">
+                <li>Searching by <span class="has-text-weight-bold">site name</span></li>
+                <li>Searching by <span class="has-text-weight-bold">date established</span></li>
+                <li>Searching by <span class="has-text-weight-bold">area</span></li>
+                <li>Add <span class="has-text-weight-bold">state locations</span> to the detailed site view</li>
+                <li>Add <span class="has-text-weight-bold">designation(s)</span> to detailed site view</li>
                 <li>Include pictures from an outside API to make the results page more attractive</li>
-                <li>Create user accounts so users can track sites they've visited and Jr Ranger programs they've completed</li>
-                <li>Allow users to attach reviews and/or pictures to sites they've visited</li>
-                <li>Adding fee information to the database</li>
+                <li>Create <span class="has-text-weight-bold">user accounts</span> so users can <span
+                        class="has-text-weight-bold">track sites</span> they've visited and Jr Ranger programs they've
+                    completed</li>
+                <li>Allow users to attach <span class="has-text-weight-bold">reviews and/or pictures</span> to sites they've
+                    visited</li>
+                <li>Adding <span class="has-text-weight-bold">fee information</span> to the database</li>
             </ul>
         </div>
 
         <div class="box">
             <h2 class="title is-4">Credit & Thanks</h2>
+            <p class="block"> Much of my initial data came from Wikipedia. Individual pages are listed in the
+                README file.</p>
+
+            <p class="block">Information that was not available on Wikipedia was gathered from countless National 
+                Park Service resources. Those include: 
+            </p>
+            <ul class="block about-list">
+                <li>
+                    <a href="https://www.nps.gov/subjects/camping/campground.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Campground Information</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/aboutus/national-park-system.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Designation Information & State Locations</a>
+                </li>
+                <li>
+                    <a href="https://www.nps.gov/kids/parks-with-junior-ranger-programs.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">Junior Ranger Programs</a>
+                </li>
+                <li>
+                    <span class="has-text-weight-bold">Date Established</span> when not on Wikipedia 
+                        was taken from many dozen <a href="http://npshistory.com/index.htm" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">NPS Archive</a> pages   
+                </li>
+                <li>
+                    <span class="has-text-weight-bold">Area</span> not available on Wikipedia was found 
+                    <a href="https://web.archive.org/web/20210113132417/https://www.nps.gov/subjects/lwcf/upload/NPS-Acreage-12-31-2020.pdf" :target="'_blank'"
+                        class="title is-5 has-text-success-5-invert">here</a>
+                </li>
+            </ul>
+            <p class="block">Thanks to <span class="has-text-weight-bold">Walt Impellicceiri</span> and 
+                <span class="has-text-weight-bold">Tom Anderson</span> for always being available when I had 
+                questions or needed help. Thanks also to <span class="has-text-weight-bold">Andie Fullmer</span> 
+                for listening to the ongoing saga of creating this database and for offering feedback.</p>         
             <div id="image-bar-2" class="block is-flex is-justify-content-space-evenly">
                 <figure class="image is-128x128">
                     <img class="is-rounded" src="../assets/junior-ranger-pics/monojr.jpg" />
@@ -108,9 +140,9 @@
     align-items: center;
 }
 
-#future-features {
+.about-list {
     list-style-type: disc;
     list-style-position: outside;
-    padding-left: 1rem;
+    padding-left: 3rem;
 }
 </style>
