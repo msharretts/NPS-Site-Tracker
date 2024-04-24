@@ -4,12 +4,19 @@
 **What started out as practice creating a database quickly got away from me.**
 This repository contains a PostgreSQL database script that includes information on over 400 National Park Service sites. The database is normalized to best capture comprehensive data on each park's name, site type, state location, date established, size, and other relevant information. The repository also includes a Java program for searching and querying the database, as well as files for frontend using Vue.js, HTML, and CSS. 
 
-<img width="714" alt="screenshot-search-feature" src="https://github.com/msharretts/NPS-Site-Tracker/assets/155783310/5e11382a-c7f3-408d-a2b3-bcf8850dd494">
+![Screenshot 2024-04-23 230324](https://github.com/msharretts/NPS-Site-Tracker/assets/155783310/b94d92e0-2509-4261-ad34-bc6091ff4838)
+
 
 ## Features
 - **Database Schema**: The PostgreSQL database script defines a well-structured schema to store information about National Park Service sites, ensuring efficient data storage and retrieval.
 - **Comprehensive Data**: The database includes detailed information on each site, such as its name, site type (e.g., National Park, National Monument, National Historic Site), state location, date established, size (in square kilometers), whether camping is offered there, and whether the site offers a Junior Ranger program. This information was gathered using Wikipedia, cross-referenced with the National Park Service website as well as the National Park Service archives website.
 - **Frontend Interface - Search Functionality**: The Vue.js frontend, along with an accompanying Java program, offers search functionality for the database. Users have the ability to search for parks based on various criteria, such as site designation ('National Park', 'National Monument', etc.) state location, camping and Junior Ranger program availibility.
+- **Oddities**: 
+![Screenshot 2024-04-23 234352](https://github.com/msharretts/NPS-Site-Tracker/assets/155783310/f7f45c71-7a6d-40fa-b92a-aaab0b988376)
+
+
+![Screenshot 2024-04-23 230146](https://github.com/msharretts/NPS-Site-Tracker/assets/155783310/25abaeee-e25b-4d80-93c8-6c1369151bf2)
+
 
 ## Technology Used
 - **Backend Development**:
