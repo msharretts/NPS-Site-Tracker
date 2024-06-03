@@ -20,5 +20,5 @@ public interface NpsSiteDao {
 
     List<NpsSite> getSitesByHasCamping();
 
-
+    List<NpsSite> getSitesByPartialName(String searchTerm);
 }

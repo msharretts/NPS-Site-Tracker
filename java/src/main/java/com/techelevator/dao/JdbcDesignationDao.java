@@ -20,6 +20,8 @@ public class JdbcDesignationDao implements DesignationDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
+    // Method to populate the designation drop down menu in search feature for front end
     @Override
     public List<Designation> getDesignations() {
         List<Designation> listOfDesignations = new ArrayList<>();
@@ -41,10 +43,14 @@ public class JdbcDesignationDao implements DesignationDao{
         return null;
     }
 
+    //Implemented this filtering on the front end
+
     @Override
     public List<Designation> getDesignationsByState() {
         return null;
     }
+
+    // Implemented this filtering on the front end
 
     private Designation mapRowToDesignation(SqlRowSet rowSet) {
         Designation designation = new Designation();

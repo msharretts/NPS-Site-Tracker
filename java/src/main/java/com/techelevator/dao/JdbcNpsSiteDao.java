@@ -132,6 +132,15 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
         return null;
     }
 
+    // Didn't implement this because after creating a site list, the front end can filter based on camping preference
+
+    @Override
+    public List<NpsSite> getSitesByPartialName(String searchTerm) {
+        return null;
+
+        // TODO : Implement this when ready to add functionality for searching for a specific site
+    }
+
 
     private NpsSite mapRowToSite(SqlRowSet results) {
         NpsSite npsSite = new NpsSite();

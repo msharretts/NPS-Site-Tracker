@@ -19,6 +19,8 @@ public class JdbcUsaStateDao implements UsaStateDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
+    // Method to populate the state drop down menu in search feature for front end
     @Override
     public List<UsaState> getListOfStates() {
         List<UsaState> listOfStates = new ArrayList<>();
@@ -33,14 +35,8 @@ public class JdbcUsaStateDao implements UsaStateDao {
             throw new DaoException("Unable to connect to server or database.", e);
         }
         return listOfStates;
-
-
     }
 
-    @Override
-    public UsaState getStateByAbbreviation(String stateAbbreviation) {
-        return null;
-    }
 
     private UsaState mapRowToState(SqlRowSet rowSet) {
         UsaState usaState = new UsaState();
