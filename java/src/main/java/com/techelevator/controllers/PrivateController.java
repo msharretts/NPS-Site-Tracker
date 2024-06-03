@@ -14,6 +14,11 @@ import java.security.Principal;
 @PreAuthorize("isAuthenticated()")
 public class PrivateController {
 
+    /*
+    This controller was here as part of the starter project file this was created from. Left here because at some
+    point I may add the ability to log in and track sites visited, wishlist sites, and junior ranger programs
+    completed. Leaving as a reference.
+     */
     @GetMapping("/hello")
     public String getHelloMessage(Principal principal) {
         return "Hello, " + principal.getName() + " !";
