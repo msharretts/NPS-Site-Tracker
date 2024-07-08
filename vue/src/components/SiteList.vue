@@ -30,10 +30,12 @@ export default {
 
   computed: {
 
+    //Calculate the number of resulting sites to inform user
     numberOfSites() {
       return this.sites.length;
     },
 
+    // Add an s on site if more than one result returned
     sOnResults() {
       if (this.sites.length == 1) {
         return '';

@@ -46,6 +46,7 @@ export function createStore() {
         state.notification = null;
       },
 
+      // Clear the search preferences that may have been previously saved
       CLEAR_SEARCH(state) {
         state.designationSearch = '';
         state.stateSearch = '';

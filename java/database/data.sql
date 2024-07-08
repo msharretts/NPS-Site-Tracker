@@ -296,7 +296,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Ninety Six National Historic Site', 'NISI', '1976-08-19', '4.1356', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pennsylvania Avenue National Historic Site', 'PAAV', '1965-09-30', '0.0713', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('President William Jefferson Clinton Birthplace Home National Historic Site', 'WICL', '2010-12-14', '0.0028', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Puʻukoholā Heiau National Historic Site', 'PUHE', '1972-08-17', '0.3490', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pu''ukohola Heiau National Historic Site', 'PUHE', '1972-08-17', '0.3490', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Sagamore Hill National Historic Site', 'SAHI', '1963-07-08', '0.3360', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Saint Paul''s Church National Historic Site', 'SAPA', '1978-11-10', '0.0248', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Salem Maritime National Historic Site', 'SAMA', '1938-03-17', '0.0365', 'false', 'true');
@@ -375,7 +375,7 @@ INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FRO
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ninety Six National Historic Site'), 'SC');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pennsylvania Avenue National Historic Site'), 'DC');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'President William Jefferson Clinton Birthplace Home National Historic Site'), 'AR');
-INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Puʻukoholā Heiau National Historic Site'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pu''ukohola Heiau National Historic Site'), 'HI');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Sagamore Hill National Historic Site'), 'NY');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint Paul''s Church National Historic Site'), 'NY');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Salem Maritime National Historic Site'), 'MA');
@@ -451,7 +451,7 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Ninety Six National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historic Site'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pennsylvania Avenue National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historic Site'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'President William Jefferson Clinton Birthplace Home National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historic Site'));
-INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Puʻukoholā Heiau National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historic Site'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pu''ukohola Heiau National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historic Site'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Sagamore Hill National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historic Site'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint Paul''s Church National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historic Site'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Salem Maritime National Historic Site'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historic Site'));
@@ -505,7 +505,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Jean Lafitte National Historical Park and Preserve', 'JELA', '1978-11-10', '104.7159', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Jimmy Carter National Historical Park', 'JICA', '2021-01-13', '0.3171', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Kalaupapa National Historical Park', 'KALA', '1980-12-22', '43.6206', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Kaloko-Honokōhau National Historical Park', 'KAHO', '1978-11-10', '4.7067', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Kaloko-Honokohau National Historical Park', 'KAHO', '1978-11-10', '4.7067', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Keweenaw National Historical Park', 'KEWE', '1992-10-27', '7.5676', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Klondike Gold Rush National Historical Park', 'KLGO', '1976-06-30', '52.5949', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Lewis and Clark National Historical Park', 'LECL', '2004-10-30', '13.8004', 'false', 'true');
@@ -525,7 +525,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Paterson Great Falls National Historical Park', 'PAGR', '2011-11-07', '0.2077', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pecos National Historical Park', 'PECO', '1990-06-27', '27.0876', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Pullman National Historical Park', 'PULL', '2022-12-29', '0.002', 'false', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Puʻuhonua o Hōnaunau National Historical Park', 'PUHO', '1978-11-10', '1.6989', 'false', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Puʻuhonua o Honaunau National Historical Park', 'PUHO', '1978-11-10', '1.6989', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Reconstruction Era National Historical Park', 'REER', '2019-03-12', '0.2630', 'false', 'false');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Rosie the Riveter/World War II Home Front National Historical Park', 'RORI', '2000-10-24', '0.5876', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Saint-Gaudens National Historical Park', 'SAGA', '2019-03-12', '0.7719', 'false', 'false');
@@ -578,7 +578,7 @@ INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FRO
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Jean Lafitte National Historical Park and Preserve'), 'LA');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Jimmy Carter National Historical Park'), 'GA');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kalaupapa National Historical Park'), 'HI');
-INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kaloko-Honokōhau National Historical Park'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kaloko-Honokohau National Historical Park'), 'HI');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Keweenaw National Historical Park'), 'MI');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Klondike Gold Rush National Historical Park'), 'AK');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Klondike Gold Rush National Historical Park'), 'WA');
@@ -605,7 +605,7 @@ INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FRO
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Paterson Great Falls National Historical Park'), 'NJ');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pecos National Historical Park'), 'NM');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pullman National Historical Park'), 'IL');
-INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Puʻuhonua o Hōnaunau National Historical Park'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Puʻuhonua o Honaunau National Historical Park'), 'HI');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Reconstruction Era National Historical Park'), 'SC');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Rosie the Riveter/World War II Home Front National Historical Park'), 'CA');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint-Gaudens National Historical Park'), 'NH');
@@ -649,7 +649,7 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Jean Lafitte National Historical Park and Preserve'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Jimmy Carter National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kalaupapa National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
-INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kaloko-Honokōhau National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Kaloko-Honokohau National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Keweenaw National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Klondike Gold Rush National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Lewis and Clark National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
@@ -669,7 +669,7 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Paterson Great Falls National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pecos National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Pullman National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
-INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Puʻuhonua o Hōnaunau National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Puʻuhonua o Honaunau National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Reconstruction Era National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Rosie the Riveter/World War II Home Front National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Saint-Gaudens National Historical Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Historical Park'));
@@ -1069,7 +1069,7 @@ INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_c
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Great Basin National Park', 'GRBA', '1986-10-27', '312.3', 'false', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Great Smoky Mountains National Park', 'GRSM', '1934-06-15', '2114.2', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Guadalupe Mountains National Park', 'GUMO', '1972-09-30', '349.5', 'true', 'true');
-INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Haleakalā National Park', 'HALE', '1961-07-01', '134.6', 'true', 'true');
+INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Haleakala National Park', 'HALE', '1961-07-01', '134.6', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hawaiʻi Volcanoes National Park', 'HAVO', '1916-08-01', '1317.7', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Hot Springs National Park', 'HOSP', '1921-03-04', '22.5', 'true', 'true');
 INSERT INTO site (site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger) VALUES ('Indiana Dunes National Park', 'INDU', '2019-02-15', '62.1', 'true', 'true');
@@ -1128,7 +1128,7 @@ INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FRO
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Great Smoky Mountains National Park'), 'NC');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Great Smoky Mountains National Park'), 'TN');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Guadalupe Mountains National Park'), 'TX');
-INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Haleakalā National Park'), 'HI');
+INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Haleakala National Park'), 'HI');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hawaiʻi Volcanoes National Park'), 'HI');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hot Springs National Park'), 'AR');
 INSERT INTO site_state (site_id, state_abbreviation) VALUES ((SELECT site_id FROM site WHERE site_name = 'Indiana Dunes National Park'), 'IN');
@@ -1187,7 +1187,7 @@ INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id F
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Great Basin National Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Great Smoky Mountains National Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Guadalupe Mountains National Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Park'));
-INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Haleakalā National Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Park'));
+INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Haleakala National Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hawaiʻi Volcanoes National Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Hot Springs National Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Park'));
 INSERT INTO designation_site (site_id, designation_id) VALUES ((SELECT site_id FROM site WHERE site_name = 'Indiana Dunes National Park'), (SELECT designation_id FROM designation WHERE designation_name = 'National Park'));

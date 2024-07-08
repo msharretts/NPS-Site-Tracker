@@ -88,12 +88,17 @@ export default {
     },
 
     methods: {
+
+        // Upon engaging a search, remove any prior search criteria in the store and reset from current criteria
         retrieveSites() {
             this.$store.commit('CLEAR_SEARCH');
             this.$store.commit('SET_DESIGNATION_SEARCH', this.designationSelection);
             this.$store.commit('SET_STATE_SEARCH', this.stateSelection);
 
+            // If there are not state & designation search criteria selected
             if (this.designationSelection === '' && this.stateSelection === '') {
+
+                // Retrieve all sites, then filter for junior ranger program and camping preferences
                 siteService.getAllSites().then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
@@ -110,7 +115,11 @@ export default {
                         this.$store.commit('SET_NOTIFICATION', "Error getting sites. Request could not be created.");
                     }
                 });
+
+            // If there is a state selection but no designation
             } else if (this.designationSelection === '') {
+
+                //Retrieve sites for selected state and filter for camping and junior ranger preferences
                 siteService.getSitesByState(this.stateSelection).then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
@@ -127,7 +136,11 @@ export default {
                         this.$store.commit('SET_NOTIFICATION', "Error getting sites. Request could not be created.");
                     }
                 });
+
+            // If there is only a designation selection, but no state selection
             } else if (this.stateSelection === '') {
+
+                // Retrieve sites of the appropriate designation and filter for camping or junior ranger preference
                 siteService.getSitesByDesignation(this.designationSelection).then(response => {
                     this.sites = response.data;
                     this.checkHasCamping();
@@ -144,6 +157,8 @@ export default {
                         this.$store.commit('SET_NOTIFICATION', "Error getting sites. Request could not be created.");
                     }
                 });
+
+            // Otherwise, perform a combined searched and filter for camping and junior ranger preference
             } else {
                 siteService.getSitesByStateAndDesignation(this.stateSelection, this.designationSelection).then(response => {
                     this.sites = response.data;
@@ -166,6 +181,7 @@ export default {
 
         },
 
+        // Resets all criteria to empty, for ease of user
         clearPreferences() {
             this.designationSelection = '',
                 this.stateSelection = '',
@@ -174,6 +190,7 @@ export default {
                 this.sites = []
         },
 
+        // This populates the search drop-down without hard-coding individual states
         retrieveStates() {
             stateService.getAllStates().then(response => {
                 this.states = response.data;
@@ -189,6 +206,7 @@ export default {
             });
         },
 
+        // This populates the search drop-down without hard-coding designations
         retrieveDesignations() {
             designationService.getAllDesignations().then(response => {
                 this.designations = response.data;
@@ -205,19 +223,27 @@ export default {
         },
 
         checkHasCamping() {
+
+            // If has camping box is selected
             if (this.hasCamping == true) {
+
+                // Set the preference to be remembered in the store & filter sites 
                 this.$store.commit('SET_HAS_CAMPING_PREFERENCE', this.hasCamping);
                 this.sites = this.sites.filter(site => site.hasCamping == true);
             }
         },
 
+        // If junior ranger is selected
         checkHasJuniorRanger() {
             if (this.hasJuniorRanger == true) {
+
+                // Set the preference to be remembered in the store & filter sites 
                 this.$store.commit('SET_HAS_JUNIOR_RANGER_PREFERENCE', this.hasJuniorRanger);
                 this.sites = this.sites.filter(site => site.hasJuniorRanger == true);
             }
         },
 
+        // Create notification so that users are told when no results meet criteria
         setNotificationIfEmptyList() {
             if (this.sites.length == 0) {
                 this.$store.commit('SET_NOTIFICATION', "No results found. Try different search parameters.");
@@ -225,26 +251,38 @@ export default {
         }
     },
 
+    // At page load, populate the drop-downs
     created() {
         this.retrieveStates();
         this.retrieveDesignations();
+
+        // Check for previous search criteria in case user is returning to page after viewing site info, reload from store
+        // If no previous criteria in store, page will display search options, but no results
         if (this.$store.state.designationSearch || this.$store.state.stateSearch || this.$store.state.hasCampingPreference || this.$store.state.hasJuniorRangerPreference) {
+
+            // Check if both camping and junior ranger preference, then use the store to reset these criteria and pull sites
             if (this.$store.state.hasCampingPreference && this.$store.state.hasJuniorRangerPreference) {
                 this.hasCamping = this.$store.state.hasCampingPreference;
                 this.hasJuniorRanger = this.$store.state.hasJuniorRangerPreference;
                 this.designationSelection = this.$store.state.designationSearch;
                 this.stateSelection = this.$store.state.stateSearch;
                 this.retrieveSites();
+
+            // Otherwise check only camping preference, set preference from store and pull sites
             } else if (this.$store.state.hasCampingPreference) {
                 this.hasCamping = this.$store.state.hasCampingPreference;
                 this.designationSelection = this.$store.state.designationSearch;
                 this.stateSelection = this.$store.state.stateSearch;
                 this.retrieveSites();
+
+            // Or check only junior ranger preference, set and pull sites
             } else if (this.$store.state.hasJuniorRangerPreference) {
                 this.hasJuniorRanger = this.$store.state.hasJuniorRangerPreference;
                 this.designationSelection = this.$store.state.designationSearch;
                 this.stateSelection = this.$store.state.stateSearch;
                 this.retrieveSites();
+
+            // If no preferences for camping and junior ranger, reset designations from store and pull sites
             } else {
                 this.designationSelection = this.$store.state.designationSearch;
                 this.stateSelection = this.$store.state.stateSearch;

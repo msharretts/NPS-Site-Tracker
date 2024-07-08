@@ -21,6 +21,8 @@ export default {
 
     methods: {
 
+
+        // Retrieve site, then set is loading to false to display details
         retrieveSite() {
             const id = this.$route.params.id;
             siteService.getSiteById(id).then(response => {

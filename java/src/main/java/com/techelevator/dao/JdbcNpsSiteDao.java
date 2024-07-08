@@ -136,9 +136,19 @@ public class JdbcNpsSiteDao implements NpsSiteDao{
 
     @Override
     public List<NpsSite> getSitesByPartialName(String searchTerm) {
-        return null;
-
-        // TODO : Implement this when ready to add functionality for searching for a specific site
+        NpsSite npsSite = new NpsSite();
+        List<NpsSite> listOfSitesByName = new ArrayList<>();
+        String sql = "SELECT site_id, site_name, nps_call_letters, date_established, area_km2, has_camping, has_junior_ranger FROM site WHERE site_name ILIKE ?;";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + searchTerm + "%");
+            while (results.next()) {
+                npsSite = mapRowToSite(results);
+                listOfSitesByName.add(npsSite);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database.", e);
+        }
+        return listOfSitesByName;
     }
 
 

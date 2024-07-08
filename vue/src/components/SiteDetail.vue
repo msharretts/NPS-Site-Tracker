@@ -38,16 +38,20 @@ export default {
     props: ['site'],
 
     data() {
+
+        //Reformat date to improve UX
         return {
             dateFormatted: new Date(this.site.dateEstablished).toDateString(),
         }
     },
 
+    //Use each site's call letters to complete the web address
     computed: {
         website() {
             return 'https://www.nps.gov/' + this.site.npsCallLetters;
         },
 
+        // Display camping information
         hasCampingAsYOrN() {
             if (this.site.hasCamping) {
                 return 'Yes';
@@ -56,6 +60,7 @@ export default {
             }
         },
 
+        // Display junior ranger info
         hasJuniorRangerAsYOrN() {
             if (this.site.hasJuniorRanger) {
                 return 'Yes';
@@ -78,20 +83,20 @@ export default {
 
         // },
 
-        handleErrorResponse(error, verb) {
-            if (error.response) {
-                this.$store.commit('SET_NOTIFICATION',
-                    "Error " + verb + " itinerary. Response received was '" + error.response.statusText + "'.");
-            } else if (error.request) {
-                this.$store.commit('SET_NOTIFICATION', "Error " + verb + " itinerary. Server could not be reached.");
-            } else {
-                this.$store.commit('SET_NOTIFICATION', "Error " + verb + " itinerary. Request could not be created.");
-            }
-        },
+        // handleErrorResponse(error, verb) {
+        //     if (error.response) {
+        //         this.$store.commit('SET_NOTIFICATION',
+        //             "Error " + verb + " itinerary. Response received was '" + error.response.statusText + "'.");
+        //     } else if (error.request) {
+        //         this.$store.commit('SET_NOTIFICATION', "Error " + verb + " itinerary. Server could not be reached.");
+        //     } else {
+        //         this.$store.commit('SET_NOTIFICATION', "Error " + verb + " itinerary. Request could not be created.");
+        //     }
+        // },
 
-        created() {
-            this.retrieveSite();
-        }
+        // created() {
+        //     this.retrieveSite();
+        // }
     }
 }
 
